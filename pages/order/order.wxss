@@ -1,1 +1,23 @@
 /* pages/order/order.wxss */
+.background {
+  height: 1300rpx;
+  background-color:#f1f1f5d7;
+}
+
+.add-address-container {
+  border-radius: 5px;
+  background-color: white;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding: 10px 10px 10px 0px;
+}
+
+.order-info-container {
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding: 10px 10px 10px 0px;
+  height: 500rpx;
+}

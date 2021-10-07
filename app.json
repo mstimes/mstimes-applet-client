@@ -1,14 +1,15 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/order/order",
     "pages/coupon/coupon",
     "pages/login/login",
-    "pages/home/home",
     "pages/detail/detail",
     "pages/index/index",
     "pages/about/about",
     "pages/logs/logs",
     "pages/webview/webview",
-    "pages/order/order",
+
 
     "pages/coupon/couponList"
   ],
