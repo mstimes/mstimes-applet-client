@@ -1,0 +1,23 @@
+/* pages/coupon/coupon.wxss */
+
+.image-about{
+  padding:50px 30px 20px 30px;
+  display:flex;                 
+ justify-content: center;   
+}
+.get_coupon {
+  /* background:  #ffffff; */
+  /* position: fixed; */
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 35rpx 0;
+}
+.butt {
+  font-size: 22rpx; 
+  width: 100%;
+  color:#ffffff;
+  background-color: #090909;
+}

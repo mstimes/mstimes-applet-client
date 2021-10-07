@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/coupon/coupon",
+    "pages/login/login",
+    "pages/home/home",
+    "pages/detail/detail",
+    "pages/index/index",
+    "pages/about/about",
+    "pages/logs/logs",
+    "pages/webview/webview",
+    "pages/order/order",
+
+    "pages/coupon/couponList"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "甄选天下好物 · 尽在Ms时代",
+    "navigationStyle": "default",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#eeeeee"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

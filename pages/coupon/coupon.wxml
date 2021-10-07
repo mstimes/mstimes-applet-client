@@ -1,0 +1,8 @@
+<!--pages/coupon/coupon.wxml-->
+<view class="image-about">
+  <image class="" src="/images/about3.jpg" mode="aspectFit"></image>
+</view>
+<view class="get_coupon">
+  <button class="butt" size="small" bindtap="getCoupon">领取优惠券</button>
+</view>
+

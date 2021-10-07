@@ -1,0 +1,7 @@
+<!--pages/login/login.wxml-->
+<view class="image-about">
+  <image class="" src="/images/about3.jpg" mode="aspectFit"></image>
+</view>
+<view class="login_button">
+  <button class="butt" size="small" bindtap="getUserProfile">微信用户信息授权</button>
+</view>

@@ -1,0 +1,98 @@
+/* pages/detail/detail.wxss */
+.share-button {
+  /* background:  #ffffff; */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 15rpx 0;
+}
+.butt {
+  font-size: 24rpx; 
+  width: 100%;
+  color:#4a4b4b;
+}
+.detail-swiper {
+  height: 700rpx;
+  width: 100%;
+}
+.detail-swiper-item {
+  height: 100%;
+  width: 100%;
+}
+.slide-image{
+  height: 100%;
+  width: 100%;
+}
+.price{
+  font-size: 35rpx;
+  padding:8px 8px 8px 8px;
+  color: #c00606;
+}
+.detail-container{
+  background-color:#eff3f3;
+  width:100%;
+  overflow-x:hidden;
+}
+.title{
+  font-size: 30rpx;
+  font-weight: 700;
+  padding: 0px 8px 8px 8px;
+  font-family: 'STKaiti';
+}
+.title-container{
+  background-color:#ffffff;
+  margin-top: 8px;
+  padding: 5px;
+}
+.detail-details-title{
+  font-size: 26rpx;
+  font-family: 'STKaiti';
+  color:#505252;
+  padding:0px 8px 8px 8px;
+}
+.detail-details{
+  font-size: 24rpx;
+  font-family: SimSun;
+  color:#898b8b;
+  font-weight: 500;
+}
+.detail-details-text{
+  font-size: 24rpx;
+  font-weight: 520;
+  font-family: SimSun;
+  color:#4a4b4b
+}
+.details-list-container{
+  background-color:#ffffff;
+  padding: 8px;
+  margin-top: 1px;
+}
+.pride-all{
+  padding:1px 0px 8px 0px;
+}
+.pride-container{
+  width:100%;
+  display:flex;
+  background-color:#ffffff;
+  padding: 4px 6px 0px 6px;
+  /* margin-top: 1px; */
+}
+.pride-item{
+  width:100%;
+  flex-basis:230rpx;
+  padding:2px 6px 2px 6px;
+}
+.pride-items{
+  flex-basis:100%;
+  padding:2px 6px 2px 6px;
+}
+.image-flow{
+  display: block;
+}
+.image-padd{
+  overflow: hidden;    
+  display: flex;
+}

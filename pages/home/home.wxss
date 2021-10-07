@@ -1,0 +1,143 @@
+/* pages/index/home.wxss */
+.hidden-left-right{
+  width:100%;
+  overflow-x:hidden;
+}
+/* #f1f7f7 */
+.home-motto {
+  text-align: center;
+  /* margin-top: 5px; */
+  /* background-color:#f1f7f7; */
+  background-color:#0d0d0e;
+}
+
+.home-buy {
+  text-align: center;
+  margin-top: 10px;
+  background-color: aquamarine;
+}
+
+.home-swiper {
+  height: 700rpx;
+  width: 100%;
+}
+.home-swiper-item {
+  height: 100%;
+  width: 100%;
+}
+.slide-image{
+   height: 100%;
+  width: 100%;
+}
+  .home-sail-ori {
+    /* margin-left:8px; */
+    /* margin-top:2px; */
+    margin-left:5px;
+    font-size: 25rpx;
+    text-decoration:line-through;
+    color: #565657
+  }
+  .home-sail-best {
+    /* margin-top:10px; */
+    margin-left:8px;
+    font-size: 40rpx;
+    color:#c00606;
+    text-align: center;
+  }
+  .home-sail-but {
+    font-size: 22rpx;
+  }
+
+  .container{
+    width: 100%;
+    height: 400rpx;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .image-about{
+    position: absolute;
+    width: 100%;
+    height: 400rpx;
+  }
+
+  .up{
+    position: absolute;
+    margin-top: 24%;
+    margin-left: 58%;
+    text-align: right;
+    z-index: 1;
+  }
+
+.pride-container{
+  width:100%;
+  display:flex;
+  padding: 0px 0px 10px 0px
+}
+
+.pride-item{
+  width:100%;
+  margin-left: 10px;
+}
+.rota-1 {
+  /* transform: rotate(24deg); */
+  /* margin-top: -23px; */
+  text-decoration-line: underline;
+  font-size: 26rpx;
+  margin-top: 4px;
+  margin-left: 10px;
+  font-weight: 600rpx;
+  font-family: NSimSun;
+  /* #aba818 黄色 */
+  color:#ffffff;
+}
+
+.detail-image-border {
+  background-color: #090909;
+  padding: 20px 25px 5px 25px;
+}
+/* #282829  */
+.text-container{
+  padding: 10px 25px 10px 25px;
+  background-color: #090909;
+}
+
+.home-sail-des {
+  text-align: center;
+  font-size: 30rpx;
+  font-family: STKaiti;
+  color:#a3a2a2
+}
+.home-sail-des-title{
+  text-align: center;
+  font-size: 38rpx;
+  font-family: STKaiti;
+  font-weight: 420;
+  padding: 10px;
+  color:#ffffff
+}
+.tips_line{
+  background-color:#0d0d0e;
+  display: flex;
+  justify-content:center;
+  text-align:center;
+  align-items:center;
+  padding:8px 6px 6px 6px;
+}
+.tips_words{
+  font-size: 20rpx; 
+  font-weight:800; 
+  font-family:NSimSun;
+  color:#ffffff;
+  padding :6px 1px 6px 1px;
+  justify-content:center;
+}
+.tips_bar{
+  padding :7px 6px 6px 6px;
+  color:#e6e6e6;
+  font-size: 12px;
+}
+.bload_word{
+  padding: 6px 0px 4px 0px;
+}

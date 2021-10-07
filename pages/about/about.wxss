@@ -1,0 +1,168 @@
+/* pages/about/about.js.wxss */
+.hidden-left-right{
+  width:100%;
+  overflow-x:hidden;
+}
+.about-container{
+  background-color:#ffffff;
+}
+.about-title {
+  text-align: center;
+  padding: 30px 30px 10px 30px;
+  font-family: KaiTi;
+  src: '/utils/huawenkt.ttf';
+  font-size: 50rpx;
+  /* color:#131212; */
+  /* margin-top: 5px; */
+  /* background-color:#f1f7f7; */
+}
+.about-detail{
+  text-align: center;
+  font-size: 36rpx;
+  font-family: STKaiti;
+  padding: 10px 20px 5px 20px;
+  font-weight: 420;
+  /* color:#ffffff; */
+}
+.about-detail-english{
+  text-align: center;
+  font-size: 25rpx;
+  font-family: STKaiti;
+  font-weight:450;
+  color:#a3a2a2;
+  padding: 0px 20px 15px 20px;
+}
+.background-text{
+  padding: 10px 40px 10px 40px;
+}
+.white-background{
+  padding: 10px 40px 10px 40px;
+}
+.about-detail-details{
+  text-align: center;
+  padding: 20px 30px 5px 30px;
+  font-family: STKaiti;
+  font-size: 30rpx;
+  font-weight:330;
+}
+.image-about{
+  padding:10px 30px 20px 30px;
+  display:flex;                 
+ justify-content: center;   
+}
+.text-special{
+  font-weight:600;
+  font-size: 28rpx;
+  font-style:italic;
+}
+.text-special-english{
+  font-size: 30rpx;
+  font-style:oblique;
+  text-align: center;
+}
+.about-background{
+  text-align: center;
+  font-weight: 500;
+  font-size: 35rpx;
+  font-style:normal;
+  font-family: STKaiti;
+  padding: 50px 40px 0px 40px;
+}
+
+.about-background-english{
+  text-align: center;
+  font-weight: 450;
+  font-size: 26rpx;
+  font-style:normal;
+  color:#a3a2a2;
+  font-family: STKaiti;
+  padding: 0px 40px 30px 40px;
+
+}
+
+.about-background-text{
+  font-size: 30rpx;
+  font-weight: 400;
+  text-align: center;
+  padding: 10px 15px 10px 15px;
+  font-family: STKaiti;
+}
+.about-background-text-divide{
+  font-size: 30rpx;
+  font-weight: 400;
+  text-align: center;
+  padding: 10px 15px 5px 15px;
+  font-family: STKaiti;
+}
+.about-background-text-second{
+  font-size: 30rpx;
+  font-weight: 400;
+  text-align: center;
+  padding: 20px 15px 0px 15px;
+  font-family: STKaiti;
+}
+
+.about-contentUS-title{
+  font-size: 32rpx;
+  font-family: STKaiti;
+  font-weight: 500;
+  text-align: center;
+  font-style:oblique;
+  padding: 1px 15px 0px 20px;
+}
+.about-contentUS-detail{
+  font-size: 28rpx;
+  text-align: left;
+  padding: 5px 15px 2px 30px;
+  font-family: STKaiti;
+}
+.about-contentUS{
+  font-size: 26rpx;
+  text-align: left;
+  padding: 2px 0px 0px 30px;
+  font-family: STKaiti;
+}
+.image-about-ewm{
+  padding:10px 0px 0rpx 10px;
+  display:flex;                 
+ justify-content: center;   
+}
+.image-ewm-size{
+width: 100%;
+height: 160rpx;
+}
+.about-zs-contentUS-title{
+  font-size: 25rpx;
+  font-family: SimHei;
+  font-weight: 800;
+  text-align: center;
+  padding: 30px 15px 10px 20px;
+  color:#ffffff
+}
+.about-zs-background-text{
+  font-size: 25rpx;
+  font-weight: 300;
+  text-align: center;
+  padding: 8px 5px 20px 10px;
+  font-family: STKaiti;
+  color:#ffffff;
+}
+.about-zs-background-mail{
+  font-weight: 300;
+  font-size: 25rpx;
+  text-align: center;
+  color:#ffffff;
+  padding: 0px 0px 0px 10px;
+}
+.zs-background{
+  background-color:#201e1e;
+}
+.top-image-title{
+  padding:50px 40px 25px 40px;
+  display:flex;                 
+ justify-content: center; 
+}
+.imagesize-image{
+  height:60rpx;
+  width:100%
+}

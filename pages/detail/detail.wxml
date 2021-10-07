@@ -1,0 +1,148 @@
+<!--detail.wxml-->
+<view class="detail-container">
+  <view>
+    <swiper class="detail-swiper" circular="{{circular}}" current="{{current}}" bindtap="chuangEvent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color='#fff'>
+      <block wx:key="unique" wx:for="{{detailRotateImages[0].rotateImages}}">
+        <swiper-item class="detail-swiper-item"> 
+        <image src="{{item}}" class="slide-image" style="width:100%"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="title-container">
+      <view class="price">
+        <text>¥{{detailRotateImages[0].groupPrice}}</text>
+      </view>
+      <view class="title">
+        <text >{{detailRotateImages[0].title}}</text>
+      </view>
+      <view class="detail-details-title">
+        <text>{{detailRotateImages[0].description}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="title-container">
+    <view style="text-align: center;color:#c00606">
+      <text style="font-size:12px">图文详情</text>
+    </view>
+  </view>
+  <view class="pride-all">
+  <view class="pride-container" style="margin-top:2px">
+    <view class="pride-item" hidden = "{{detailRotateImages[0].brand == null}}">
+      <text class="detail-details">品牌:</text>
+    </view>
+    <view class="pride-items" hidden = "{{detailRotateImages[0].brand == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].brand}}</text>
+    </view>
+  </view>
+
+  <!-- <view class="pride-container">
+    <view class="pride-item" hidden = "{{detailRotateImages[0].goodName == null}}">
+      <text class="detail-details">品名:</text>
+    </view>
+    <view class="pride-items" hidden = "{{detailRotateImages[0].goodName == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].goodName}}</text>
+    </view>
+  </view> -->
+
+  <view class="pride-container">
+    <view class="pride-item" hidden = "{{detailRotateImages[0].material == null}}">
+      <text class="detail-details">材质:</text>
+    </view>
+    <view class="pride-items" hidden = "{{detailRotateImages[0].material == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].material}}</text>
+    </view>
+  </view>
+
+  <view class="pride-container">
+    <view class="pride-item" hidden = "{{detailRotateImages[0].component == null}}">
+      <text class="detail-details">成分:</text>
+    </view>
+    <view class="pride-items" hidden = "{{detailRotateImages[0].component == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].component}}</text>
+    </view>
+  </view>
+
+  <view class="pride-container">
+    <view class="pride-item" hidden = "{{detailRotateImages[0].productionDate == null}}">
+      <text class="detail-details">生产日期:</text>
+    </view>
+    <view class="pride-items" hidden = "{{detailRotateImages[0].productionDate == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].productionDate}}</text>
+    </view>
+  </view>
+
+  <view class="pride-container">
+    <view class="pride-item" hidden = "{{detailRotateImages[0].expirationDate == null}}">
+      <text class="detail-details">保质期:</text>
+    </view>
+    <view class="pride-items" hidden = "{{detailRotateImages[0].expirationDate == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].expirationDate}}</text>
+    </view>
+  </view>
+
+  <view class="pride-container">
+    <view class="pride-item" hidden = "{{detailRotateImages[0].guaranteePeriod == null}}">
+     <text class="detail-details">质保期:</text>
+    </view>
+    <view class="pride-items" hidden = "{{detailRotateImages[0].guaranteePeriod == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].guaranteePeriod}}</text>
+    </view>
+  </view>
+
+  <view class="pride-container">
+    <view class="pride-item" hidden = "{{detailRotateImages[0].productionPlace == null}}">
+      <text class="detail-details">产地:</text>
+    </view>
+    <view class="pride-items" hidden = "{{detailRotateImages[0].productionPlace == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].productionPlace}}</text>
+    </view>
+  </view>
+
+  <view class="pride-container">
+    <view class="pride-item" hidden = "{{detailRotateImages[0].shippingInfo == null}}">
+      <text class="detail-details">发货地/快递:</text>
+    </view>
+    <view class="pride-items" hidden = "{{detailRotateImages[0].shippingInfo == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].shippingInfo}}</text>
+    </view>
+  </view>
+
+  <view class="pride-container">
+    <view class="pride-item" hidden = "{{detailRotateImages[0].unShippingInfo == null}}">
+      <text class="detail-details">不发货:</text>
+    </view>
+    <view class="pride-items" hidden = "{{detailRotateImages[0].unShippingInfo == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].unShippingInfo}}</text>
+    </view>
+  </view>
+
+  <view class="pride-container">
+    <view class="pride-item" hidden = "{{detailRotateImages[0].shippingTimeLimit == null}}">
+      <text class="detail-details">发货时效:</text>
+    </view>
+    <view class="pride-items" hidden = "{{detailRotateImages[0].shippingTimeLimit == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].shippingTimeLimit}}</text>
+    </view>
+  </view>
+
+  <view class="pride-container">
+    <view class="pride-item"  hidden = "{{detailRotateImages[0].afterSales == null}}">
+      <text class="detail-details">售后:</text>
+    </view>
+    <view class="pride-items" style="padding:2px 6px 10px 6px"  hidden = "{{detailRotateImages[0].afterSales == null}}">
+      <text class="detail-details-text">{{detailRotateImages[0].afterSales}}</text>
+    </view>
+  </view>
+  </view>
+
+  <view class="image-flow">
+    <view class="image-padd"  wx:key="unique" wx:for="{{detailRotateImages[0].detailImages}}" >
+      <image class="image-padd" src="{{item}}" style="width:100%"  mode="widthFix"></image>
+    </view>
+  </view>
+
+  <view class="share-button">
+    <button class="butt" type="primary" size="small" open-type="share">分享</button>
+  </view>
+</view>

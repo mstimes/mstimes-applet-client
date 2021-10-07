@@ -1,0 +1,151 @@
+<!--pages/about/about.wxml-->
+<view class="hidden-left-right">
+  <view class="about-container">
+    <view class="top-image-title">
+        <image class="imagesize-image" src="/images/about0.png" mode="aspectFit"></image>
+    </view>
+    <view class="about-detail">
+      <text>一个专注于探索美学边界的轻奢馆</text>
+    </view>
+    <!-- <view class="about-detail-english">
+      <text>A light luxury museum focused on exploring the boundaries of aesthetics.</text>
+    </view> -->
+    <view class="about-detail-english">
+      <text>Focused On Exploring The Boundaries Of Aesthetics.</text>
+    </view>
+   
+    <view class="about-detail-details">
+      <text class="text-special">凭好物 Beauty Things</text>
+    </view>
+    <view class="about-detail-details">
+      <text>Ms时代执着于甄选女性品质好物</text>
+    </view>
+    <view class="about-detail-details">
+      <text>痴迷于当代女性对品质生活方式追求与探索</text>
+    </view>
+    <view class="about-detail-details">
+      <text class="text-special">识美学 Know Aesthetics</text>
+    </view>
+    <view class="about-detail-details">
+      <text>专注于一切与美有关的生活品质好物</text>
+    </view>
+    <view class="about-detail-details">
+      <text>做灵魂美学的缔造者</text>
+    </view>
+    <view class="image-about">
+        <image class="" src="/images/about1.jpg" mode="aspectFit"></image>
+    </view>
+
+    <view class="about-detail-details">
+      <text class="text-special">明品质 Identify Quality</text>
+    </view>
+    <view class="about-detail-details">
+      <text>每个产品无一不经过</text>
+    </view>
+    <view class="about-detail-details">
+      <text>层层筛选</text>
+    </view>
+    <view class="about-detail-details">
+      <text>由专业的品控团队</text>
+    </view>
+    <view class="about-detail-details">
+      <text>做品质保障的践行者</text>
+    </view>
+    
+    <view class="about-detail-details">
+      <text class="text-special">见生活 See Life</text>
+    </view>
+   <view class="about-detail-details">
+      <text>通过对品质生活和女性内心的不断探索</text>
+    </view>
+    <view class="about-detail-details">
+      <text>让女性对生活的热爱</text>
+    </view>
+    <view class="about-detail-details">
+      <text>温暖且有力量</text>
+    </view>
+    <!-- <view class="about-detail-details">
+      <text>无数座城市，无数个品牌，无数种品类皆留下我们跋涉探访的印记</text>
+    </view> -->
+   
+    <view class="image-about">
+        <image class="" src="/images/about2.jpg" mode="aspectFit"></image>
+    </view>
+
+    <view class="background-text">
+
+      <view class="about-background">
+        <text >背景实力</text>
+      </view>
+      <view class="about-background-english">
+        <text > STRONG BACKGROUND</text>
+      </view>
+      <view class="about-background-text">
+        <text>强大的供应链体系</text>
+      </view>
+      <view class="about-background-text">
+        <text>签约百家知名品牌深度合作</text>
+      </view>
+      <view class="about-background-text">
+        <text>整合专业的买手团队及品控质检团队</text>
+      </view>
+      <view class="about-background-text">
+        <text>为女性品质生活奠定基石</text>
+      </view>
+      <view class="about-background-text-divide">
+        <text></text>
+      </view>
+      <view class="about-background-text-second">
+        <text>坚实的大数据分析及系统建设能力</text>
+      </view>
+      <view class="about-background-text-second">
+      <text>提供丰富的数据支持</text>
+      </view>
+      <view class="about-background-text-second">
+      <text>提供高效且便捷的购物体验</text>
+      </view>
+      <view class="about-background-text-second">
+        <text>联合知名品牌营销及运营团队</text>
+      </view>
+      <view class="about-background-text-second">
+        <text>共同打造持续影响</text>
+      </view>
+      <view class="about-background-text-second">
+        <text>当代女性的全品类购物平台</text>
+      </view>
+    </view>
+     
+    <view class="image-about">
+      <image class="" src="/images/about3.jpg" mode="aspectFit"></image>
+    </view>
+
+  </view>
+
+  <view class="zs-background">
+    <view class="about-zs-contentUS-title">
+      <text>OFFICIAL</text>
+    </view>
+    <view class="about-zs-background-mail">
+      <text>contact@mstimes.com.cn</text>
+    </view>
+      <view class="image-about-ewm">
+          <image class="image-ewm-size" src="/images/aboutewm.png" mode="aspectFit"></image>
+      </view>
+      <view class="about-zs-contentUS-title">
+        <text>CONTACT US</text>
+      </view>
+      <view class="about-zs-background-mail">
+       <text>service@mstimes.com.cn</text>
+     </view>
+      <view class="about-zs-background-text">
+      <text>400-009-0801</text>
+    </view>
+  </view>
+
+  <view class="about-title">
+    <text ></text>
+  </view>
+</view>
+
+
+
