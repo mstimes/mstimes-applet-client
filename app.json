@@ -9,8 +9,6 @@
     "pages/about/about",
     "pages/logs/logs",
     "pages/webview/webview",
-
-
     "pages/coupon/couponList"
   ],
   "window": {

@@ -30,11 +30,15 @@ App({
     wx.loadFontFace({
       family: 'STKaiti',
       source: '/utils/STKaiti.ttf',
-      success: console.log,
+      // success: console.log,
       global:true,
     })
   },
   globalData: {
     userInfo: null
-  }
+  },
+  onShow: function (options) {
+    // console.log(options)
+  },
+    
 })

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    originPage:null,
   },
 
   //登录逻辑
@@ -36,8 +36,10 @@ Page({
         loginId: wechatAuthSession.unionid
       },
       complete: res => {
+        console.log(res)
         if(res.data.success){
           wx.setStorageSync('serviceLogin',res.data.dataList[0])
+          this.backPage()
         }else{
           console.log("走登录流程")
           this.newServiceRegist()
@@ -49,6 +51,7 @@ Page({
  newServiceRegist(){
   var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
   var userInfo = wx.getStorageSync('userInfo')
+  // console.log('新用户注册传的对象')
   // console.log(userInfo)
   var shareUser = wx.getStorageSync('shareUser')
   if(shareUser == null){
@@ -67,12 +70,13 @@ Page({
       imageUrl: userInfo.avatarUrl,
     },
     complete: res => {
-      // console.log(res)
+      console.log(res)
       if(res.data.success){
         wx.setStorageSync('serviceLogin',res.data.dataList[0])
       }else{
         console.log('新用户首次注册接口失败' + res.data.msg)
       }
+      this.backPage()
     }
   })
  },
@@ -80,9 +84,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    this.setData({
+      originPage: options.originPage,
+      detailId: options.id
+    })
+  },
+  //处理页面跳转返回
+  backPage(){
+    if(this.data.originPage == 'detail'){
+      wx.redirectTo({
+        url: "/pages/detail/detail?id=" + this.data.detailId
+      })
+    }else{
+      wx.redirectTo({
+        url: "/pages/home/home" 
+      })
+    }
 
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -134,8 +154,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (options) {
 
+// console.log(options)
   },
 
   /**

@@ -31,10 +31,22 @@ Page({
   },
   //点击图片触发事件
   swiperClick: function(e) {
-    // console.log(this.data.imgUrls[this.data.swiperCurrent].goodId);
     wx.navigateTo({
       url: `${'/pages/detail/detail?id=' + this.data.imgUrls[this.data.swiperCurrent].goodId}`,
     })
+    // console.log(this.data.imgUrls[this.data.swiperCurrent].goodId);
+    // var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
+    // console.log(getServiceLoginInfo)
+    // if(getServiceLoginInfo.userNumber != null){
+    //   wx.navigateTo({
+    //     url: `${'/pages/detail/detail?id=' + this.data.imgUrls[this.data.swiperCurrent].goodId}`,
+    //   })
+    // }else{
+    //   //跳转到登录页
+    //   wx.navigateTo({
+    //     url: "/pages/login/login?originPage=home" 
+    //   })
+    // }
   },
   // 事件处理函数
   onLoad(){
@@ -50,7 +62,7 @@ Page({
     var day1 = new Date();
     day1.setTime(day1.getTime()-24*60*60*1000);
     var yesUrl = "https://server.ghomelifevvip.com/goods/queryGoodsList?groupStartDate=" + day1.getFullYear()+"-" + (day1.getMonth()+1) + "-" + day1.getDate();
-    console.log(yesUrl)
+    // console.log(yesUrl)
     //获取今天货物
     wx.request({
       header: {
@@ -63,7 +75,7 @@ Page({
         if(!res.data.success){
           console.log(res.data.msg)
         }else{
-          console.log(res.data.dataList)
+          // console.log(res.data.dataList)
           var topMainList = [];
           var mainList = res.data.dataList;
           for (var i = 0; i < mainList.length; i++){
@@ -98,23 +110,22 @@ Page({
         }else{
           // console.log(res.data.dataList)
           var yestodayList = res.data.dataList;
-          
+          var topMainList = this.data.imgUrls;
           for (var i = 0; i < yestodayList.length; i++){
             yestodayList[i].mainImage = "https://ghomelifevvip.com/" + yestodayList[i].mainImage;
-            // if (yestodayList[i].hotSale != 0){
-            //   var object = {
-            //     url:"https://ghomelifevvip.com/" + yestodayList[i].hotSaleImage,
-            //     goodId:yestodayList[i].goodId,
-            //   }
-            //   _this.setData({
-            //     imgUrls: 
-            //   })
-            // }
+            if (yestodayList[i].hotSale != 0){
+              var object = {
+                url:"https://ghomelifevvip.com/" + yestodayList[i].hotSaleImage,
+                goodId:yestodayList[i].goodId,
+              }
+              topMainList.push(object);
+            }
+            
           }
-
           // console.log(yestodayList)
           _this.setData({
-            imgYestodayUrls: yestodayList
+            imgYestodayUrls: yestodayList,
+            imgUrls: topMainList
           })
         }
       }
@@ -128,13 +139,22 @@ Page({
       imageUrl: '/images/about_share.jpg',
       path: '/pages/home/home'
     }
+    
+   
   },
   goDetail: function(){
-    console.log('/pages/detail/detail?id=' + this.getDate(globleGoodId))
+    // console.log('/pages/detail/detail?id=' + this.getDate(globleGoodId))
     wx.navigatorTo({
       // url: '/pages/detail/detail?id=' + this.globleGoodId
       url: '/pages/detail/detail?id=119'
     })
-  }
+  },
+  onShow: function () {
+    var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
+    // console.log(getServiceLoginInfo)
+    if(getServiceLoginInfo.userNumber == null){
+      wx.hideShareMenu()
+    }
+  },
 })
 
