@@ -4,6 +4,8 @@ const app = getApp()
 
 Page({
   data: {
+    classifyButtons: [{}],
+    specificButtons: [{}],
     detailRotateImages: [],
     current: 0,  //当前所在页面的 index
     indicatorDots: true, //是否显示面板指示点
@@ -50,6 +52,12 @@ Page({
   },
   // 事件处理函数
   onLoad: function(options){
+    this.data.classifyButtons[0].checked = true;
+    this.data.specificButtons[0].checked = true;
+    this.setData({
+      classifyButtons: this.data.classifyButtons,
+      specificButtons: this.data.specificButtons,
+    })
     var _this = this; 
     // console.error(options.id)
     //保存分享的详情页ID
@@ -77,6 +85,22 @@ Page({
               globalTitle: detailList.title, 
               globalDetail: detailList.description,
              })
+            // 获取商品分类/规格信息
+            var classifyList = JSON.parse(detailList.categories);
+            var specificList = JSON.parse(detailList.specifics);
+            var classifyButtonsTmp = [];
+            var specificButtonsTmp = [];
+            for(var i = 0 ; i < classifyList.length ; i++){
+              classifyButtonsTmp.push({id:i, name : classifyList[i]});
+            }
+            for(var i = 0 ; i < classifyList.length ; i++){
+              specificButtonsTmp.push({id:i, name : specificList[i]});
+            }
+            _this.setData({
+              classifyButtons: JSON.parse(JSON.stringify(classifyButtonsTmp)),
+              specificButtons: JSON.parse(JSON.stringify(specificButtonsTmp))
+            })
+
             var detailImagesNews = []
             for(var i = 0; i < detailList.detailImages.length; i++){
               // console.log(detailList.detailImages[i])
@@ -105,7 +129,7 @@ Page({
       console.error("ERROR:goosId is null!!")
     }
   },
-  
+
   clickme: function () {
     this.showModal();
   },
@@ -151,6 +175,34 @@ Page({
         showModalStatus: false
       })
     }.bind(this), 200)
-  }
+  },
+  radioClassifyButtonTap: function (e) {
+    let id = e.currentTarget.dataset.id
+    for (let i = 0; i < this.data.classifyButtons.length; i++) {
+      if (this.data.classifyButtons[i].id == id) {
+        this.data.classifyButtons[i].checked = true;
+      }
+      else {
+        this.data.classifyButtons[i].checked = false;
+      }
+    }
+    this.setData({
+      classifyButtons: this.data.classifyButtons,
+    })
+  },
+  radioSpecificButtonTap: function (e) {
+    let id = e.currentTarget.dataset.id
+    for (let i = 0; i < this.data.specificButtons.length; i++) {
+      if (this.data.specificButtons[i].id == id) {
+        this.data.specificButtons[i].checked = true;
+      }
+      else {
+        this.data.specificButtons[i].checked = false;
+      }
+    }
+    this.setData({
+      specificButtons: this.data.specificButtons,
+    })
+  },
 })
 

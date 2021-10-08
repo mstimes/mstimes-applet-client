@@ -99,7 +99,7 @@
 .do-buy-container {
   font-size: 39rpx;
   position: fixed;
-  bottom: 15px;
+  bottom: 10px;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -133,4 +133,31 @@
   z-index: 2000;
   background: #fff;
   padding-top: 20rpx;
+  }
+  .button_container{
+    margin-top: 20rpx;
+    margin-bottom: 30rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around
+  }
+  /* 按钮未选中 */
+  .normal_button{
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: grey;
+    background: white
+  }
+  /* 按钮选中 */
+  .checked_button{
+    width: 100%;
+    border-radius: 5px;
+    background: rgb(163, 3, 3);
+    color: white
+  }
+  .bottom-title-container {
+    font-size: 30rpx;
+    font-weight: 500;
+    width: 100%;
+    padding-left: 30rpx;
   }
