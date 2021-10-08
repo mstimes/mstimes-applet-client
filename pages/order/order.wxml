@@ -13,4 +13,12 @@
     <text style="margin-left:20px">+</text>
     <text style="font-size: 25rpx; font-weight: 400; margin-left: 20rpx">请添加收货地址</text>
   </view>
+
+ 
+
+  <view class="do-buy-container">
+    <button class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="clickme"> 
+      <text style="color: white"> 立即支付 </text>
+    </button>
+  </view>
 </view>

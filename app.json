@@ -1,5 +1,6 @@
 {
   "pages": [
+
     "pages/home/home",
     "pages/order/order",
     "pages/coupon/coupon",
@@ -9,8 +10,6 @@
     "pages/about/about",
     "pages/logs/logs",
     "pages/webview/webview",
-
-
     "pages/coupon/couponList"
   ],
   "window": {

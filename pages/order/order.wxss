@@ -21,3 +21,16 @@
   padding: 10px 10px 10px 0px;
   height: 500rpx;
 }
+.do-buy-container {
+  font-size: 39rpx;
+  position: fixed;
+  bottom: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.do-buy-butt {
+  font-size: 24rpx; 
+  width: 100%;
+  background-color: black;
+}

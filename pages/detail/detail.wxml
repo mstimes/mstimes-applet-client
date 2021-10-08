@@ -176,5 +176,20 @@
         </button>
       </block>
     </view>
+
+    <view class="num_container">
+      <text style="margin-left:20px; font-size:28rpx; font-weight:400">购买数量</text>
+      <view class="stepper">
+        <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+        <input type="number" bindchange="bindManual" value="{{num}}" />
+        <text class="normal" bindtap="bindPlus">+</text>
+      </view>
+    </view>
+
+    <view class="do-buy-container">
+    <button class="do-buy-butt" style="width: 600rpx; height: 70rpx"> 
+      <text style="color: white"> 确认下单 </text>
+    </button>
+  </view>
   </view>
 </view>
