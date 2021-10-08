@@ -186,7 +186,7 @@
       </view>
     </view>
 
-    <view class="do-buy-container">
+    <view class="do-buy-container" bindtap='doBuyButtonTap'>
     <button class="do-buy-butt" style="width: 600rpx; height: 70rpx"> 
       <text style="color: white"> 确认下单 </text>
     </button>

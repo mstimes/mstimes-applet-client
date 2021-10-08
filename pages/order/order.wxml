@@ -10,15 +10,50 @@
   </view>
 
   <view class="order-info-container">
-    <text style="margin-left:20px">+</text>
-    <text style="font-size: 25rpx; font-weight: 400; margin-left: 20rpx">请添加收货地址</text>
+    <view class="row-flex-start">
+      <image style="width: 140rpx; height: 140rpx; margin-left: 5rpx; margin-right:10rpx; margin-top:30rpx" src="{{imageUrl}}"></image>
+      <view class="order-info-column">
+          <text style="font-size:25rpx; font-weight:500">{{globalTitle}}</text>
+          <text style="margin-top: 10rpx;">分类：{{selectedClassify}}</text>
+          <text style="margin-top: 5rpx; margin-bottom: 5rpx">规格：{{selectedSpecific}}</text>
+          <view class="price-num-space-between">
+            <view>
+              <text>¥ </text>
+              <text style="font-size:30rpx; font-weight:500">{{groupPrice}}</text>
+              <text> /件</text>
+            </view>
+            
+            <view class="num-container" style="font-size:22rpx; font-weight:400; margin-top:5rpx;">x {{num}}</view>
+          </view>
+        </view>
+    </view>
+    <view class="row-space-between">
+      <text>配送方式</text>
+      <text>快递 免邮</text>
+    </view>
+    <view class="row-space-between">
+      <text>优惠券</text>
+      <text style="color:grey;">0张优惠券可用</text>
+    </view>
+
+    <view class="statistic-container">
+      <view class="statistic-row">
+        <view class="column-container">
+          <text>小计 ¥ {{groupPrice}}.00</text>
+          <text style="margin-top:10rpx">邮费 ¥ 0.00</text>
+        </view>
+        <view class="column-container">
+          <text style="margin-right:40rpx; margin-top:15rpx; font-size:26rpx; font-weight:400">¥ {{groupPrice}}.00</text>
+        </view>
+      </view>
+    </view>
   </view>
 
  
 
   <view class="do-buy-container">
     <button class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="clickme"> 
-      <text style="color: white"> 立即支付 </text>
+      <text style="color: white"> 立即支付 ¥ {{groupPrice}}.00</text>
     </button>
   </view>
 </view>

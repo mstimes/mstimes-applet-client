@@ -5,14 +5,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    imageUrl: '',
+    globalTitle: '',
+    groupPrice: 0,
+    selectedClassify: '',
+    selectedSpecific: '',
+    num: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      imageUrl: options.imageUrl,
+      globalTitle: options.globalTitle,
+      groupPrice: options.groupPrice,
+      selectedClassify: options.selectedClassify,
+      selectedSpecific: options.selectedSpecific,
+      num: options.num,
+    })
   },
 
   /**

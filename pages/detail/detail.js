@@ -18,6 +18,9 @@ Page({
     globalDetail: '',
     globalId: '', 
     globalImageUrl: '',
+    groupPrice: 0,
+    selectedClassify: '',
+    selectedSpecific: '',
     num: 1,
 		minusStatus: 'disabled',
   },
@@ -100,6 +103,7 @@ Page({
             _this.setData({
               globalTitle: detailList.title, 
               globalDetail: detailList.description,
+              groupPrice: detailList.groupPrice,
              })
             // 获取商品分类/规格信息
             var classifyList = JSON.parse(detailList.categories);
@@ -197,6 +201,9 @@ Page({
     for (let i = 0; i < this.data.classifyButtons.length; i++) {
       if (this.data.classifyButtons[i].id == id) {
         this.data.classifyButtons[i].checked = true;
+        this.setData({
+          selectedClassify: this.data.classifyButtons[i].name
+        })
       }
       else {
         this.data.classifyButtons[i].checked = false;
@@ -211,6 +218,9 @@ Page({
     for (let i = 0; i < this.data.specificButtons.length; i++) {
       if (this.data.specificButtons[i].id == id) {
         this.data.specificButtons[i].checked = true;
+        this.setData({
+          selectedSpecific: this.data.specificButtons[i].name
+        })
       }
       else {
         this.data.specificButtons[i].checked = false;
@@ -218,6 +228,18 @@ Page({
     }
     this.setData({
       specificButtons: this.data.specificButtons,
+    })
+  },
+
+  doBuyButtonTap: function() {
+    console.log('this.data.globalImageUrl ' + this.data.globalImageUrl);
+    wx.redirectTo({
+      url: "/pages/order/order?imageUrl=" + this.data.globalImageUrl
+       + "&globalTitle=" + this.data.globalTitle
+       + "&groupPrice=" + this.data.groupPrice
+       + "&selectedClassify=" + this.data.selectedClassify
+       + "&selectedSpecific=" + this.data.selectedSpecific
+       + "&num=" + this.data.num
     })
   },
 
