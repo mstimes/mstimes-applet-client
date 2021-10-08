@@ -34,21 +34,35 @@ Page({
   },
   //点击图片触发事件
   swipclick: function(e) {
-    console.log(this.data.swiperCurrent);
-    console.log(6666)
+    // console.log(this.data.swiperCurrent);
     wx.switchTab({
       url: this.data.links[this.data.swiperCurrent]
     })
   },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
+    // console.log(getServiceLoginInfo)
+    if(getServiceLoginInfo.userNumber == null){
+      wx.hideShareMenu()
+    }
+  },
   // 分享
   onShareAppMessage: function () {
-    // let users = wx.getStorageSync('user');
     return {
       title: this.data.globalTitle,
       desc: this.data.globalDetail,
       imageUrl: this.data.globalImageUrl,
       path: '/pages/detail/detail?id=' + this.data.globalId
     }
+    
+      //跳转到登录页
+      // wx.navigateTo({
+      //   url: "/pages/login/login?originPage=detail&id=" +  _this.data.globalId
+      // })  
+   
   },
   // 事件处理函数
   onLoad: function(options){
@@ -61,10 +75,11 @@ Page({
     var _this = this; 
     // console.error(options.id)
     //保存分享的详情页ID
+    // console.log(options)
     _this.setData({
      globalId: options.id, 
     })
-    if (options.id){
+    if (options.id != ""){
       wx.request({
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -78,7 +93,7 @@ Page({
           if(!res.data.success){
             console.error(res.data.msg)
           }else{
-            // console.log(res.data.dataList)
+            console.log(res.data.dataList)
             var detailList = res.data.dataList[0];
             //保存分享的标题&描述
             _this.setData({
@@ -117,7 +132,7 @@ Page({
               rotateImagesNews.push("https://ghomelifevvip.com/" + detailList.rotateImages[i])
             }
             res.data.dataList[0].rotateImages = rotateImagesNews
-            console.log(res.data.dataList)
+            // console.log(res.data.dataList)
             _this.setData({
               detailRotateImages:res.data.dataList,
             })
