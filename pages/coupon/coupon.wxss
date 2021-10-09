@@ -1,9 +1,22 @@
 /* pages/coupon/coupon.wxss */
-
+page{
+  height:100%
+}
+.contain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+}
 .image-about{
-  padding:50px 30px 20px 30px;
-  display:flex;                 
- justify-content: center;   
+  /* padding:10px 0px 20px 0px; */
+  /* margin: 0 auto; */
+  display:flex;      
+  width:70%;          
+  /* justify-content: center;    */
 }
 .get_coupon {
   /* background:  #ffffff; */
@@ -18,6 +31,7 @@
 .butt {
   font-size: 22rpx; 
   width: 100%;
+  margin-top: 20px;
   color:#ffffff;
   background-color: #090909;
 }

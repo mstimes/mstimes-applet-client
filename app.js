@@ -38,7 +38,11 @@ App({
     userInfo: null
   },
   onShow: function (options) {
+    // console.log("app.js show")
     // console.log(options)
+    if(options.shareUser != null){
+      wx.setStorageSync('shareUser',options.shareUser)
+    }
   },
     
 })
