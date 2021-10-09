@@ -4,15 +4,23 @@
     <text style="font-size: 26rpx; font-weight: 400" >确认订单</text>
   </view>
 
-  <view class="add-address-container">
+  <view wx:if="{{!showAddress}}" class="add-address-container" bindtap="getAddressButtonTap">
     <text style="margin-left:20px">+</text>
     <text style="font-size: 25rpx; font-weight: 400; margin-left: 20rpx">请添加收货地址</text>
+  </view>
+
+  <view wx:if="{{showAddress}}" class="add-address-container">
+    <view class="common-column-container">
+      <text style="font-size: 25rpx; font-weight: 400; margin-left: 20rpx">{{receiverName}} {{receiverPhone}}</text>
+      <text style="font-size: 25rpx; font-weight: 400; margin-left: 20rpx; margin-top: 10rpx">{{receiverAddress}}</text>
+    </view>
+    
   </view>
 
   <view class="order-info-container">
     <view class="row-flex-start">
       <image style="width: 140rpx; height: 140rpx; margin-left: 5rpx; margin-right:10rpx; margin-top:30rpx" src="{{imageUrl}}"></image>
-      <view class="order-info-column">
+      <view class="common-column-container">
           <text style="font-size:25rpx; font-weight:500">{{globalTitle}}</text>
           <text style="margin-top: 10rpx;">分类：{{selectedClassify}}</text>
           <text style="margin-top: 5rpx; margin-bottom: 5rpx">规格：{{selectedSpecific}}</text>
@@ -52,7 +60,7 @@
  
 
   <view class="do-buy-container">
-    <button class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="clickme"> 
+    <button class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="paymentButtonTap"> 
       <text style="color: white"> 立即支付 ¥ {{groupPrice}}.00</text>
     </button>
   </view>

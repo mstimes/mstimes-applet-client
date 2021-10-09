@@ -235,6 +235,7 @@ Page({
     console.log('this.data.globalImageUrl ' + this.data.globalImageUrl);
     wx.redirectTo({
       url: "/pages/order/order?imageUrl=" + this.data.globalImageUrl
+       + "&goodId=" + this.data.globalId
        + "&globalTitle=" + this.data.globalTitle
        + "&groupPrice=" + this.data.groupPrice
        + "&selectedClassify=" + this.data.selectedClassify

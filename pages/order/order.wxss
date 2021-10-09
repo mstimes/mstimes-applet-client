@@ -75,7 +75,7 @@
   background-color: rgb(240, 236, 236);
   text-align:center;
 }
-.order-info-column {
+.common-column-container {
   margin-top: 5rpx;
   margin-bottom: 10rpx;
   margin-left: 40rpx;
