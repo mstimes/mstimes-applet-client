@@ -10,16 +10,16 @@
     </swiper>
   </view>
   <view class="tips_line">
-    <icon style="color:white; margin-left: 3px; margin-right: 5px; margin-bottom:5px" class="iconfont icon-zhengpinbaozhang"></icon>
+    <icon style="color:white; margin-left: 5px; margin-right: 3px; margin-bottom:5px" class="iconfont icon-zhengpinbaozhang" size="20"></icon>
     <text class="tips_words">正品授权</text>
     <text class="tips_bar">|</text>
-    <icon style="color:white;  margin-left: 3px; margin-right: 5px; margin-bottom:5px" class="iconfont icon-temai"></icon>
+    <icon style="color:white;  margin-left: 5px; margin-right: 3px; margin-bottom:5px" class="iconfont icon-temai" size="20"></icon>
     <text class="tips_words">限时特卖</text>
     <text class="tips_bar">|</text>
-    <icon style="color:white;  margin-left: 3px; margin-right: 5px; margin-bottom:5px" class="iconfont icon-zhekou"></icon>
+    <icon style="color:white;  margin-left: 5px; margin-right: 3px; margin-bottom:5px;font-size: 14px" class="iconfont icon-zhekou" size="20"></icon>
     <text class="tips_words">全网低价</text>
     <text class="tips_bar">|</text>
-    <icon style="color:white;  margin-left: 3px; margin-right: 5px; margin-bottom:5px" class="iconfont icon-anquanbaozhang"></icon>
+    <icon style="color:white;  margin-left: 5px; margin-right: 2px; margin-bottom:5px;font-size: 15px" class="iconfont icon-anquanbaozhang" size="20"></icon>
     <text class="tips_words">品质溯源</text>
   </view>
   <view class="home-motto">

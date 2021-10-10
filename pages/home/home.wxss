@@ -132,11 +132,11 @@
   font-weight:800; 
   font-family:NSimSun;
   color:#ffffff;
-  padding :6px 3px 6px 3px;
+  padding :6px 6px 6px 5px;
   justify-content:center;
 }
 .tips_bar{
-  padding :7px 6px 6px 6px;
+  padding :8px 8px 8px 8px;
   color:#e6e6e6;
   font-size: 12px;
 }
