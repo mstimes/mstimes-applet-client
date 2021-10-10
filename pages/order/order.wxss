@@ -1,4 +1,6 @@
 /* pages/order/order.wxss */
+@import '../../style/css/icons.wxss';
+
 .background {
   height: 1300rpx;
   background-color:#f1f1f5d7;
@@ -43,6 +45,7 @@
   margin-top: 30rpx;
 }
 .price-num-space-between {
+  /* width: 500rpx; */
   background-color: white;
   display: flex;
   flex-direction: row;
@@ -72,6 +75,7 @@
 .num-container {
   border-radius: 20px;
   width: 15%;
+  margin-right: 10rpx;
   background-color: rgb(240, 236, 236);
   text-align:center;
 }
@@ -79,7 +83,8 @@
   margin-top: 5rpx;
   margin-bottom: 10rpx;
   margin-left: 40rpx;
-  padding: 5px 0px 10px 0px;
+  width: 450rpx;
+  padding: 5px 0px 5px 0px;
   display: flex;
   flex-direction: column;
 }
@@ -94,7 +99,7 @@
 .do-buy-container {
   font-size: 39rpx;
   position: fixed;
-  bottom: 10px;
+  bottom: 20px;
   display: flex;
   width: 100%;
   justify-content: center;

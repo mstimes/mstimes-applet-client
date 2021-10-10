@@ -8,6 +8,7 @@
     "pages/index/index",
     "pages/about/about",
     "pages/logs/logs",
+    "pages/order/result/result_page",
     "pages/webview/webview",
     "pages/coupon/couponList"
   ],

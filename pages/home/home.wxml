@@ -10,12 +10,16 @@
     </swiper>
   </view>
   <view class="tips_line">
+    <icon style="color:white; margin-left: 3px; margin-right: 5px; margin-bottom:5px" class="iconfont icon-zhengpinbaozhang"></icon>
     <text class="tips_words">正品授权</text>
     <text class="tips_bar">|</text>
+    <icon style="color:white;  margin-left: 3px; margin-right: 5px; margin-bottom:5px" class="iconfont icon-temai"></icon>
     <text class="tips_words">限时特卖</text>
     <text class="tips_bar">|</text>
+    <icon style="color:white;  margin-left: 3px; margin-right: 5px; margin-bottom:5px" class="iconfont icon-zhekou"></icon>
     <text class="tips_words">全网低价</text>
     <text class="tips_bar">|</text>
+    <icon style="color:white;  margin-left: 3px; margin-right: 5px; margin-bottom:5px" class="iconfont icon-anquanbaozhang"></icon>
     <text class="tips_words">品质溯源</text>
   </view>
   <view class="home-motto">
@@ -24,6 +28,8 @@
       <view class="bload_word">
         <text style="font-size: 40rpx;font-weight:800;font-family:NSimSun;color:#ffffff">甄选超榜\n</text>
       </view>
+
+
       <!-- #aba8a8 -->
       <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">#今日上新# 每日20:00点为您准时更新好物榜单</text>
     </view>

@@ -158,7 +158,8 @@
   <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
     <view class="inner_box">
     <view style="text-align: center;padding: 8px 0px 10px 0px">
-      <text style="font-size: 35rpx; font-weight: 400;color:#c00606" >¥{{detailRotateImages[0].groupPrice}} </text>
+      <text style="font-size: 22rpx; font-weight: 400;color:#c00606" >¥ </text>
+      <text style="font-size: 35rpx; font-weight: 400;color:#c00606" >{{detailRotateImages[0].groupPrice}} </text>
       <text style="font-size: 22rpx; font-weight: 400;color:#c00606" > 蜜糖价</text>
     </view>
     <text class="bottom-title-container">分类</text>
@@ -184,7 +185,7 @@
     </view>
 
     <view class="num_container">
-      <text style="margin-left:15px; margin-top:5px; width:50%; font-size:28rpx; font-weight:400">购买数量</text>
+      <text style="margin-left:15px; margin-top:5px;  width:50%; font-size:25rpx; font-weight:400">购买数量</text>
       <view class="step_padding">
         <view class="stepper">
           <text class="{{minusStatus}}" bindtap="bindMinus">-</text>

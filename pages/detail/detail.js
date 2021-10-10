@@ -114,7 +114,7 @@ Page({
             for(var i = 0 ; i < classifyList.length ; i++){
               classifyButtonsTmp.push({id:i, name : classifyList[i]});
             }
-            for(var i = 0 ; i < classifyList.length ; i++){
+            for(var i = 0 ; i < specificList.length ; i++){
               specificButtonsTmp.push({id:i, name : specificList[i]});
             }
             _this.setData({
@@ -245,16 +245,25 @@ Page({
   },
 
   doBuyButtonTap: function() {
-    console.log('this.data.globalImageUrl ' + this.data.globalImageUrl);
-    wx.navigateTo({
-      url: "/pages/order/order?imageUrl=" + this.data.globalImageUrl
-       + "&goodId=" + this.data.globalId
-       + "&globalTitle=" + this.data.globalTitle
-       + "&groupPrice=" + this.data.groupPrice
-       + "&selectedClassify=" + this.data.selectedClassify
-       + "&selectedSpecific=" + this.data.selectedSpecific
-       + "&num=" + this.data.num
-    })
+    if(this.data.selectedClassify == ''){
+      wx.showToast({
+        title: '请选择分类',
+      })
+    }else if(this.data.selectedSpecific == ''){
+      wx.showToast({
+        title: '请选择规格',
+      })
+    }else {
+      wx.navigateTo({
+        url: "/pages/order/order?imageUrl=" + this.data.globalImageUrl
+         + "&goodId=" + this.data.globalId
+         + "&globalTitle=" + this.data.globalTitle
+         + "&groupPrice=" + this.data.groupPrice
+         + "&selectedClassify=" + this.data.selectedClassify
+         + "&selectedSpecific=" + this.data.selectedSpecific
+         + "&num=" + this.data.num
+      })
+    }
   },
 
   /* 点击减号 */

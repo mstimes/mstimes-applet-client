@@ -16,6 +16,7 @@ Page({
     selectedClassify: '',
     selectedSpecific: '',
     num: 1,
+    sumPrice: 0,
     couponCode: '',
     mbeansCounts: 0,
     outTradeNo: ''
@@ -33,6 +34,7 @@ Page({
       selectedClassify: options.selectedClassify,
       selectedSpecific: options.selectedSpecific,
       num: options.num,
+      sumPrice: options.groupPrice * options.num,
     })
   },
 
@@ -100,44 +102,46 @@ Page({
   },
 
   paymentButtonTap: function(){
-    var loginInfo = wx.getStorageSync('serviceLogin');
-    wx.request({
-      header: {
-        'Content-Type': 'application/json'
-      },
-      method: "POST",
-      url: 'https://server.ghomelifevvip.com/order/uploadOrderInfo',
-      data: {
-        "userNumber": '6390605225',
-        "goodId": this.data.goodId,
-        "couponCode": this.data.couponCode,
-        "mbeanCounts": this.data.mbeansCounts,
-        "classify": this.data.selectedClassify,
-        "specific": this.data.selectedSpecific,
-        "selectNum": this.data.num,
-        "person": this.data.receiverName,
-        "telNumber": this.data.receiverPhone,
-        "address": this.data.receiverAddress,
-      },
-      complete: res=>{
-        if(res.data.success){
-          console.log('下单成功 ' + res.data.dataList[0])
-          console.log('下单成功 ' + res.data.dataList)
-          // this.setData({
-          //   outTradeNo: res.data.dataList[0]
-          // })
-
-          this.callWxPayment(res.data.dataList[0]);
-
-        }else{
-          console.error('下单失败 ' + res.data.msg)
+    if(!this.data.showAddress){
+      wx.showToast({
+        title: '请填写收件地址',
+      })
+    }else{
+      var loginInfo = wx.getStorageSync('serviceLogin');
+      wx.request({
+        header: {
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        url: 'https://server.ghomelifevvip.com/order/uploadOrderInfo',
+        data: {
+          "userNumber": loginInfo.userNumber,
+          "goodId": this.data.goodId,
+          "couponCode": this.data.couponCode,
+          "mbeanCounts": this.data.mbeansCounts,
+          "classify": this.data.selectedClassify,
+          "specific": this.data.selectedSpecific,
+          "selectNum": this.data.num,
+          "person": this.data.receiverName,
+          "telNumber": this.data.receiverPhone,
+          "address": this.data.receiverAddress,
+        },
+        complete: res=>{
+          if(res.data.success){
+            console.log('下单成功 ' + res.data.dataList[0])
+            this.callWxPayment(res.data.dataList[0]);
+  
+          }else{
+            console.error('下单失败 ' + res.data.msg)
+          }
         }
-      }
-    })
+      })
+    }
   },
 
   callWxPayment: function(outTradeNo){
-    var loginInfo = wx.getStorageSync('serviceLogin');
+    var _this = this; 
+    var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -148,7 +152,7 @@ Page({
         "outTradeNo" : outTradeNo,
         "goodName": this.data.globalTitle,
         "totalFee": this.data.groupPrice,
-        "openId": 'okipG61O7kx_gavi9cz-K2xc4tgY',
+        "openId": wechatAuthSession.openid,
       },
       complete: res=>{
         if(res.data.success){
@@ -164,9 +168,15 @@ Page({
             paySign: prepayResponse.sign,
             success (res) {
               console.log('调用微信支付成功！')
+              wx.navigateTo({
+                url: "/pages/order/result/result_page?paymentSuccess=1&orderNumber=" + outTradeNo + "&sumPrice=" + _this.data.sumPrice
+              })
             },
             fail (res) {
               console.log('调用微信支付失败！')
+              wx.navigateTo({
+                url: "/pages/order/result/result_page?paymentSuccess=0&orderNumber=" + outTradeNo + "&sumPrice=" + _this.data.sumPrice
+              })
             }
           })
         }else{
