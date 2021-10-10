@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'iconfont';  /* Project id 2825158 */
+  src: url('//at.alicdn.com/t/font_2825158_ghmjd27k7ko.woff2?t=1633865243708') format('woff2'),
+       url('//at.alicdn.com/t/font_2825158_ghmjd27k7ko.woff?t=1633865243708') format('woff'),
+       url('//at.alicdn.com/t/font_2825158_ghmjd27k7ko.ttf?t=1633865243708') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tanhao:before {
+  content: "\e8c6";
+}
+
+.icon-anquanbaozhang:before {
+  content: "\e88c";
+}
+
+.icon-temai:before {
+  content: "\e625";
+}
+
+.icon-zhengpinbaozhang:before {
+  content: "\e607";
+}
+
+.icon-zhekou:before {
+  content: "\e6cc";
+}
+
+.icon-check_line:before {
+  content: "\e6ab";
+}
+
+.icon-jiahao:before {
+  content: "\e604";
+}
+
+.icon-dizhi:before {
+  content: "\e62e";
+}
+
+.icon-cuowu:before {
+  content: "\e640";
+}
+
+.icon-duihao:before {
+  content: "\e602";
+}
+
+.icon-circlecheckfull:before {
+  content: "\e72c";
+}
+
+.icon-circle:before {
+  content: "\e633";
+}

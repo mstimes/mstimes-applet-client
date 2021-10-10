@@ -133,11 +133,12 @@ Page({
   },
   //分享右上角功能
   onShareAppMessage: function () {
+    var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
     return{
       title: 'Ms · 时代',
       desc: '带你体验视觉与精神的盛宴',
       imageUrl: '/images/about_share.jpg',
-      path: '/pages/home/home'
+      path: '/pages/home/home?shareUser=' + wechatAuthSession.unionid
     }
     
    

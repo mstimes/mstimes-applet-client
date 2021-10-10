@@ -1,0 +1,32 @@
+<view>
+  <view style="text-align: center;padding: 20px 0px 10px 0px">
+    <text style="font-size: 28rpx; font-weight: 400" >支付结果</text>
+  </view>
+  <view style="text-align: center;padding: 20px 0px 10px 0px" wx:if="{{paymentResultSuccess == 1}}">
+    <text style=" color: rgba(199, 0, 0, 0.877); font-size: 60px" class="iconfont icon-check_line"></text>
+    <view style="margin-top: 10px; margin-bottom: 30px; font-weight:500"> 支付成功 </view>
+  </view>
+  <view style="text-align: center;padding: 20px 0px 10px 0px" wx:if="{{paymentResultSuccess == 0}}">
+    <icon style="color: rgba(199, 0, 0, 0.877); font-size: 60px" class="iconfont icon-cuowu"></icon>
+    <view style="margin-top: 10px; margin-bottom: 30px; font-weight:500"> 支付失败 </view>
+  </view>
+  <view class="horizon_line"></view>
+  <view class="row-space-between">
+      <text>订单编号</text>
+      <text>{{orderNumber}}</text>
+  </view>
+  <view class="row-space-between">
+      <text>支付方式</text>
+      <text>微信支付</text>
+  </view>
+  <view class="row-space-between">
+      <text>支付金额</text>
+      <text>¥{{sumPrice}}.00</text>
+  </view>
+
+  <view class="return-home-container">
+    <button class="return-home-butt" style="width: 230rpx; height: 60rpx" bindtap="returnHomeButtonTap"> 
+      <text style="font-size:26rpx; font-weight: 400"> 返回首页 </text>
+    </button>
+  </view>
+</view>

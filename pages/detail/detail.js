@@ -55,11 +55,12 @@ Page({
   },
   // 分享
   onShareAppMessage: function () {
+    var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
     return {
       title: this.data.globalTitle,
       desc: this.data.globalDetail,
       imageUrl: this.data.globalImageUrl,
-      path: '/pages/detail/detail?id=' + this.data.globalId
+      path: '/pages/detail/detail?id=' + this.data.globalId + '&shareUser=' + wechatAuthSession.unionid
     }
     
       //跳转到登录页
@@ -113,7 +114,7 @@ Page({
             for(var i = 0 ; i < classifyList.length ; i++){
               classifyButtonsTmp.push({id:i, name : classifyList[i]});
             }
-            for(var i = 0 ; i < classifyList.length ; i++){
+            for(var i = 0 ; i < specificList.length ; i++){
               specificButtonsTmp.push({id:i, name : specificList[i]});
             }
             _this.setData({
@@ -151,7 +152,19 @@ Page({
   },
 
   clickme: function () {
-    this.showModal();
+    var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
+    // console.log(getServiceLoginInfo)
+    if(getServiceLoginInfo.userNumber != null){
+      this.showModal();
+      // wx.navigateTo({
+      //   url: `${'/pages/detail/detail?id=' + this.data.imgUrls[this.data.swiperCurrent].goodId}`,
+      // })
+    }else{
+      //跳转到登录页
+      wx.navigateTo({
+        url: "/pages/login/login?originPage=detail&id=" +  this.data.globalId
+      })
+    }
   },
 
   //显示对话框
@@ -232,15 +245,25 @@ Page({
   },
 
   doBuyButtonTap: function() {
-    console.log('this.data.globalImageUrl ' + this.data.globalImageUrl);
-    wx.redirectTo({
-      url: "/pages/order/order?imageUrl=" + this.data.globalImageUrl
-       + "&globalTitle=" + this.data.globalTitle
-       + "&groupPrice=" + this.data.groupPrice
-       + "&selectedClassify=" + this.data.selectedClassify
-       + "&selectedSpecific=" + this.data.selectedSpecific
-       + "&num=" + this.data.num
-    })
+    if(this.data.selectedClassify == ''){
+      wx.showToast({
+        title: '请选择分类',
+      })
+    }else if(this.data.selectedSpecific == ''){
+      wx.showToast({
+        title: '请选择规格',
+      })
+    }else {
+      wx.navigateTo({
+        url: "/pages/order/order?imageUrl=" + this.data.globalImageUrl
+         + "&goodId=" + this.data.globalId
+         + "&globalTitle=" + this.data.globalTitle
+         + "&groupPrice=" + this.data.groupPrice
+         + "&selectedClassify=" + this.data.selectedClassify
+         + "&selectedSpecific=" + this.data.selectedSpecific
+         + "&num=" + this.data.num
+      })
+    }
   },
 
   /* 点击减号 */
