@@ -155,22 +155,6 @@
 .bload_word{
   padding: 6px 0px 4px 0px;
 }
-/* .home-image{
-  width: 100px;
-  height: 100px;
-  z-index: -1;
-  position: fixed;
-} */
-/* .sale_out_image{
-  z-index: 100;
-  position: fixed;
-} */
-/* .img-size-min{
-  position:absolute;
-  top: 0;
-  width: 44rpx; 
-  height: 44rpx;
-} */
 .buy_empty{
   align-items: flex-end;
   position: absolute;

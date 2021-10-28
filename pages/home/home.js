@@ -14,7 +14,7 @@ Page({
     interval: 3000, //自动切换时间间隔
     duration: 1000, //滑动动画时长
     circular: true, //是否采用衔接滑动
-    swiperCurrent: 0,  
+    swiperCurrent: 0,
   },
 
   //轮播图的切换事件

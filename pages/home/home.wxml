@@ -39,13 +39,9 @@
       <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" redirect hover-class="other-navigator-hover">
         <view class="detail-image-border">
             <!-- <icon class="saleout_icon_class" style="color:red;font-size: 30px" class="iconfont icon-lianxi-yishouqing"></icon> -->
-            <image src="/images/sale_out.png" class="buy_empty" style="height:15%;width:20%;"></image>    
+            <image wx:if="{{item.saleOut == 1}}" src="/images/sale_out.png" class="buy_empty" style="height:15%;width:18%;"></image>    
             <image src="{{item.mainImage}}" style="margin-top:5px;width:100%;border-radius:5px" mode="widthFix"></image>
         </view>
-        <!-- <view class="detail-image-border">
-            <image src="{{item.mainImage}}" style="margin-top:5px;width:100%;height:100%;border-radius:5px;position: absolute;" mode="widthFix"></image>
-            <image src="/images/sale_out.png" style="margin-top:30px;width:50%;border-radius:5px;position: absolute;" mode="widthFix"></image>
-        </view> -->
         <view class="text-container">
           <view class="flex-row" style="display: block;">
             <view class="home-sail-des-title">
