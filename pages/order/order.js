@@ -19,7 +19,9 @@ Page({
     sumPrice: 0,
     couponCode: '',
     mbeansCounts: 0,
-    outTradeNo: ''
+    outTradeNo: '',
+    classifyId: -1,
+    specificId: -1,
   },
 
   /**
@@ -35,6 +37,8 @@ Page({
       selectedSpecific: options.selectedSpecific,
       num: options.num,
       sumPrice: options.groupPrice * options.num,
+      classifyId: options.classifyId,
+      specificId: options.specificId,
     });
 
     var loginInfo = wx.getStorageSync('serviceLogin');
@@ -177,6 +181,8 @@ Page({
           "person": this.data.receiverName,
           "telNumber": this.data.receiverPhone,
           "address": this.data.receiverAddress,
+          "classifyId": this.data.classifyId,
+          "specificId": this.data.specificId,
         },
         complete: res=>{
           if(res.data.success){
@@ -224,13 +230,13 @@ Page({
             paySign: prepayResponse.sign,
             success (res) {
               console.log('调用微信支付成功！')
-              wx.navigateTo({
+              wx.redirectTo({
                 url: "/pages/order/result/result_page?paymentSuccess=1&orderNumber=" + outTradeNo + "&sumPrice=" + _this.data.sumPrice
               })
             },
             fail (res) {
               console.log('调用微信支付失败！')
-              wx.navigateTo({
+              wx.redirectTo({
                 url: "/pages/order/result/result_page?paymentSuccess=0&orderNumber=" + outTradeNo + "&sumPrice=" + _this.data.sumPrice
               })
             }

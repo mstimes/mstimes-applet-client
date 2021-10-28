@@ -18,7 +18,7 @@ Page({
   },
 
   returnHomeButtonTap: function(){
-    wx.navigateTo({
+    wx.redirectTo({
       url: "/pages/home/home"
     });
   }

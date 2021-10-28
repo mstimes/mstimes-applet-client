@@ -104,6 +104,8 @@ Page({
           }else{
             console.log(res.data.dataList)
             var detailList = res.data.dataList[0];
+            console.log('detailList.diffPriceInfo ---- ' + detailList.diffPriceInfo)
+
             var diffPriceMap = this.objToStrMap(JSON.parse(detailList.diffPriceInfo));
             _this.setData({
               globalTitle: detailList.title, 
@@ -168,7 +170,7 @@ Page({
       // })
     }else{
       //跳转到登录页
-      wx.navigateTo({
+      wx.redirectTo({
         url: "/pages/login/login?originPage=detail&id=" +  this.data.globalId
       })
     }
@@ -266,14 +268,18 @@ Page({
   radioSpecificButtonTap: function (e) {
     let id = e.currentTarget.dataset.id
     for (let i = 0; i < this.data.specificButtons.length; i++) {
+      console.log('======= diffPriceType ' + this.data.diffPriceType);
+
       if(this.data.diffPriceType == 2){
         let specificKey = id + 1;
         if(this.data.diffPriceMap.get(specificKey.toString()) != undefined){
           var diffGroupPrice = this.data.diffPriceMap.get(specificKey.toString()).get("groupPrice");
+          console.log('======= diffGroupPrice ' + diffGroupPrice.getString());
           this.setData({
             groupPrice: diffGroupPrice
           })
         }else {
+          console.log('------- diffGroupPrice ' + this.data.diffPriceMap.get(specificKey.toString()));
           this.setData({
             groupPrice: this.data.detailRotateImages[0].groupPrice
           })
@@ -330,6 +336,8 @@ Page({
          + "&selectedClassify=" + this.data.selectedClassify
          + "&selectedSpecific=" + this.data.selectedSpecific
          + "&num=" + this.data.num
+         + "&classifyId=" + this.data.selectedClassifyId
+         + "&specificId=" + this.data.selectedSpecificId
       })
     }
   },
