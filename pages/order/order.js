@@ -35,6 +35,32 @@ Page({
       selectedSpecific: options.selectedSpecific,
       num: options.num,
       sumPrice: options.groupPrice * options.num,
+    });
+
+    var loginInfo = wx.getStorageSync('serviceLogin');
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: 'https://server.ghomelifevvip.com/user/queryLastUsualAddress',
+      data: {
+        "userNumber": loginInfo.userNumber,
+      },
+      complete: res=>{
+        if(res.data.success){
+          console.log('存在常用地址 ' + res.data.dataList[0])
+          // 渲染常用地址信息
+          this.setData({
+            showAddress: true,
+            receiverName: res.data.dataList[0].name,
+            receiverPhone: res.data.dataList[0].phoneNo,
+            receiverAddress: res.data.dataList[0].address,
+          });
+        }else{
+          console.error('不能存在常用地址 ' + res.data.msg)
+        }
+      }
     })
   },
 
@@ -96,7 +122,32 @@ Page({
           receiverName: res.userName,
           receiverPhone: res.telNumber,
           receiverAddress: res.provinceName + ' ' + res.cityName + ' ' + res.countyName + ' ' + res.detailInfo
-        })
+        });
+      },
+      complete(res){
+        console.log("complete.");
+        // 保存最新地址信息
+        var loginInfo = wx.getStorageSync('serviceLogin');
+        wx.request({
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          method: "POST",
+          url: 'https://server.ghomelifevvip.com/user/createUsualAddress',
+          data: {
+            "userNumber": loginInfo.userNumber,
+            "phoneNo": res.telNumber,
+            "name": res.userName,
+            "address": res.provinceName + ' ' + res.cityName + ' ' + res.countyName + ' ' + res.detailInfo,
+          },
+          complete: res=>{
+            if(res.data.success){
+              console.log('保存常用地址成功！' + res.data.dataList[0])
+            }else{
+              console.error('保存常用地址失败！' + res.data.msg)
+            }
+          }
+        });
       }
     })
   },
@@ -104,6 +155,7 @@ Page({
   paymentButtonTap: function(){
     if(!this.data.showAddress){
       wx.showToast({
+        icon: 'error',
         title: '请填写收件地址',
       })
     }else{
@@ -133,6 +185,10 @@ Page({
   
           }else{
             console.error('下单失败 ' + res.data.msg)
+            wx.showToast({
+              icon: 'error',
+              title: res.data.msg,
+            })
           }
         }
       })

@@ -1,4 +1,5 @@
 /* pages/coupon/coupon.wxss */
+@import '../../style/css/icons.wxss';
 page{
   height:100%
 }
@@ -17,6 +18,11 @@ page{
   display:flex;      
   width:70%;          
   /* justify-content: center;    */
+
+  /* margin-top: 100px; */
+  /* text-align: center;
+  align-items: center;
+  justify-content: center; */
 }
 .get_coupon {
   /* background:  #ffffff; */
@@ -34,4 +40,22 @@ page{
   margin-top: 20px;
   color:#ffffff;
   background-color: #090909;
+}
+
+.img-class{
+  /* width: 100px;
+  height: 100px; */
+  z-index: -1;
+  position: fixed;
+}
+.text_num{
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  background: rgb(99, 99, 105);
+  opacity: 0.5;
+  font-size: 14px;
+  color: rgb(248, 248, 244);
+  z-index: 100;
+  position: fixed;
 }
