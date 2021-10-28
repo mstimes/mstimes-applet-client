@@ -98,6 +98,18 @@
 .detail-image-border {
   background-color: #090909;
   padding: 20px 25px 5px 25px;
+
+}
+.main-image-class {
+  /* position: relative; */
+  /* z-index: -1;
+  position: fixed; */
+}
+.saleout_icon_class{
+  align-items: center;
+  position: absolute;
+  /* z-index: 100;
+  position: relative; */
 }
 /* #282829  */
 .text-container{
@@ -132,14 +144,34 @@
   font-weight:800; 
   font-family:NSimSun;
   color:#ffffff;
-  padding :6px 3px 6px 3px;
+  padding :6px 6px 6px 5px;
   justify-content:center;
 }
 .tips_bar{
-  padding :7px 6px 6px 6px;
+  padding :8px 8px 8px 8px;
   color:#e6e6e6;
   font-size: 12px;
 }
 .bload_word{
   padding: 6px 0px 4px 0px;
+}
+/* .home-image{
+  width: 100px;
+  height: 100px;
+  z-index: -1;
+  position: fixed;
+} */
+/* .sale_out_image{
+  z-index: 100;
+  position: fixed;
+} */
+/* .img-size-min{
+  position:absolute;
+  top: 0;
+  width: 44rpx; 
+  height: 44rpx;
+} */
+.buy_empty{
+  align-items: flex-end;
+  position: absolute;
 }

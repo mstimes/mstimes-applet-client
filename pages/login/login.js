@@ -127,7 +127,7 @@ Page({
             }else{
               wx.showToast({
                 title: '微信授权网咯请求失败',
-                icon: 'none'
+                icon: 'error'
               })
             }
           },
@@ -135,7 +135,7 @@ Page({
             if (res == null || res.data == null){
               wx.showToast({
                 title: '微信授权网咯请求失败',
-                icon: 'none'
+                icon: 'error'
               })
             }
           }
@@ -143,7 +143,7 @@ Page({
       } else {
         wx.showToast({
           title: '登录失败！' + res.errMsg,
-          icon: 'none'
+          icon: 'error'
         })
       }
 

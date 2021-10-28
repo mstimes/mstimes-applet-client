@@ -19,10 +19,14 @@ Page({
     globalId: '', 
     globalImageUrl: '',
     groupPrice: 0,
+    selectedClassifyId: 0,
     selectedClassify: '',
+    selectedSpecificId: 0,
     selectedSpecific: '',
     num: 1,
-		minusStatus: 'disabled',
+    minusStatus: 'disabled',
+    diffPriceType: 0,
+    diffPriceMap: '' 
   },
   //轮播图的切换事件
   swiperChange: function(e) {
@@ -100,12 +104,15 @@ Page({
           }else{
             console.log(res.data.dataList)
             var detailList = res.data.dataList[0];
-            //保存分享的标题&描述
+            var diffPriceMap = this.objToStrMap(JSON.parse(detailList.diffPriceInfo));
             _this.setData({
               globalTitle: detailList.title, 
               globalDetail: detailList.description,
               groupPrice: detailList.groupPrice,
+              diffPriceType: detailList.diffType,
+              diffPriceMap: diffPriceMap,
              })
+
             // 获取商品分类/规格信息
             var classifyList = JSON.parse(detailList.categories);
             var specificList = JSON.parse(detailList.specifics);
@@ -212,10 +219,40 @@ Page({
   radioClassifyButtonTap: function (e) {
     let id = e.currentTarget.dataset.id
     for (let i = 0; i < this.data.classifyButtons.length; i++) {
+      if(this.data.diffPriceType == 1){
+        let classifyKey = id + 1;
+        if(this.data.diffPriceMap.get(classifyKey.toString()) != undefined){
+          var diffGroupPrice = this.data.diffPriceMap.get(classifyKey.toString()).get("groupPrice");
+          console.log('diffGroupPrice : ' + diffGroupPrice)
+          this.setData({
+            groupPrice: diffGroupPrice
+          })
+        }else {
+          this.setData({
+            groupPrice: this.data.detailRotateImages[0].groupPrice
+          })
+        }
+      }else if(this.data.diffPriceType == 3){
+        let classifyKey = id + 1;
+        let mergeKey = classifyKey.toString() + this.data.selectedSpecificId.toString();
+        console.log('mergeKey ' + mergeKey.toString());
+        if(this.data.diffPriceMap.get(mergeKey.toString()) != undefined){
+          var diffGroupPrice = this.data.diffPriceMap.get(mergeKey.toString()).get("groupPrice");
+          this.setData({
+            groupPrice: diffGroupPrice
+          })
+        }else {
+          this.setData({
+            groupPrice: this.data.detailRotateImages[0].groupPrice
+          })
+        }
+      }
+
       if (this.data.classifyButtons[i].id == id) {
         this.data.classifyButtons[i].checked = true;
         this.setData({
-          selectedClassify: this.data.classifyButtons[i].name
+          selectedClassify: this.data.classifyButtons[i].name,
+          selectedClassifyId: id + 1
         })
       }
       else {
@@ -229,10 +266,39 @@ Page({
   radioSpecificButtonTap: function (e) {
     let id = e.currentTarget.dataset.id
     for (let i = 0; i < this.data.specificButtons.length; i++) {
+      if(this.data.diffPriceType == 2){
+        let specificKey = id + 1;
+        if(this.data.diffPriceMap.get(specificKey.toString()) != undefined){
+          var diffGroupPrice = this.data.diffPriceMap.get(specificKey.toString()).get("groupPrice");
+          this.setData({
+            groupPrice: diffGroupPrice
+          })
+        }else {
+          this.setData({
+            groupPrice: this.data.detailRotateImages[0].groupPrice
+          })
+        }
+      }else if(this.data.diffPriceType == 3){
+        let specificKey = id + 1;
+        let mergeKey = this.data.selectedClassifyId.toString() + specificKey.toString();
+        console.log('mergeKey ' + mergeKey.toString());
+        if(this.data.diffPriceMap.get(mergeKey.toString()) != undefined){
+          var diffGroupPrice = this.data.diffPriceMap.get(mergeKey.toString()).get("groupPrice");
+          this.setData({
+            groupPrice: diffGroupPrice
+          })
+        }else {
+          this.setData({
+            groupPrice: this.data.detailRotateImages[0].groupPrice
+          })
+        }
+      }
+
       if (this.data.specificButtons[i].id == id) {
         this.data.specificButtons[i].checked = true;
         this.setData({
-          selectedSpecific: this.data.specificButtons[i].name
+          selectedSpecific: this.data.specificButtons[i].name,
+          selectedSpecificId: id + 1
         })
       }
       else {
@@ -247,10 +313,12 @@ Page({
   doBuyButtonTap: function() {
     if(this.data.selectedClassify == ''){
       wx.showToast({
+        icon: 'error',
         title: '请选择分类',
       })
     }else if(this.data.selectedSpecific == ''){
       wx.showToast({
+        icon: 'error',
         title: '请选择规格',
       })
     }else {
@@ -301,6 +369,20 @@ Page({
 		this.setData({
 			num: num
 		});
-	}
+  },
+  
+  objToStrMap: function(obj){
+    let strMap = new Map();
+    for (let k of Object.keys(obj)) {
+      console.log('k --- ' + k)
+      let subMap = new Map();
+      for (let kk of Object.keys(obj[k])) {
+        subMap.set(kk, obj[k][kk])
+      }
+      strMap.set(k, subMap);
+    }
+
+    return strMap;
+  }
 })
 
