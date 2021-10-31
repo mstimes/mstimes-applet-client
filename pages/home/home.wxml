@@ -39,7 +39,9 @@
       <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" redirect hover-class="other-navigator-hover">
         <view class="detail-image-border">
             <!-- <icon class="saleout_icon_class" style="color:red;font-size: 30px" class="iconfont icon-lianxi-yishouqing"></icon> -->
-            <image wx:if="{{item.saleOut == 1}}" src="/images/sale_out.png" class="buy_empty" style="height:15%;width:18%;"></image>    
+            <view class="buy_empty_view">
+              <image wx:if="{{item.saleOut == 1}}" src="/images/sale_out.png" class="buy_empty" style="height:12%;width:19%"></image>  
+            </view>
             <image src="{{item.mainImage}}" style="margin-top:5px;width:100%;border-radius:5px" mode="widthFix"></image>
         </view>
         <view class="text-container">

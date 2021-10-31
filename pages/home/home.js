@@ -31,7 +31,8 @@ Page({
   },
   //点击图片触发事件
   swiperClick: function(e) {
-    wx.navigateTo({
+    // wx.navigateTo({
+      wx.redirectTo({
       url: `${'/pages/detail/detail?id=' + this.data.imgUrls[this.data.swiperCurrent].goodId}`,
     })
     // console.log(this.data.imgUrls[this.data.swiperCurrent].goodId);
