@@ -39,8 +39,11 @@
       <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" redirect hover-class="other-navigator-hover">
         <view class="detail-image-border">
             <!-- <icon class="saleout_icon_class" style="color:red;font-size: 30px" class="iconfont icon-lianxi-yishouqing"></icon> -->
-            <view class="buy_empty_view">
-              <image wx:if="{{item.saleOut == 1}}" src="/images/sale_out.png" class="buy_empty" style="height:12%;width:19%"></image>  
+            <view class="second_kill_view">
+              <image wx:if="{{item.secondKill == 1}}" src="/images/second_kill.png" class="buy_empty" style="height:12%;width:12%;"></image>  
+            </view>
+            <view class="sale_out_view">
+              <image wx:if="{{item.saleOut == 1}}" src="/images/sale_out.png" class="buy_empty" style="height:8%;width:15%; padding:5px;5px;0px;0px"></image>  
             </view>
             <image src="{{item.mainImage}}" style="margin-top:5px;width:100%;border-radius:5px" mode="widthFix"></image>
         </view>
@@ -54,7 +57,9 @@
             </view>
 
             <view class="home-sail-des-title">
-              <text class="home-sail-best">¥{{item.groupPrice}}</text>
+              <text class="home-sail-best-small">¥</text>
+              <text class="home-sail-best">{{item.groupPriceDotBefore}}</text>
+              <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small">. {{item.groupPriceDotAfter}}</text>
               <text class="home-sail-ori">原价{{item.oriPrice}}</text>
             </view>
 

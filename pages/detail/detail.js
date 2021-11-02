@@ -18,7 +18,7 @@ Page({
     globalDetail: '',
     globalId: '', 
     globalImageUrl: '',
-    groupPrice: 0,
+    groupPrice: '0.00',
     selectedClassifyId: 0,
     selectedClassify: '',
     selectedSpecificId: 0,
@@ -225,7 +225,7 @@ Page({
         let classifyKey = id + 1;
         if(this.data.diffPriceMap.get(classifyKey.toString()) != undefined){
           var diffGroupPrice = this.data.diffPriceMap.get(classifyKey.toString()).get("groupPrice");
-          console.log('diffGroupPrice : ' + diffGroupPrice)
+          // console.log('diffGroupPrice : ' + diffGroupPrice)
           this.setData({
             groupPrice: diffGroupPrice
           })
@@ -268,18 +268,18 @@ Page({
   radioSpecificButtonTap: function (e) {
     let id = e.currentTarget.dataset.id
     for (let i = 0; i < this.data.specificButtons.length; i++) {
-      console.log('======= diffPriceType ' + this.data.diffPriceType);
+      // console.log('======= diffPriceType ' + this.data.diffPriceType);
 
       if(this.data.diffPriceType == 2){
         let specificKey = id + 1;
         if(this.data.diffPriceMap.get(specificKey.toString()) != undefined){
           var diffGroupPrice = this.data.diffPriceMap.get(specificKey.toString()).get("groupPrice");
-          console.log('======= diffGroupPrice ' + diffGroupPrice.getString());
+          // console.log('======= diffGroupPrice ' + diffGroupPrice.getString());
           this.setData({
             groupPrice: diffGroupPrice
           })
         }else {
-          console.log('------- diffGroupPrice ' + this.data.diffPriceMap.get(specificKey.toString()));
+          // console.log('------- diffGroupPrice ' + this.data.diffPriceMap.get(specificKey.toString()));
           this.setData({
             groupPrice: this.data.detailRotateImages[0].groupPrice
           })
