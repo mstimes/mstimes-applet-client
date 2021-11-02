@@ -41,8 +41,16 @@
   }
   .home-sail-best {
     /* margin-top:10px; */
-    margin-left:8px;
+    margin-left:3px;
     font-size: 40rpx;
+    color:#c00606;
+    text-align: center;
+  }
+  .home-sail-best-small {
+    /* margin-top:10px; */
+    margin-left:1px;
+    font-size: 28rpx;
+    font-weight: 900;
     color:#c00606;
     text-align: center;
   }
@@ -155,7 +163,11 @@
 .bload_word{
   padding: 6px 0px 4px 0px;
 }
-.buy_empty_view{
+.second_kill_view{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.sale_out_view{
   display: flex;
   flex-direction: row-reverse;
 }

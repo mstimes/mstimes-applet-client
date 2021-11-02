@@ -35,19 +35,6 @@ Page({
       wx.redirectTo({
       url: `${'/pages/detail/detail?id=' + this.data.imgUrls[this.data.swiperCurrent].goodId}`,
     })
-    // console.log(this.data.imgUrls[this.data.swiperCurrent].goodId);
-    // var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
-    // console.log(getServiceLoginInfo)
-    // if(getServiceLoginInfo.userNumber != null){
-    //   wx.navigateTo({
-    //     url: `${'/pages/detail/detail?id=' + this.data.imgUrls[this.data.swiperCurrent].goodId}`,
-    //   })
-    // }else{
-    //   //跳转到登录页
-    //   wx.navigateTo({
-    //     url: "/pages/login/login?originPage=home" 
-    //   })
-    // }
   },
   // 事件处理函数
   onLoad(){
