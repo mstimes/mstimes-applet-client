@@ -164,12 +164,13 @@
   padding: 6px 0px 4px 0px;
 }
 .second_kill_view{
+  padding: 0px 8px 0px 0px;
   display: flex;
   flex-direction: row-reverse;
 }
 .sale_out_view{
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: center;
 }
 .buy_empty{
   align-items: flex-end;
