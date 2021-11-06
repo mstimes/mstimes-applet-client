@@ -39,9 +39,9 @@ App({
   },
   onShow: function (options) {
     // console.log("app.js show")
-    // console.log(options)
-    if(options.shareUser != null){
-      wx.setStorageSync('shareUser',options.shareUser)
+    // console.log(options.query.shareUser)
+    if(options.query.shareUser != null){
+      wx.setStorageSync('shareUser',options.query.shareUser)
     }
   },
     

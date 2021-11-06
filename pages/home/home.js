@@ -142,7 +142,6 @@ Page({
   },
   onShow: function () {
     var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
-    // console.log(getServiceLoginInfo)
     if(getServiceLoginInfo.userNumber == null){
       wx.hideShareMenu()
     }
