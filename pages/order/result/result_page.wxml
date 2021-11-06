@@ -21,7 +21,7 @@
   </view>
   <view class="row-space-between">
       <text>支付金额</text>
-      <text>¥{{sumPrice}}.00</text>
+      <text>¥{{sumPrice}}</text>
   </view>
 
   <view class="return-home-container">

@@ -28,6 +28,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var sumPrice = options.groupPrice * options.num;
+    if(options.groupPrice.indexOf(".") < 0){
+      sumPrice = options.groupPrice + ".00"
+    }else {
+      sumPrice = options.groupPrice + "0"
+    }
+
     this.setData({
       goodId: options.goodId,
       imageUrl: options.imageUrl,
@@ -36,7 +43,7 @@ Page({
       selectedClassify: options.selectedClassify,
       selectedSpecific: options.selectedSpecific,
       num: options.num,
-      sumPrice: options.groupPrice * options.num,
+      sumPrice: sumPrice,
       classifyId: options.classifyId,
       specificId: options.specificId,
     });
