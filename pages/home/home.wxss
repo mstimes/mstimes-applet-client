@@ -106,7 +106,6 @@
 .detail-image-border {
   background-color: #090909;
   padding: 20px 25px 5px 25px;
-
 }
 .main-image-class {
   /* position: relative; */
@@ -175,4 +174,68 @@
 .buy_empty{
   align-items: flex-end;
   position: absolute;
+}
+
+.monday-good-container {
+  border-radius: 5px;
+  background-color:rgb(247, 244, 244);
+  /* margin-top: 15rpx; */
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  /* margin-bottom: 20rpx; */
+  padding: 10px 10px 10px 10px;
+  height: 350rpx;
+}
+
+.monday-good-row-flex {
+  background-color:rgb(247, 244, 244);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 23rpx;
+  font-weight: 400;
+}
+
+.monday-good-column-flex {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 23rpx;
+  font-weight: 400;
+  margin-left: 50rpx;
+  margin-right: 30rpx;
+  margin-top: 30rpx;
+}
+
+.common-column-container {
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  margin-left: 40rpx;
+  width: 450rpx;
+  padding: 5px 0px 5px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-monday-text-container{
+  padding: 0px 100px 10px 100px;
+  background-color:#565657;
+}
+.monday-goods-title{
+  text-align: left;
+  font-size: 28rpx;
+  font-family: STKaiti;
+  font-weight: 200;
+  padding: 10px;
+  color:#090909
+}
+
+.monday-goods-des{
+  text-align: left;
+  font-size: 23rpx;
+  font-family: STKaiti;
+  font-weight: 200;
+  padding: 10px;
+  color:#a3a2a2
 }

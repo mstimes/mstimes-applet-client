@@ -109,6 +109,64 @@
   </view>
 
 
+<!-- 周一上新 -->
+<view wx:if="{{imgMondayUrls.length > 0}}" class="home-motto" style="margin-top:-5px">
+    <view style="padding:40px 20px 10px 20px">
+      <text style="font-size: 28rpx;color:#adab8c;font-family:NSimSun;">TIMEKEEPING LIST \n</text>
+      <view class="bload_word">
+        <text style="font-size: 40rpx;font-weight:800;;font-family:NSimSun;color:#ffffff">好生活 没那么贵\n</text>
+      </view>
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">#每周更新# 每周一10:00准时上架产品</text>
+    </view>
+  </view>
+
+  <view class="flex-view-item" style="background-color: black"  wx:key="unique" wx:for="{{imgMondayUrls}}" >
+    <view class="monday-good-container" >
+      <view class="monday-good-row-flex" >
+        <image src="{{item.mainImage}}" style="width:100%;border-radius:5px" mode="widthFix"></image>
+        <view class="common-column-container">
+          <view class="monday-goods-title">
+            <text>{{item.title}}</text>
+          </view>
+          <view class="monday-goods-des">
+            <text  >{{item.description}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="padding: 8px;0px;0px;0px"></view>
+  </view>
+
+  <!-- <view class="flex-row" style="display: block">
+    <view class="flex-view-item" style="background-color:#f7f7f7"  wx:key="unique" wx:for="{{imgMondayUrls}}" >
+      <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" redirect hover-class="other-navigator-hover">
+        <view class="detail-image-border">
+            <view class="second_kill_view">
+              <image wx:if="{{item.secondKill == 1}}" src="/images/second_kill.png" class="buy_empty" style="height:8%;width:16%;"></image>  
+            </view>
+            <view class="sale_out_view">
+              <image wx:if="{{item.saleOut == 1}}" src="/images/sale_out.png" class="buy_empty" style="height:15%;width:30%;margin-top:30%"></image>  
+              <image src="{{item.mainImage}}" style="margin-top:5px;width:60%;border-radius:5px" mode="widthFix"></image>
+            </view>
+        </view>
+         <view class="home-monday-text-container">
+          <view class="home-monday-goods-title">
+            <text>{{item.title}}</text>
+          </view>
+          <view class="home-sail-des">
+            <text  >{{item.description}}</text>
+          </view>
+          <view class="home-sail-des-title">
+            <text class="home-sail-best-small">¥</text>
+            <text class="home-sail-best">{{item.groupPriceDotBefore}}</text>
+            <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small">. {{item.groupPriceDotAfter}}</text>
+            <text class="home-sail-ori">原价{{item.oriPrice}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view> -->
+
   <!-- 关于 -->
   <view style="margin-top:0px">
       <view class="content">
