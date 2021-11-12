@@ -8,6 +8,7 @@ Page({
     imgUrls: [],
     imgDaysUrls: [],
     imgYestodayUrls: [],
+    imgMondayUrls: [],
     current: 0,  //当前所在页面的 index
     indicatorDots: true, //是否显示面板指示点
     autoplay: true, //是否自动切换
@@ -39,19 +40,9 @@ Page({
   // 事件处理函数
   onLoad(){
     var _this = this; 
-    //获取今天时间
-    var date = new Date();
-    var year = date.getFullYear(); //获取年 
-    var month = date.getMonth()+1;//获取月  
-    var day = date.getDate(); //获取日
-    var today = year + '-' + month + '-' + day
     var todayUrl = "https://server.ghomelifevvip.com/goods/queryGoodsListByType?type=1";
-    // 获取昨天时间
-    var day1 = new Date();
-    day1.setTime(day1.getTime()-24*60*60*1000);
-    // var yesUrl = "https://server.ghomelifevvip.com/goods/queryGoodsList?groupStartDate=" + day1.getFullYear()+"-" + (day1.getMonth()+1) + "-" + day1.getDate();
     var yesUrl = "https://server.ghomelifevvip.com/goods/queryGoodsListByType?type=2";
-    // console.log(yesUrl)
+    var mondayUrl = "https://server.ghomelifevvip.com/goods/queryGoodsListByType?type=4";
     //获取今天货物
     wx.request({
       header: {
@@ -65,7 +56,7 @@ Page({
           console.log(res.data.msg)
         }else{
           // console.log(res.data.dataList)
-          var topMainList = [];
+          var topMainList = this.data.imgUrls;
           var mainList = res.data.dataList;
           for (var i = 0; i < mainList.length; i++){
             if (mainList[i].hotSale != 0){
@@ -115,6 +106,39 @@ Page({
           console.log("yestodayList size " + yestodayList.length)
           _this.setData({
             imgYestodayUrls: yestodayList,
+            imgUrls: topMainList
+          })
+        }
+      }
+    }),
+    // 获取周一商品列表
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: mondayUrl,
+      complete: res=>{
+        if(!res.data.success){
+          console.log(res.data.msg)
+        }else{
+          var mondayList = res.data.dataList;
+          var topMainList = this.data.imgUrls;
+          for (var i = 0; i < mondayList.length; i++){
+            mondayList[i].mainImage = "https://ghomelifevvip.com/" + mondayList[i].mainImage;
+            if (mondayList[i].hotSale != 0){
+              var object = {
+                url:"https://ghomelifevvip.com/" + mondayList[i].hotSaleImage,
+                goodId: mondayList[i].goodId,
+              }
+              topMainList.push(object);
+            }
+            
+          }
+          console.log("mondayList " + mondayList)
+          console.log("mondayList size " + mondayList.length)
+          _this.setData({
+            imgMondayUrls: mondayList,
             imgUrls: topMainList
           })
         }

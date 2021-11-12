@@ -22,6 +22,7 @@ Page({
     outTradeNo: '',
     classifyId: -1,
     specificId: -1,
+    lastClickTime: 0
   },
 
   /**
@@ -164,6 +165,18 @@ Page({
   },
 
   paymentButtonTap: function(){
+    var myDate = Date.now();
+    var clickTimeInterval = myDate - this.data.lastClickTime;
+    if(clickTimeInterval < 2000){ // 两次点击间隔控制在2s以上
+      return;
+      // wx.showToast({
+      //   icon: 'error',
+      //   title: '手速太猛了哦',
+      // })
+    }
+    // 更新上次点击时间
+    this.data.lastClickTime = myDate;
+
     if(!this.data.showAddress){
       wx.showToast({
         icon: 'error',
