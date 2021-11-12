@@ -56,7 +56,7 @@ Page({
           console.log(res.data.msg)
         }else{
           // console.log(res.data.dataList)
-          var topMainList = [];
+          var topMainList = this.data.imgUrls;
           var mainList = res.data.dataList;
           for (var i = 0; i < mainList.length; i++){
             if (mainList[i].hotSale != 0){

@@ -59,7 +59,7 @@
             <view class="home-sail-des-title">
               <text class="home-sail-best-small">¥</text>
               <text class="home-sail-best">{{item.groupPriceDotBefore}}</text>
-              <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small">. {{item.groupPriceDotAfter}}</text>
+              <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small">.{{item.groupPriceDotAfter}}</text>
               <text class="home-sail-ori">原价{{item.oriPrice}}</text>
             </view>
          </view>
@@ -99,7 +99,7 @@
           <view class="home-sail-des-title">
             <text class="home-sail-best-small">¥</text>
             <text class="home-sail-best">{{item.groupPriceDotBefore}}</text>
-            <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small">. {{item.groupPriceDotAfter}}</text>
+            <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small">.{{item.groupPriceDotAfter}}</text>
             <text class="home-sail-ori">原价{{item.oriPrice}}</text>
           </view>
         </view>
@@ -137,7 +137,7 @@
           <view class="home-sail-des-title">
             <text class="home-sail-best-small" style="margin-left:20px; font-size: 23rpx">¥</text>
             <text class="home-sail-best" style="font-size: 36rpx">{{item.groupPriceDotBefore}}</text>
-            <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small" style="font-size: 20rpx">. {{item.groupPriceDotAfter}}</text>
+            <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small" style="font-size: 20rpx">.{{item.groupPriceDotAfter}}</text>
             <text class="home-sail-ori" style="font-size: 23rpx">原价{{item.oriPrice}}</text>
           </view>
         </view>
