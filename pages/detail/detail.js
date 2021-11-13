@@ -26,7 +26,9 @@ Page({
     num: 1,
     minusStatus: 'disabled',
     diffPriceType: 0,
-    diffPriceMap: '' 
+    diffPriceMap: '',
+    initSelectClassifyButton: true,
+    initSelectSpecificButton: true
   },
   //轮播图的切换事件
   swiperChange: function(e) {
@@ -75,19 +77,14 @@ Page({
   },
   // 事件处理函数
   onLoad: function(options){
-    this.data.classifyButtons[0].checked = true;
-    this.data.specificButtons[0].checked = true;
-    this.setData({
-      classifyButtons: this.data.classifyButtons,
-      specificButtons: this.data.specificButtons,
-    })
-    var _this = this; 
-    // console.error(options.id)
-    //保存分享的详情页ID
-    // console.log(options)
+    var _this = this;
+
     _this.setData({
-     globalId: options.id, 
+      // classifyButtons: _this.data.classifyButtons,
+      // specificButtons: _this.data.specificButtons,
+      globalId: options.id, 
     })
+
     if (options.id != ""){
       wx.request({
         header: {
@@ -129,6 +126,15 @@ Page({
             _this.setData({
               classifyButtons: JSON.parse(JSON.stringify(classifyButtonsTmp)),
               specificButtons: JSON.parse(JSON.stringify(specificButtonsTmp))
+            })
+            // 初始化选择按钮
+            _this.data.classifyButtons[0].checked = true;
+            _this.data.specificButtons[0].checked = true;
+            this.setData({
+              selectedClassify: this.data.classifyButtons[0].name,
+              selectedClassifyId: 1,
+              selectedSpecific: this.data.specificButtons[0].name,
+              selectedSpecificId: 1,
             })
 
             var detailImagesNews = []
@@ -254,7 +260,8 @@ Page({
         this.data.classifyButtons[i].checked = true;
         this.setData({
           selectedClassify: this.data.classifyButtons[i].name,
-          selectedClassifyId: id + 1
+          selectedClassifyId: id + 1,
+          initSelectClassifyButton: false,
         })
       }
       else {
@@ -304,7 +311,8 @@ Page({
         this.data.specificButtons[i].checked = true;
         this.setData({
           selectedSpecific: this.data.specificButtons[i].name,
-          selectedSpecificId: id + 1
+          selectedSpecificId: id + 1,
+          initSelectSpecificButton: false,
         })
       }
       else {
