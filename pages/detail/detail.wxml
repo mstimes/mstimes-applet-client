@@ -172,7 +172,10 @@
     <view class='button_container'>
       <block wx:for="{{classifyButtons}}" wx:key="classifyButtons">
         <view class="button_padding" >
-          <button class='{{item.checked?"checked_button":"normal_button"}}' style="height:30px;width:unset" data-id='{{item.id}}' bindtap='radioClassifyButtonTap'>
+          <button wx:if="{{initSelectClassifyButton}}" class='{{item.id == 0 ? "checked_button" : "normal_button"}}' style="height:30px;width:unset" data-id='{{item.id}}' bindtap='radioClassifyButtonTap'>
+            <text class="button_words">{{item.name}}</text>
+          </button>
+          <button wx:if="{{!initSelectClassifyButton}}" class='{{item.checked?"checked_button":"normal_button"}}' style="height:30px;width:unset" data-id='{{item.id}}' bindtap='radioClassifyButtonTap'>
            <text class="button_words">{{item.name}}</text>
           </button>
         </view>
@@ -183,7 +186,10 @@
     <view class='button_container'>
       <block wx:for="{{specificButtons}}" wx:key="specificButtons">
         <view class="button_padding" >
-          <button class='{{item.checked?"checked_button":"normal_button"}}' style="width:unset;height:30px" data-id='{{item.id}}' bindtap='radioSpecificButtonTap'>
+          <button wx:if="{{initSelectSpecificButton}}" class='{{item.id == 0 ? "checked_button" : "normal_button"}}'  style="width:unset;height:30px" data-id='{{item.id}}' bindtap='radioSpecificButtonTap'>
+            <text style="font-size: 25rpx; font-weight: 400">{{item.name}}</text>
+          </button>
+          <button wx:if="{{!initSelectSpecificButton}}" class='{{item.checked?"checked_button":"normal_button"}}' style="width:unset;height:30px" data-id='{{item.id}}' bindtap='radioSpecificButtonTap'>
             <text style="font-size: 25rpx; font-weight: 400">{{item.name}}</text>
           </button>
         </view>
