@@ -147,7 +147,7 @@
     <view style="padding: 10px 0px 0px 0px; background-color: #0d0d0e;"></view>
   </view>
 </view>
-<view class="round-click" >
+<view wx:if="{{totalOrderRecords > 0}}" class="round-click" >
   <navigator url='/pages/order/records/order_records' class="iconfont icon-wodeh" style="font-size: 50rpx"></navigator > 
 </view>
     

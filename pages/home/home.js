@@ -16,6 +16,7 @@ Page({
     duration: 1000, //滑动动画时长
     circular: true, //是否采用衔接滑动
     swiperCurrent: 0,
+    totalOrderRecords: 0
   },
 
   //轮播图的切换事件
@@ -39,6 +40,8 @@ Page({
   },
   // 事件处理函数
   onLoad(){
+    this.getOrderRecords();
+
     var _this = this; 
     var todayUrl = "https://server.ghomelifevvip.com/goods/queryGoodsListByType?type=1";
     var yesUrl = "https://server.ghomelifevvip.com/goods/queryGoodsListByType?type=2";
@@ -169,6 +172,39 @@ Page({
     if(getServiceLoginInfo.userNumber == null){
       wx.hideShareMenu()
     }
+  },
+
+  getOrderRecords: function(){
+    var loginInfo = wx.getStorageSync('serviceLogin');
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1;
+    var day = myDate.getDate() + 1;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: 'https://server.ghomelifevvip.com/order/queryOrderRecordsByType',
+      data: {
+        "userNumber": loginInfo.userNumber,
+        "userId": 0,
+        "queryType": 3,
+        "startTime": '2021-01-01',
+        "endTime": myDate.getFullYear() + '-' + month + '-' + day,
+        "pageNum": 0,
+        "pageSize": 1
+      },
+      complete: res=>{
+        if(res.data.success){
+          var records = res.data['dataList'];
+          this.setData({
+            totalOrderRecords: res.data['pageTotalCount'],
+          });
+        }else{
+          console.error('order info list not exist ' + res.data.msg)
+        }
+      }
+    })
   },
 })
 
