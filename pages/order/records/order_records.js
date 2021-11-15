@@ -6,11 +6,10 @@ Page({
    */
   data: {
     pageNum: 0,
-    pageSize: 5,
+    pageSize: 20,
     totalOrderRecords: 0,
     loadedOrderRecords: 0,
     orderRecordList: [],
-    hasMoreData: true,
   },
 
   /**
@@ -23,6 +22,9 @@ Page({
   getOrderRecords: function(){
     var loginInfo = wx.getStorageSync('serviceLogin');
     console.log('pageNum ' + this.data.pageNum + " pageSize " + this.data.pageSize);
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1;
+    var day = myDate.getDate() + 1;
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -31,18 +33,16 @@ Page({
       url: 'https://server.ghomelifevvip.com/order/queryOrderRecordsByType',
       data: {
         "userNumber": loginInfo.userNumber,
-        "userId": 711,
+        "userId": 0,
         "queryType": 3,
         "startTime": '2021-01-01',
-        "endTime": '2021-11-20',
+        "endTime": myDate.getFullYear() + '-' + month + '-' + day,
         "pageNum": this.data.pageNum,
         "pageSize": this.data.pageSize
       },
       complete: res=>{
         var orderRecordsTemp = this.data.orderRecordList;
         if(res.data.success){
-          console.log('order info list ' + res.data['dataList'])
-          
           var records = res.data['dataList'];
           this.setData({
             totalOrderRecords: res.data['pageTotalCount'],
