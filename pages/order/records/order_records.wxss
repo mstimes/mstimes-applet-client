@@ -1,0 +1,58 @@
+/* pages/order/order_info.wxss */
+.background {
+  background-color:#f1f1f5d7;
+}
+.order-records-container {
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding: 10px 10px 10px 0px;
+}
+.row-flex-start {
+  background-color: rgb(253, 251, 251);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 23rpx;
+  font-weight: 400;
+  margin-left: 20rpx;
+  margin-right: 0rpx;
+  margin-top: 10rpx;
+}
+.order-records-innner-container {
+  background-color: rgb(209, 208, 208);
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  padding: 10px 10px 10px 0px;
+}
+.common-column-container {
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  margin-left: 40rpx;
+  width: 450rpx;
+  padding: 5px 0px 5px 0px;
+  display: flex;
+  flex-direction: column;
+}
+.inner-row-space-between {
+  margin-top: 5rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 23rpx;
+  font-weight: 400;
+}
+.row-space-between {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 23rpx;
+  font-weight: 400;
+  margin-left: 40rpx;
+  margin-right: 30rpx;
+  margin-top: 15rpx;
+}

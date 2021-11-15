@@ -147,7 +147,9 @@
     <view style="padding: 10px 0px 0px 0px; background-color: #0d0d0e;"></view>
   </view>
 </view>
-
+<view class="round-click" >
+  <navigator url='/pages/order/records/order_records' class="iconfont icon-wodeh" style="font-size: 50rpx"></navigator > 
+</view>
     
   <!-- 关于 -->
   <view style="margin-top:0px">
@@ -156,10 +158,10 @@
         <view class='up'>
           <view>
             <text style="font-family:STKaiti;font-size: 32rpx;color:#ffffff">专注品质生活美学\n</text>
-            <text style="font-size: 26rpx;font-family:NSimSun;color:#fcfbbf;">甄选天下好物</text>
+            <text style="font-size: 26rpx;font-family:NSimSun;color:#fcfbbf;padding: 0px 25px 0px 0px">甄选天下好物</text>
           </view>
           <view>
-            <navigator url="/pages/about/about" class="rota-1">走进Ms时代</navigator>
+            <navigator url="/pages/about/about" class="rota-1" style="padding: 0px 30px 0px 0px">走进Ms时代</navigator>
           </view>
         </view>
       </view>
