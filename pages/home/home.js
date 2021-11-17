@@ -33,10 +33,9 @@ Page({
   },
   //点击图片触发事件
   swiperClick: function(e) {
-    // wx.navigateTo({
       wx.redirectTo({
-      url: `${'/pages/detail/detail?id=' + this.data.imgUrls[this.data.swiperCurrent].goodId}`,
-    })
+        url: `${'/pages/detail/detail?id=' + this.data.imgUrls[this.data.swiperCurrent].goodId}`,
+      })
   },
   // 事件处理函数
   onLoad(){
@@ -157,9 +156,8 @@ Page({
       imageUrl: '/images/about_share.jpg',
       path: '/pages/home/home?shareUser=' + wechatAuthSession.unionid
     }
-    
-   
   },
+
   goDetail: function(){
     // console.log('/pages/detail/detail?id=' + this.getDate(globleGoodId))
     wx.navigatorTo({

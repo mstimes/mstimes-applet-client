@@ -49,12 +49,16 @@ Page({
       url: this.data.links[this.data.swiperCurrent]
     })
   },
+
+  onReady: function (){
+    this.checkLogin();
+  },
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
     var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
-    // console.log(getServiceLoginInfo)
     if(getServiceLoginInfo.userNumber == null){
       wx.hideShareMenu()
     }
@@ -68,12 +72,6 @@ Page({
       imageUrl: this.data.globalImageUrl,
       path: '/pages/detail/detail?id=' + this.data.globalId + '&shareUser=' + wechatAuthSession.unionid
     }
-    
-      //跳转到登录页
-      // wx.navigateTo({
-      //   url: "/pages/login/login?originPage=detail&id=" +  _this.data.globalId
-      // })  
-   
   },
   // 事件处理函数
   onLoad: function(options){
@@ -166,15 +164,9 @@ Page({
     }
   },
 
-  clickme: function () {
+  checkLogin: function () {
     var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
-    // console.log(getServiceLoginInfo)
-    if(getServiceLoginInfo.userNumber != null){
-      this.showModal();
-      // wx.navigateTo({
-      //   url: `${'/pages/detail/detail?id=' + this.data.imgUrls[this.data.swiperCurrent].goodId}`,
-      // })
-    }else{
+    if(getServiceLoginInfo.userNumber == null){
       //跳转到登录页
       wx.redirectTo({
         url: "/pages/login/login?originPage=detail&id=" +  this.data.globalId

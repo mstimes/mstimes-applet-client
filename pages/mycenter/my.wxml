@@ -1,0 +1,11 @@
+<view class="background">
+  <view class="row-flex-start">
+    <image style="width: 120rpx; height: 120rpx; margin-left: 30rpx; margin-right:10rpx; margin-top:30rpx; margin-bottom: 30rpx" src="{{headImageUrl}}"></image>
+    <view class="common-column-container">
+      <text style="margin-top: 10rpx;font-size:25rpx;font-weight:500">蜜糖</text>
+      <text style="margin-top: 10rpx;font-size:25rpx;font-weight:500">昵称： {{nickName}}</text>
+      <text style="margin-top: 10rpx;font-size:25rpx;font-weight:500">用户编号： {{userNumber}}</text>
+    </view>
+  </view>
+  
+</view>
