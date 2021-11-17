@@ -153,7 +153,7 @@
   </view> -->
 
   <view class="do-buy-container">
-    <button class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="clickme"> 
+    <button class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="showModal"> 
       <text style="color: white"> 立即下单 </text>
     </button>
   </view>

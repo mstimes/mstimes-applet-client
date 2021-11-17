@@ -96,7 +96,7 @@
   text-decoration-line: underline;
   font-size: 26rpx;
   margin-top: 6px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   font-weight: 600rpx;
   font-family: NSimSun;
   /* #aba818 黄色 */
@@ -244,10 +244,9 @@
   height: 100rpx;
   width: 100rpx;
   background-color: rgba(27, 25, 25, 0.432);
-  /* background-color: white; */
   border-radius: 100%;
   position: fixed;
-  bottom: 50rpx;
+  bottom: 20rpx;
   right: 20rpx;
   display: flex;
   align-items: center;

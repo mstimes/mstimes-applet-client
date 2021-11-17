@@ -10,17 +10,16 @@ Page({
 
   //登录逻辑
   getUserProfile(){
-        // 获取用户信息
-        // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
-        wx.getUserProfile({
-          desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-          success: (res) => {
-            wx.setStorageSync('userInfo', res.userInfo)
-            // console.log(res.userInfo)
-            this.serviceLogin()
-          }
-        })
-      
+    // 获取用户信息
+    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        wx.setStorageSync('userInfo', res.userInfo)
+        // console.log(res.userInfo)
+        this.serviceLogin()
+      }
+    })
   },
   serviceLogin(){
     var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
@@ -96,7 +95,7 @@ Page({
       wx.redirectTo({
         url: "/pages/detail/detail?id=" + this.data.detailId
       })
-    }else{
+    } else{
       wx.redirectTo({
         url: "/pages/home/home" 
       })
