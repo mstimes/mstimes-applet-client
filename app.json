@@ -11,7 +11,8 @@
     "pages/logs/logs",
     "pages/order/result/result_page",
     "pages/webview/webview",
-    "pages/coupon/couponList"
+    "pages/coupon/couponList",
+    "pages/hsitory/history"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,5 +22,11 @@
     "navigationBarBackgroundColor": "#eeeeee"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "kdPlugin": {
+      "version": "1.1.2",
+      "provider": "wx6885acbedba59c14"
+    }
+  }
 }

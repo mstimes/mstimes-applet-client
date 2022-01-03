@@ -152,9 +152,15 @@
     <button class="butt" type="primary" size="small" open-type="share">分享</button>
   </view> -->
 
-  <view class="do-buy-container">
+  <view class="do-buy-container" wx:if="{{!isHistory}}">
     <button class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="showModal"> 
       <text style="color: white"> 立即下单 </text>
+    </button>
+  </view>
+
+  <view class="do-buy-container" wx:if="{{isHistory}}">
+    <button class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="sendChangeStar"> 
+      <text style="color: white"> 加入心愿单 </text>
     </button>
   </view>
 

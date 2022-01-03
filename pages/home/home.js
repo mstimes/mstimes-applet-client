@@ -16,7 +16,11 @@ Page({
     duration: 1000, //滑动动画时长
     circular: true, //是否采用衔接滑动
     swiperCurrent: 0,
-    totalOrderRecords: 0
+    totalOrderRecords: 0,
+    homeTodayTitle: '甄选超榜',
+    homeTodayDetail: '每日20:00点为您准时更新好物榜单',
+    homeYesterdayTitle: '昨日甄选',
+    homeYesterdayDetail: '明日20:00即将下架产品'
   },
 
   //轮播图的切换事件
@@ -40,6 +44,7 @@ Page({
   // 事件处理函数
   onLoad(){
     this.getOrderRecords();
+    this.getHomeTitleInfos();
 
     var _this = this; 
     var todayUrl = "https://server.ghomelifevvip.com/goods/queryGoodsListByType?type=1";
@@ -147,6 +152,29 @@ Page({
       }
     })
   },
+
+  getHomeTitleInfos : function () {
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: 'https://server.ghomelifevvip.com/common/queryHomeTitleInfos',
+      complete: res=>{
+        if(!res.data.success){
+          console.log(res.data.msg)
+        }else{
+          this.setData({
+            homeTodayTitle: res.data.dataList[0].todayTitle,
+            homeTodayDetail: res.data.dataList[0].todayDetail,
+            homeYesterdayTitle: res.data.dataList[0].yesterdayTitle,
+            homeTesterdayTitle: res.data.dataList[0].yesterdayDetail,
+          })
+        }
+      }
+    })
+  },
+
   //分享右上角功能
   onShareAppMessage: function () {
     var wechatAuthSession = wx.getStorageSync('wechatAuthSession')

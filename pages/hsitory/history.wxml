@@ -1,0 +1,70 @@
+<!--pages/hsitory/history.wxml-->
+<view class="history-container">
+  <view class="title-head">
+    <view>
+      <text>蜜蜜花园</text>
+    </view>
+  </view>
+
+  <!-- <view class="search">
+    <form bindsubmit="formSubmit">
+      <view class="search_arr">
+        <icon class="searchcion" size='20' type='search'></icon>
+        <input class="search-input" type="text" name="id" placeholder='输入关键词' />
+      </view>
+      <view class="search-but" >
+        <button formType="submit">搜索</button>   
+      </view>
+    </form>
+  </view> -->
+  <view class="classify">
+      <scroll-view class="classify-srcolbox" scroll-x scroll-with-animation='true'>
+        <div wx:key="unique" wx:for="{{classifies}}" >
+            <div class="classify-item-line">
+              <button wx:if="{{item.name != null && item.classify != selectClassify}}" class="classify-button" data-classify='{{item.classify}}'  bindtap='classifyButtonSearch' style="width:100%">
+                <text style="font-size: 22rpx; font-weight: 300">{{item.name}}</text>
+               </button>
+               <button wx:if="{{item.name != null && item.classify == selectClassify}}" class="selected-classify-button" data-classify='{{item.classify}}'  bindtap='classifyButtonSearch' style="width:100%">
+                <text style="font-size: 22rpx; font-weight: 300;">{{item.name}}</text>
+               </button>
+            </div>
+        </div>
+      </scroll-view>
+  </view>
+
+  <view class="order-info">
+    <view class="order-item"  wx:key="index" wx:for-index="i" wx:for="{{goodList}}" >
+        <view wx:if="{{!item.wishGood}}" class="star_view" data-id='{{i}}' bindtap="addStar">
+          <icon style="color: black;  margin-left: 5px; margin-right: 3px; margin-bottom:5px; margin-top:6px; font-size: 35rpx" class="iconfont icon-jurassic_start"></icon>
+        </view>
+        <view wx:if="{{item.wishGood}}" class="star_view" data-id='{{i}}' bindtap="subtractStar">
+          <icon style="color: black;  margin-left: 5px; margin-right: 3px; margin-bottom:6px; margin-top:6px; font-size: 38rpx" class="iconfont icon-xingxing" size="20"></icon>
+        </view>
+      <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}&isHistory=true" hover-class="other-navigator-hover">
+        <view class="order-image-border" >
+            <view class="order_star_view">
+              <image src="{{item.mainImage}}" style="margin-top:5px;width:100%;border-radius:5px" mode="widthFix"></image>
+            </view>
+        </view>
+        <view class="order-text-container">
+          <view class="flex-row" style="display: block;">
+            <view class="order-sail-des-title">
+              <text>{{item.brand}}</text>
+            </view>
+            <view class="order-sail-des">
+              <text>{{item.description}}</text>
+            </view>
+
+            <view class="order-sail-des-title" style="margin-bottom: 60rpx">
+              <text class="order-sail-best-small">¥</text>
+              <text class="order-sail-best">{{item.groupPriceDotBefore}}</text>
+              <text wx:if="{{item.groupPriceDotAfter > 0}}" class="order-sail-best-small">.{{item.groupPriceDotAfter}}</text>
+              <text class="order-sail-ori">原价{{item.oriPrice}}</text>
+            </view>
+         </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+</view>

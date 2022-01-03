@@ -28,7 +28,8 @@ Page({
     diffPriceType: 0,
     diffPriceMap: '',
     initSelectClassifyButton: true,
-    initSelectSpecificButton: true
+    initSelectSpecificButton: true,
+    isHistory: false,
   },
   //轮播图的切换事件
   swiperChange: function(e) {
@@ -81,6 +82,7 @@ Page({
       // classifyButtons: _this.data.classifyButtons,
       // specificButtons: _this.data.specificButtons,
       globalId: options.id, 
+      isHistory: options.isHistory,
     })
 
     if (options.id != ""){
@@ -391,6 +393,31 @@ Page({
     }
 
     return strMap;
-  }
+  },
+
+  sendChangeStar: function () {
+    var loginInfo = wx.getStorageSync('serviceLogin');
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: "https://server.ghomelifevvip.com/goods/changeStarList",
+      data: {
+        "type": 1,
+        "goodId": parseInt(this.data.globalId),
+        "userNumber": loginInfo.userNumber,
+      },
+      complete: res=>{
+        if(!res.data.success){
+          console.log(res.data.msg)
+        }else{
+          wx.showToast({
+            title: '已加入心愿单',
+          })
+        }
+      }
+    })
+  },
 })
 

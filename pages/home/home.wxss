@@ -241,13 +241,13 @@
   color:#a3a2a2
 }
 .round-click{
-  height: 100rpx;
-  width: 100rpx;
+  height: 80rpx;
+  width: 80rpx;
   background-color: rgba(27, 25, 25, 0.432);
   border-radius: 100%;
   position: fixed;
-  bottom: 20rpx;
-  right: 20rpx;
+  bottom: 40rpx;
+  right: 30rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -255,6 +255,26 @@
 }
 .round-click navigator{
   font-size: 32rpx;
+  max-width: 80rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.all-goods-click{
+  height: 80rpx;
+  width: 80rpx;
+  background-color: rgba(27, 25, 25, 0.432);
+  border-radius: 100%;
+  position: fixed;
+  bottom: 140rpx;
+  right: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+.all-goods-click navigator{
+  font-size: 20rpx;
   max-width: 80rpx;
   color: #fff;
   text-align: center;

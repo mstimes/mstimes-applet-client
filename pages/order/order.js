@@ -30,10 +30,12 @@ Page({
    */
   onLoad: function (options) {
     var sumPrice = options.groupPrice * options.num;
+    console.log('sumPrice ' + sumPrice);
+    console.log('num ' + options.num);
     if(options.groupPrice.indexOf(".") < 0){
-      sumPrice = options.groupPrice + ".00"
+      sumPrice = sumPrice + ".00"
     }else {
-      sumPrice = options.groupPrice + "0"
+      sumPrice = sumPrice + "0"
     }
 
     this.setData({
@@ -233,7 +235,7 @@ Page({
       data: {
         "outTradeNo" : outTradeNo,
         "goodName": this.data.globalTitle,
-        "totalFee": this.data.groupPrice,
+        "totalFee": this.data.groupPrice * this.data.num,
         "openId": wechatAuthSession.openid,
       },
       complete: res=>{
