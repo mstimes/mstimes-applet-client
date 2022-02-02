@@ -20,7 +20,7 @@ Page({
     homeTodayTitle: '甄选超榜',
     homeTodayDetail: '每日20:00点为您准时更新好物榜单',
     homeYesterdayTitle: '昨日甄选',
-    homeYesterdayDetail: '明日20:00即将下架产品'
+    homeYesterdayDetail: '明日20:00即将下架产品',
   },
 
   //轮播图的切换事件
@@ -168,7 +168,7 @@ Page({
             homeTodayTitle: res.data.dataList[0].todayTitle,
             homeTodayDetail: res.data.dataList[0].todayDetail,
             homeYesterdayTitle: res.data.dataList[0].yesterdayTitle,
-            homeTesterdayTitle: res.data.dataList[0].yesterdayDetail,
+            homeTesterdayDetail: res.data.dataList[0].yesterdayDetail,
           })
         }
       }
@@ -232,5 +232,49 @@ Page({
       }
     })
   },
+
+  downloadTap: function() {
+    wx.request({
+      header: {
+        "Content-Type": "application/json;charset-utf-8"
+      },
+      method: "POST",
+      url: 'https://server.ghomelifevvip.com/wechat/queryAppletCodeToken?shareUser=aaa&goodId=10672',
+      responseType: 'arraybuffer',
+      complete: res=>{
+        if(res.data.success){
+          console.log("result : " + res.data.dataList[0]);
+          // wx.request({
+          //   header: {
+          //     "Content-Type": "application/json;charset-utf-8"
+          //   },
+          //   method: "POST",
+          //   url: 'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=' + res.data.dataList[0].accessToken,
+          //   responseType: 'arraybuffer',
+          //   // data: {
+          //   //   "scene": 'sharerId',
+          //   //   "page": '/pages/hsitory/history',
+          //   //   "width": 280,
+          //   //   "is_hyaline": true,
+          //   // },
+          //   complete: res=>{
+          //     if(res.data.success){
+          //       console.log(res.data);
+          //       var base64 = wx.arrayBufferToBase64(res.data);
+          //       this.setData({
+          //         showImage: "data:image/PNG;base64," + base64,
+          //       });
+          //     }else{
+          //       console.error('order info list not exist ' + res.data.errmsg)
+          //     }
+          //   }
+          // }
+          // )
+        }else{
+          console.error('order info list not exist ' + res.data.errmsg)
+        }
+      }
+    })
+  }
 })
 

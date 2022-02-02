@@ -176,6 +176,21 @@
   position: absolute;
 }
 
+.week-good-container {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+}
+
+.week-good-row-flex{
+  margin-left: 6rpx;
+  margin-right: 6rpx;
+  width: 48%;
+  margin-top: 2px;
+  /* border: 1px solid rgb(250, 248, 248); */
+  position: relative;
+}
+
 .monday-good-container {
   border-radius: 5px;
   /* background-color:rgb(247, 244, 244); */
@@ -278,4 +293,45 @@
   max-width: 80rpx;
   color: #fff;
   text-align: center;
+}
+
+.week-sail-title{
+  text-align: center;
+  font-size: 26rpx;
+  font-family: STKaiti;
+  font-weight: 400;
+  padding: 10px;
+  color:#ffffff
+}
+
+.week-sail-des {
+  text-align: center;
+  font-size: 20rpx;
+  font-family: STKaiti;
+  color:#a3a2a2
+}
+
+.week-sail-best-small {
+  /* margin-top:10px; */
+  margin-left:1px;
+  font-size: 20rpx;
+  font-weight: 900;
+  color:#c00606;
+  text-align: center;
+}
+.week-sail-best {
+  /* margin-top:10px; */
+  margin-left:3px;
+  font-weight: 900;
+  font-size: 30rpx;
+  color:#c00606;
+  text-align: center;
+}
+.week-sail-ori {
+  /* margin-left:8px; */
+  /* margin-top:2px; */
+  margin-left:5px;
+  font-size: 20rpx;
+  text-decoration:line-through;
+  color: #565657
 }

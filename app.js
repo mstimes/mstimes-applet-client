@@ -40,8 +40,14 @@ App({
   onShow: function (options) {
     // console.log("app.js show")
     // console.log(options.query.shareUser)
+
     if(options.query.shareUser != null){
       wx.setStorageSync('shareUser',options.query.shareUser)
+    }
+
+    console.log('options.query.scene ' + options.query.scene)
+    if(options.query.scene != null){
+      wx.setStorageSync('scene',options.query.scene)
     }
   },
     

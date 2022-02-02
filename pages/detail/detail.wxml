@@ -16,7 +16,7 @@
         <text class="price-small">¥</text>
         <text class="price-sail-best">{{detailRotateImages[0].groupPriceDotBefore}}</text>
         <text wx:if="{{detailRotateImages[0].groupPriceDotAfter > 0}}" class="price-small">.{{detailRotateImages[0].groupPriceDotAfter}}</text>
-        <text class="price-sail-ori">原价{{detailRotateImages[0].oriPrice}}</text>
+        <text class="price-sail-ori">¥{{detailRotateImages[0].oriPrice}}</text>
       </view>
       <view class="title">
         <text >{{detailRotateImages[0].title}}</text>

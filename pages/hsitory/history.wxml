@@ -40,7 +40,8 @@
         <view wx:if="{{item.wishGood}}" class="star_view" data-id='{{i}}' bindtap="subtractStar">
           <icon style="color: black;  margin-left: 5px; margin-right: 3px; margin-bottom:6px; margin-top:6px; font-size: 38rpx" class="iconfont icon-xingxing" size="20"></icon>
         </view>
-      <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}&isHistory=true" hover-class="other-navigator-hover">
+      <!-- <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}&isHistory=true" hover-class="other-navigator-hover"> -->
+        <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" hover-class="other-navigator-hover">
         <view class="order-image-border" >
             <view class="order_star_view">
               <image src="{{item.mainImage}}" style="margin-top:5px;width:100%;border-radius:5px" mode="widthFix"></image>
@@ -59,7 +60,7 @@
               <text class="order-sail-best-small">¥</text>
               <text class="order-sail-best">{{item.groupPriceDotBefore}}</text>
               <text wx:if="{{item.groupPriceDotAfter > 0}}" class="order-sail-best-small">.{{item.groupPriceDotAfter}}</text>
-              <text class="order-sail-ori">原价{{item.oriPrice}}</text>
+              <text class="order-sail-ori">¥{{item.oriPrice}}</text>
             </view>
          </view>
         </view>
