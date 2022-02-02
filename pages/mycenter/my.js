@@ -15,8 +15,8 @@ Page({
    */
   onLoad: function (options) {
     var loginInfo = wx.getStorageSync('serviceLogin');
-    console.log('loginInfo ' + loginInfo.toString());
-    console.log('loginInfo.headImageUrl ' + loginInfo.imageUrl);
+    // console.log('loginInfo ' + loginInfo.toString());
+    // console.log('loginInfo.headImageUrl ' + loginInfo.imageUrl);
     this.setData({
       headImageUrl: loginInfo.imageUrl,
       nickName: loginInfo.name,

@@ -2,7 +2,7 @@
 <view class="hidden-left-right">
   <view class="about-container">
     <view class="top-image-title">
-        <image class="imagesize-image" src="/images/about0.png" mode="aspectFit"></image>
+        <image class="imagesize-image" src="/images/about0.jpg" mode="aspectFit"></image>
     </view>
     <view class="about-detail">
       <text>一个专注于探索美学边界的轻奢馆</text>
@@ -129,7 +129,7 @@
       <text>contact@mstimes.com.cn</text>
     </view>
       <view class="image-about-ewm">
-          <image class="image-ewm-size" src="/images/aboutewm.png" mode="aspectFit"></image>
+          <image class="image-ewm-size" src="/images/aboutewm.jpg" mode="aspectFit"></image>
       </view>
       <view class="about-zs-contentUS-title">
         <text>CONTACT US</text>

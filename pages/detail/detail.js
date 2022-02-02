@@ -28,7 +28,8 @@ Page({
     diffPriceType: 0,
     diffPriceMap: '',
     initSelectClassifyButton: true,
-    initSelectSpecificButton: true
+    initSelectSpecificButton: true,
+    isHistory: false,
   },
   //轮播图的切换事件
   swiperChange: function(e) {
@@ -51,7 +52,7 @@ Page({
   },
 
   onReady: function (){
-    this.checkLogin();
+    this.checkLoginBeforeLoad();
   },
 
   /**
@@ -77,13 +78,26 @@ Page({
   onLoad: function(options){
     var _this = this;
 
-    _this.setData({
-      // classifyButtons: _this.data.classifyButtons,
-      // specificButtons: _this.data.specificButtons,
-      globalId: options.id, 
-    })
+    // 解析scene参数
+    var getSceneInfo = wx.getStorageSync('scene')
+    if(getSceneInfo != ''){
+      var sceneArr = getSceneInfo.split('&');
+      console.log('sceneArr[0] ' + sceneArr[0]);
+      console.log('sceneArr[1] ' + sceneArr[1]);
+      _this.setData({
+        globalId: sceneArr[1], 
+        isHistory: false,
+      })
+      wx.setStorageSync('shareUser',sceneArr[0])
+    } else{
+      console.log('getSceneInfo is null.');
+      _this.setData({
+        globalId: options.id, 
+        isHistory: options.isHistory,
+      })
+    }
 
-    if (options.id != ""){
+    if (this.data.globalId != ""){
       wx.request({
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -91,7 +105,7 @@ Page({
         method: "POST",
         url: 'https://server.ghomelifevvip.com/goods/queryGoodById',
         data: {
-          "goodId": options.id
+          "goodId": this.data.globalId
         },
         complete: res=>{
           if(!res.data.success){
@@ -164,15 +178,27 @@ Page({
     }
   },
 
-  checkLogin: function () {
+  checkLoginBeforeLoad: function () {
+      var getSceneInfo = wx.getStorageSync('scene')
+      var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
+      if(getSceneInfo == '' && getServiceLoginInfo.userNumber == null){
+        //跳转到登录页
+        wx.redirectTo({
+          url: "/pages/login/login?originPage=detail&id=" +  this.data.globalId
+        })
+      }
+  },
+
+  checkLoginForPay: function () {
+    var getSceneInfo = wx.getStorageSync('scene')
     var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
-    if(getServiceLoginInfo.userNumber == null){
+    if(getSceneInfo != '' && getServiceLoginInfo.userNumber == null){
       //跳转到登录页
       wx.redirectTo({
         url: "/pages/login/login?originPage=detail&id=" +  this.data.globalId
       })
     }
-  },
+},
 
   //显示对话框
   showModal: function () {
@@ -317,6 +343,8 @@ Page({
   },
 
   doBuyButtonTap: function() {
+    this.checkLoginForPay();
+
     if(this.data.selectedClassify == ''){
       wx.showToast({
         icon: 'error',
@@ -391,6 +419,31 @@ Page({
     }
 
     return strMap;
-  }
+  },
+
+  sendChangeStar: function () {
+    var loginInfo = wx.getStorageSync('serviceLogin');
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: "https://server.ghomelifevvip.com/goods/changeStarList",
+      data: {
+        "type": 1,
+        "goodId": parseInt(this.data.globalId),
+        "userNumber": loginInfo.userNumber,
+      },
+      complete: res=>{
+        if(!res.data.success){
+          console.log(res.data.msg)
+        }else{
+          wx.showToast({
+            title: '已加入心愿单',
+          })
+        }
+      }
+    })
+  },
 })
 

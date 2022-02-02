@@ -44,6 +44,7 @@ Page({
         var orderRecordsTemp = this.data.orderRecordList;
         if(res.data.success){
           var records = res.data['dataList'];
+          console.log('records ' + records[0].logisticsNumber);
           this.setData({
             totalOrderRecords: res.data['pageTotalCount'],
             loadedOrderRecords: this.data.loadedOrderRecords + records.length,
@@ -53,6 +54,14 @@ Page({
           console.error('order info list not exist ' + res.data.msg)
         }
       }
+    })
+  },
+
+  logisticsSearch: function (e) {
+    console.log('logisticsNumber' + e.currentTarget.dataset.number);
+    var logisticsNumber = e.currentTarget.dataset.number;
+    wx.navigateTo({
+      url: "plugin://kdPlugin/index?num=" + logisticsNumber + "&appName=MS时代",
     })
   },
 

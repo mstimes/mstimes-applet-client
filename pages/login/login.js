@@ -95,6 +95,10 @@ Page({
       wx.redirectTo({
         url: "/pages/detail/detail?id=" + this.data.detailId
       })
+    } else if(this.data.originPage == 'history'){
+      wx.redirectTo({
+        url: "/pages/hsitory/history"
+      })
     } else{
       wx.redirectTo({
         url: "/pages/home/home" 

@@ -5,8 +5,12 @@
   </view>
   
   <view style="background-color:#f7f7f7;" class="flex-view-item" wx:key="index" wx:for-index="i" wx:for="{{orderRecordList}}" >
-  <view class="order-records-container">
-    <text style="font-size:25rpx; font-weight:400; padding: 0px 0px 0px 20px">订单编号 {{item.orderNumber}}</text>
+  <view class="order-records-container" >
+    <view class="row-space-between">
+      <text style="font-size:25rpx; font-weight:400; padding: 0px 0px 0px 0px">订单编号 {{item.orderNumber}}</text>
+      <text wx:if="{{item.logisticsNumber == null}}" style="font-size:22rpx; font-weight:400; margin-right:0rpx; color:grey"> 商家未发货</text>
+      <text wx:if="{{item.logisticsNumber != null}}" style="font-size:22rpx; font-weight:400; color:grey" data-number='{{item.logisticsNumber}}' bindtap="logisticsSearch">查看物流信息 ></text>
+    </view>
     <view class="row-flex-start">
       <image style="width: 160rpx; height: 160rpx; margin-left: 30rpx; margin-right:10rpx; margin-top:20rpx" src="https://ghomelifevvip.com/{{item.mainImage}}"></image>
       <view class="common-column-container">
@@ -19,11 +23,14 @@
           <text style="margin-top: 25rpx; margin-bottom: 5rpx; margin-left:10rpx;">实付金额 {{item.realPrice * item.orderCount}} 元</text>
         </view>
     </view>
- 
+    <view class="row-space-between">
+      <text>{{item.orderAddress}}</text>
+    </view>
     <view class="row-space-between">
       <text>收件人： {{item.person}}</text>
       <text>下单时间  {{item.createTime}}</text>
     </view>
+
   </view>
   <view wx:if="{{i + 1 == totalOrderRecords}}" style="text-align: center;padding: 10px 0px 20px 0px">
     <text style="font-size: 25rpx; font-weight: 400" >没有更多数据 </text>

@@ -27,10 +27,10 @@
     <view style="padding:40px 20px 10px 20px">
       <text style="font-size: 28rpx;color:#adab8c;font-family:NSimSun;">PICK SUPER LIST\n</text>
       <view class="bload_word">
-        <text style="font-size: 40rpx;font-weight:800;font-family:NSimSun;color:#ffffff">甄选超榜\n</text>
+        <text style="font-size: 40rpx;font-weight:800;font-family:NSimSun;color:#ffffff">{{homeTodayTitle}}\n</text>
       </view>
       <!-- #aba8a8 -->
-      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">#今日上新# 每日20:00点为您准时更新好物榜单</text>
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">#今日上新# {{homeTodayDetail}}</text>
     </view>
   </view>
 
@@ -60,21 +60,21 @@
               <text class="home-sail-best-small">¥</text>
               <text class="home-sail-best">{{item.groupPriceDotBefore}}</text>
               <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small">.{{item.groupPriceDotAfter}}</text>
-              <text class="home-sail-ori">原价{{item.oriPrice}}</text>
+              <text class="home-sail-ori">¥{{item.oriPrice}}</text>
             </view>
          </view>
         </view>
       </navigator>
     </view>
   </view>
-  <!-- 即将下架 -->
+  <!-- 计时榜单 -->
   <view wx:if="{{imgYestodayUrls.length > 0}}" class="home-motto" style="margin-top:-5px">
     <view style="padding:40px 20px 10px 20px">
       <text style="font-size: 28rpx;color:#adab8c;font-family:NSimSun;">TIMEKEEPING LIST \n</text>
       <view class="bload_word">
-        <text style="font-size: 40rpx;font-weight:800;;font-family:NSimSun;color:#ffffff">计时榜单\n</text>
+        <text style="font-size: 40rpx;font-weight:800;;font-family:NSimSun;color:#ffffff">{{homeYesterdayTitle}}\n</text>
       </view>
-      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">#即将下架# 明日20:00即将下架产品</text>
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">#即将下架# {{homeTesterdayDetail}}</text>
     </view>
   </view>
   <view class="flex-row" style="display: block">
@@ -100,22 +100,56 @@
             <text class="home-sail-best-small">¥</text>
             <text class="home-sail-best">{{item.groupPriceDotBefore}}</text>
             <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small">.{{item.groupPriceDotAfter}}</text>
-            <text class="home-sail-ori">原价{{item.oriPrice}}</text>
+            <text class="home-sail-ori">¥{{item.oriPrice}}</text>
           </view>
         </view>
       </navigator>
     </view>
   </view>
 
-<!-- 周一上新 -->
-<view style="padding:0px 0px 6px 0px; background-color: #0d0d0e;" >
+<!-- 本周推荐 -->
+<!-- <view class="week-good-container" style="padding:0px 10px 6px 10px; background-color: #0d0d0e;" >
+  <view wx:if="{{imgYestodayUrls.length > 0}}" class="home-motto" style="margin-top:-5px;">
+    <view style="padding:40px 30px 30px 100px">
+      <text style="font-size: 35rpx;font-weight:800;;font-family:NSimSun;color:#ffffff;">本周精选\n</text>
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c;padding: 20px 0px 0px 0px">#每周更新# 每周六20:00准时上架产品</text>
+    </view>
+  </view>
+
+  <view class="week-good-row-flex" style="background-color: black;"  wx:key="unique" wx:for="{{imgYestodayUrls}}" >
+    <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" redirect hover-class="other-navigator-hover">
+    <view style="padding: 0px 1px 0px 1px" bindtap="detailClick">
+        <image src="{{item.mainImage}}" style="width:100%;border-radius:3px" mode="widthFix"></image>
+        <view class="order-text-container">
+          <view class="flex-row" style="display: block;">
+            <view class="week-sail-title">
+              <text>{{item.title}}</text>
+            </view>
+            <view class="week-sail-des">
+              <text>{{item.description}}</text>
+            </view>
+
+            <view class="week-sail-title" style="margin-bottom: 60rpx">
+              <text class="week-sail-best-small">¥</text>
+              <text class="week-sail-best">{{item.groupPriceDotBefore}}</text>
+              <text wx:if="{{item.groupPriceDotAfter > 0}}" class="week-sail-best-small">.{{item.groupPriceDotAfter}}</text>
+              <text class="week-sail-ori">¥{{item.oriPrice}}</text>
+            </view>
+         </view>
+        </view>
+    </view>
+    </navigator>
+  </view>
+</view> -->
+
+<!-- 周末上新 -->
+<!-- <view style="padding:0px 0px 6px 0px; background-color: #0d0d0e;" >
   <view wx:if="{{imgMondayUrls.length > 0}}" class="home-motto" style="margin-top:-5px;">
-    <view style="padding:40px 20px 20px 20px">
-      <!-- <text style="font-size: 28rpx;color:#adab8c;font-family:NSimSun;">TIMEKEEPING LIST \n</text> -->
+    <view style="padding:20px 20px 20px 20px">
       <view class="bload_word">
         <text style="font-size: 35rpx;font-weight:800;;font-family:NSimSun;color:#ffffff">好生活 没那么贵\n</text>
       </view>
-      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">#每周更新# 每周一10:00准时上架产品</text>
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">#每周更新# 每周六20:00准时上架产品</text>
     </view>
   </view>
 
@@ -138,7 +172,7 @@
             <text class="home-sail-best-small" style="margin-left:20px; font-size: 23rpx">¥</text>
             <text class="home-sail-best" style="font-size: 36rpx">{{item.groupPriceDotBefore}}</text>
             <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small" style="font-size: 20rpx">.{{item.groupPriceDotAfter}}</text>
-            <text class="home-sail-ori" style="font-size: 23rpx">原价{{item.oriPrice}}</text>
+            <text class="home-sail-ori" style="font-size: 23rpx">¥{{item.oriPrice}}</text>
           </view>
         </view>
       </view>
@@ -146,15 +180,28 @@
     </navigator>
     <view style="padding: 10px 0px 0px 0px; background-color: #0d0d0e;"></view>
   </view>
+</view> -->
+
+<navigator url='/pages/order/records/order_records'>
+  <view wx:if="{{totalOrderRecords > 0}}" class="round-click" >
+    <icon class="iconfont icon-wodeh" style="font-size: 45rpx; color: white"></icon>
 </view>
-<view wx:if="{{totalOrderRecords > 0}}" class="round-click" >
-  <navigator url='/pages/order/records/order_records' class="iconfont icon-wodeh" style="font-size: 50rpx"></navigator > 
-</view>
+</navigator>
+
+<navigator url='/pages/hsitory/history'>
+  <view wx:if="{{totalOrderRecords > 0}}" class="all-goods-click" >
+    <icon class="iconfont icon-gouwu" style="font-size: 40rpx; color: white; margin-bottom: 10rpx"></icon>
+  </view>
+  <view wx:if="{{totalOrderRecords == 0}}" class="round-click" >
+    <icon class="iconfont icon-gouwu" style="font-size: 40rpx; color: white; margin-bottom: 10rpx"></icon>
+  </view>
+</navigator>
+
     
   <!-- 关于 -->
   <view style="margin-top:0px">
       <view class="content">
-        <image class="image-about" mode="aspectFill" src="/images/about_main.jpg" ></image>
+        <image class="image-about" mode="aspectFill" src="/images/about_main.jpg"></image>
         <view class='up'>
           <view>
             <text style="font-family:STKaiti;font-size: 32rpx;color:#ffffff">专注品质生活美学\n</text>
