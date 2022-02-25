@@ -12,6 +12,7 @@
     "pages/order/result/result_page",
     "pages/webview/webview",
     "pages/coupon/couponList",
+    "pages/rank/rank",
     "pages/hsitory/history"
   ],
   "window": {
@@ -20,6 +21,34 @@
     "navigationStyle": "default",
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#eeeeee"
+  },
+  "tabBar": {
+    "selectedColor": "#ffffff",
+    "backgroundColor": "#24242A",
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath": "images/home.png",
+      "selectedIconPath": "images/home.png"
+    },
+    {
+      "pagePath": "pages/rank/rank",
+      "text": "排行榜",
+      "iconPath": "images/rank.png",
+      "selectedIconPath": "images/rank.png"
+    },
+    {
+      "pagePath": "pages/hsitory/history",
+      "text": "蜜蜜花园",
+      "iconPath": "images/garden.png",
+      "selectedIconPath": "images/garden.png"
+    },
+    {
+      "pagePath": "pages/order/records/order_records",
+      "text": "我的",
+      "iconPath": "images/my1.png",
+      "selectedIconPath": "images/my1.png"
+    }]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",

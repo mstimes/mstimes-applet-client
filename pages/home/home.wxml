@@ -36,14 +36,14 @@
 
   <view class="flex-row" style="display: block">
     <view style="background-color:#f7f7f7;" class="flex-view-item" wx:key="unique" wx:for="{{imgDaysUrls}}" >
-      <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" redirect hover-class="other-navigator-hover">
+      <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" open-type="navigate" hover-class="other-navigator-hover">
         <view class="detail-image-border" >
             <!-- <icon class="saleout_icon_class" style="color:red;font-size: 30px" class="iconfont icon-lianxi-yishouqing"></icon> -->
             <view class="second_kill_view">
-              <image wx:if="{{item.secondKill == 1}}" src="/images/second_kill.png" class="buy_empty" style="height:8%;width:16%;"></image>  
+              <image wx:if="{{item.secondKill == 1}}" src="/images/second_kill.jpg" class="buy_empty" style="height:8%;width:16%;"></image>  
             </view>
             <view class="sale_out_view">
-              <image wx:if="{{item.saleOut == 1}}" src="/images/sale_out.png" class="buy_empty" style="height:15%;width:30%;margin-top:30%"></image>  
+              <image wx:if="{{item.saleOut == 1}}" src="/images/sale_out.jpg" class="buy_empty" style="height:15%;width:30%;margin-top:30%"></image>  
             </view>
             <image src="{{item.mainImage}}" style="margin-top:5px;width:100%;border-radius:5px" mode="widthFix"></image>
         </view>
@@ -79,13 +79,13 @@
   </view>
   <view class="flex-row" style="display: block">
     <view class="flex-view-item" style="background-color:#f7f7f7"  wx:key="unique" wx:for="{{imgYestodayUrls}}" >
-      <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" redirect hover-class="other-navigator-hover">
+      <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" open-type="navigate" hover-class="other-navigator-hover">
         <view class="detail-image-border" >
             <view class="second_kill_view">
-              <image wx:if="{{item.secondKill == 1}}" src="/images/second_kill.png" class="buy_empty" style="height:8%;width:16%;"></image>  
+              <image wx:if="{{item.secondKill == 1}}" src="/images/second_kill.jpg" class="buy_empty" style="height:8%;width:16%;"></image>  
             </view>
             <view class="sale_out_view">
-              <image wx:if="{{item.saleOut == 1}}" src="/images/sale_out.png" class="buy_empty" style="height:15%;width:30%;margin-top:30%"></image>  
+              <image wx:if="{{item.saleOut == 1}}" src="/images/sale_out.jpg" class="buy_empty" style="height:15%;width:30%;margin-top:30%"></image>  
               <image src="{{item.mainImage}}" style="margin-top:5px;width:100%;border-radius:5px" mode="widthFix"></image>
             </view>
         </view>
@@ -182,7 +182,7 @@
   </view>
 </view> -->
 
-<navigator url='/pages/order/records/order_records'>
+<!-- <navigator url='/pages/order/records/order_records'>
   <view wx:if="{{totalOrderRecords > 0}}" class="round-click" >
     <icon class="iconfont icon-wodeh" style="font-size: 45rpx; color: white"></icon>
 </view>
@@ -195,7 +195,7 @@
   <view wx:if="{{totalOrderRecords == 0}}" class="round-click" >
     <icon class="iconfont icon-gouwu" style="font-size: 40rpx; color: white; margin-bottom: 10rpx"></icon>
   </view>
-</navigator>
+</navigator> -->
 
     
   <!-- 关于 -->
@@ -213,4 +213,5 @@
         </view>
       </view>
   </view>
+
 </view>

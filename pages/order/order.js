@@ -22,7 +22,10 @@ Page({
     outTradeNo: '',
     classifyId: -1,
     specificId: -1,
-    lastClickTime: 0
+    lastClickTime: 0,
+    goodType: 0,
+    needRealName: false,
+    tax: 0
   },
 
   /**
@@ -32,7 +35,11 @@ Page({
     var sumPrice = options.groupPrice * options.num;
     console.log('sumPrice ' + sumPrice);
     console.log('num ' + options.num);
-    if(options.groupPrice.indexOf(".") < 0){
+    if(parseFloat(options.tax) > 0){
+      sumPrice = parseFloat(sumPrice) + parseFloat(options.tax);
+      console.log('sumPrice include tax ' + sumPrice);
+    }
+    if(sumPrice.toString().indexOf(".") < 0){
       sumPrice = sumPrice + ".00"
     }else {
       sumPrice = sumPrice + "0"
@@ -49,7 +56,11 @@ Page({
       sumPrice: sumPrice,
       classifyId: options.classifyId,
       specificId: options.specificId,
+      goodType: options.goodType,
+      tax: options.tax
     });
+
+    this.getRealNameIdentifyInfo();
 
     var loginInfo = wx.getStorageSync('serviceLogin');
     wx.request({
@@ -179,7 +190,11 @@ Page({
     // 更新上次点击时间
     this.data.lastClickTime = myDate;
 
-    if(!this.data.showAddress){
+    console.log('this.data.needRealName ' + this.data.needRealName);
+    if(this.data.needRealName){
+      console.log('this.data.needRealName ====' + this.data.needRealName);
+      this.showModal()
+    }else if(!this.data.showAddress){
       wx.showToast({
         icon: 'error',
         title: '请填写收件地址',
@@ -268,6 +283,150 @@ Page({
         }
       }
     })
-  }
+  },
+
+  getRealNameIdentifyInfo: function () {
+    var hasRealName = wx.getStorageSync('hasRealName')
+    var loginInfo = wx.getStorageSync('serviceLogin');
+    console.log('goodType ==== ' + this.data.goodType + ", hasRealName " + hasRealName)
+    if(this.data.goodType == 1 && hasRealName == ''){
+      console.log('hasRealName ====== ' + hasRealName)
+      wx.request({
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: "POST",
+        url: 'https://server.ghomelifevvip.com/user/queryRealNameIdentifyInfo',
+        data: {
+          "userNumber": loginInfo.userNumber
+        },
+        complete: res=>{
+          if(!res.data.success){
+            console.log(res.data.msg)
+            this.setData({
+              needRealName: true
+            })
+          }else{
+            console.log('res.data.dataList[0] ' + res.data.dataList[0]);
+            if(res.data.dataList[0] != null){
+              wx.setStorageSync('hasRealName', true)
+              this.setData({
+                needRealName: false
+              })
+            }else {
+              this.setData({
+                needRealName: true
+              })
+            }
+          }
+        }
+      })
+    }
+  },
+
+    //显示对话框
+    showModal: function () {
+      // 显示遮罩层
+      var animation = wx.createAnimation({
+        duration: 200,
+        timingFunction: "linear",
+        delay: 0
+      })
+      this.animation = animation
+      animation.translateY(300).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: true
+      })
+      setTimeout(function () {
+        animation.translateY(0).step()
+        this.setData({
+          animationData: animation.export()
+        })
+      }.bind(this), 200)
+    },
+    //隐藏对话框
+    closeRealNameModal: function () {
+      // 隐藏遮罩层
+      var animation = wx.createAnimation({
+        duration: 200,
+        timingFunction: "linear",
+        delay: 0
+      })
+      this.animation = animation
+      animation.translateY(300).step()
+      this.setData({
+        animationData: animation.export(),
+      })
+      setTimeout(function () {
+        animation.translateY(0).step()
+        this.setData({
+          animationData: animation.export(),
+          showModalStatus: false
+        })
+      }.bind(this), 200)
+    },
+
+    realNameSubmmitForm: function(data) {
+      var username = data.detail.value.username;
+      var idcardNumber = data.detail.value.idcardNumber;
+      console.log('length ' + idcardNumber.toString().length);
+      if(username == ''){
+        wx.showToast({
+          icon: 'error',
+          title: '请填写姓名',
+        })
+      }else if(idcardNumber == ''){
+        wx.showToast({
+          icon: 'error',
+          title: '请填身份证',
+        })
+      }else if(idcardNumber.toString().length != 18){
+        wx.showToast({
+          icon: 'error',
+          title: '身份证错误',
+        })
+      }else {
+        console.log(data.detail.value)
+        var loginInfo = wx.getStorageSync('serviceLogin');
+        // 提交实名信息
+        wx.request({
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          method: "POST",
+          url: 'https://server.ghomelifevvip.com/user/createRealNameIdentifyInfo',
+          data: {
+            "userNumber": loginInfo.userNumber,
+            "userName": username,
+            "idcard": idcardNumber,
+          },
+          complete: res=>{
+            if(res.data.success){
+              console.log('保存实名信息成功！' + res.data.dataList[0])
+              // 保存实名信息状态
+              wx.setStorageSync('hasRealName', true)
+              this.setData({
+                needRealName: false
+              })
+              this.closeRealNameModal();
+              wx.showToast({
+                icon: 'info',
+                title: '保存成功',
+              })
+            }else{
+              console.error('保存实名信息失败！' + res.data.msg)
+              wx.showToast({
+                icon: 'error',
+                title: '保存失败',
+              })
+              this.setData({
+                needRealName: true
+              })
+            }
+          }
+        })
+      }
+    },
 
 })

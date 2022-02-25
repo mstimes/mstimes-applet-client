@@ -69,7 +69,17 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.checkLogin()
+  },
 
+  checkLogin: function () {
+    var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
+    if(getServiceLoginInfo.userNumber == null){
+      //跳转到登录页
+      wx.redirectTo({
+        url: "/pages/login/login?originPage=my"
+      })
+    }
   },
 
   /**

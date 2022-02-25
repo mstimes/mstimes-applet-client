@@ -18,8 +18,8 @@ Page({
   },
 
   returnHomeButtonTap: function(){
-    wx.redirectTo({
-      url: "/pages/home/home"
-    });
+    wx.switchTab({
+      url: '/pages/home/home',
+    })
   }
 });

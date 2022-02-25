@@ -45,7 +45,6 @@ App({
       wx.setStorageSync('shareUser',options.query.shareUser)
     }
 
-    console.log('options.query.scene ' + options.query.scene)
     if(options.query.scene != null){
       wx.setStorageSync('scene',options.query.scene)
     }

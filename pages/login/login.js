@@ -96,12 +96,16 @@ Page({
         url: "/pages/detail/detail?id=" + this.data.detailId
       })
     } else if(this.data.originPage == 'history'){
-      wx.redirectTo({
-        url: "/pages/hsitory/history"
+      wx.switchTab({
+        url: '/pages/hsitory/history',
+      })
+    } else if(this.data.originPage == 'my'){
+      wx.switchTab({
+        url: '/pages/order/records/order_records',
       })
     } else{
-      wx.redirectTo({
-        url: "/pages/home/home" 
+      wx.switchTab({
+        url: '/pages/home/home',
       })
     }
 
