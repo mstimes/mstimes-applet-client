@@ -175,6 +175,8 @@ Page({
     })
   },
 
+
+
   //分享右上角功能
   onShareAppMessage: function () {
     var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
@@ -239,7 +241,7 @@ Page({
         "Content-Type": "application/json;charset-utf-8"
       },
       method: "POST",
-      url: 'https://server.ghomelifevvip.com/wechat/queryAppletCodeToken?shareUser=aaa&goodId=10672',
+      url: 'https://server.ghomelifevvip.com/wechat/queryAppletCodeToken?shareUser=aaa&goodId=10868',
       responseType: 'arraybuffer',
       complete: res=>{
         if(res.data.success){

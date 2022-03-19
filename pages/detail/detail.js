@@ -30,6 +30,8 @@ Page({
     initSelectClassifyButton: true,
     initSelectSpecificButton: true,
     isHistory: false,
+    goodType: 0,
+    tax: 0
   },
   //轮播图的切换事件
   swiperChange: function(e) {
@@ -78,19 +80,14 @@ Page({
   onLoad: function(options){
     var _this = this;
 
-    // 解析scene参数
-    var getSceneInfo = wx.getStorageSync('scene')
-    if(getSceneInfo != ''){
-      var sceneArr = getSceneInfo.split('&');
-      console.log('sceneArr[0] ' + sceneArr[0]);
-      console.log('sceneArr[1] ' + sceneArr[1]);
+    if(options.scene != null){
+      var sceneArr = options.scene.split('MSMSMS');
       _this.setData({
-        globalId: sceneArr[1], 
+        globalId: parseInt(sceneArr[1]), 
         isHistory: false,
       })
       wx.setStorageSync('shareUser',sceneArr[0])
     } else{
-      console.log('getSceneInfo is null.');
       _this.setData({
         globalId: options.id, 
         isHistory: options.isHistory,
@@ -122,6 +119,8 @@ Page({
               groupPrice: detailList.groupPrice,
               diffPriceType: detailList.diffType,
               diffPriceMap: diffPriceMap,
+              goodType: detailList.type,
+              tax: detailList.tax == null ? 0 : detailList.tax,
              })
 
             // 获取商品分类/规格信息
@@ -366,6 +365,8 @@ Page({
          + "&num=" + this.data.num
          + "&classifyId=" + this.data.selectedClassifyId
          + "&specificId=" + this.data.selectedSpecificId
+         + "&goodType=" + this.data.goodType
+         + "&tax=" + this.data.tax
       })
     }
   },

@@ -141,7 +141,7 @@
 .order-sail-best-small {
   /* margin-top:10px; */
   margin-left:1px;
-  font-size: 20rpx;
+  font-size: 19rpx;
   font-weight: 900;
   color:#c00606;
   text-align: center;
