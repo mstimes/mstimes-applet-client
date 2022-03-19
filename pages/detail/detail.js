@@ -81,19 +81,7 @@ Page({
     var _this = this;
 
     if(options.scene != null){
-      wx.showToast({
-        icon: 'error',
-        title: 'd.o.s:' + options.scene,
-      })
       var sceneArr = options.scene.split('MSMSMS');
-      wx.showToast({
-        icon: 'error',
-        title: 'sceneArr0 :' + sceneArr[0],
-      })
-      wx.showToast({
-        icon: 'error',
-        title: 'sceneArr1 :' + sceneArr[1],
-      })
       _this.setData({
         globalId: parseInt(sceneArr[1]), 
         isHistory: false,
