@@ -43,7 +43,13 @@
     </view>
     <view class="row-space-between">
       <text>优惠券</text>
-      <text style="color:grey;">0张优惠券可用</text>
+      <view wx:if="{{discountCoupon > 0}}">
+        <text style="color:grey; margin-left:30rpx;">省¥{{discountCoupon}}元；{{couponCategory}}</text>
+        <text style="margin-left:80rpx; margin-right:10rpx; color:rgb(233, 2, 2); font-weight:600">- ¥{{discountCoupon}}.00</text>
+      </view>
+      <view wx:if="{{discountCoupon == 0}}">
+        <text style="color:grey;">0张优惠券可用</text>
+      </view>
     </view>
 
     <view class="statistic-container">
@@ -53,12 +59,15 @@
             <text style="margin-top:10rpx">税费 ¥ {{tax}}</text>
           </view>
           <text style="margin-top:10rpx">邮费 ¥ 0.00</text>
+          <view style="margin-top:10rpx" wx:if="{{discountCoupon > 0}}">
+            <text > 立减 ¥ {{discountCoupon}}.00</text>
+          </view>
           <view style="margin-top:10rpx" wx:if="{{tax == 0}}">
-            <text > 小计 ¥ {{sumPrice}}</text>
+            <text > 小计 ¥ {{sumPrice - discountCoupon}}</text>
           </view>
         </view>
         <view class="column-container">
-          <text style="margin-right:40rpx; margin-top:15rpx; font-size:26rpx; font-weight:400">¥ {{sumPrice}}</text>
+          <text style="margin-right:40rpx; margin-top:15rpx; font-size:26rpx; font-weight:400">¥ {{sumPrice - discountCoupon}}</text>
         </view>
       </view>
     </view>
@@ -67,7 +76,7 @@
   <view class="do-buy-container">
       <button class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="paymentButtonTap"> 
       <!-- <button wx:if="{{needRealName}}" class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="showModal">  -->
-      <text style="color: white"> 立即支付 ¥ {{sumPrice}}</text>
+      <text style="color: white"> 立即支付 ¥ {{sumPrice - discountCoupon}}</text>
       <text wx:if="{{goodType == 1}}" style="color: white"> (含税费)</text>
     </button>
   </view>

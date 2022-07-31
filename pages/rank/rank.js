@@ -66,7 +66,7 @@ Page({
 
   swiperClick: function(){
     wx.navigateTo({
-      url: `${'/pages/detail/detail?id=' + this.data.imgDaysUrls[this.data.swiperIndex].goodId}&isHistory=true`,
+      url: `${'/pages/detail/detail?id=' + this.data.imgDaysUrls[this.data.swiperIndex].goodId}`,
     })
   }
 })
