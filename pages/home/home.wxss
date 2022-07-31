@@ -107,11 +107,12 @@
   background-color: #090909;
   padding: 20px 25px 5px 25px;
 }
-.main-image-class {
+/*.main-image-class {
   /* position: relative; */
   /* z-index: -1;
-  position: fixed; */
-}
+  position: fixed; 
+}*/
+
 .saleout_icon_class{
   align-items: center;
   position: absolute;

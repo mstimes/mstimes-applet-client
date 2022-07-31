@@ -25,7 +25,9 @@ Page({
     lastClickTime: 0,
     goodType: 0,
     needRealName: false,
-    tax: 0
+    tax: 0,
+    couponCategory: '',
+    discountCoupon: 0
   },
 
   /**
@@ -61,6 +63,7 @@ Page({
     });
 
     this.getRealNameIdentifyInfo();
+    this.getUserCouponInfo();
 
     var loginInfo = wx.getStorageSync('serviceLogin');
     wx.request({
@@ -322,6 +325,40 @@ Page({
         }
       })
     }
+  },
+
+  getUserCouponInfo: function () {
+    var loginInfo = wx.getStorageSync('serviceLogin');
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1;
+    var day = myDate.getDate() + 1;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: 'https://server.ghomelifevvip.com/coupon/queryAllUserCoupons',
+      data: {
+        "userNumber": loginInfo.userNumber,
+        "goodId": this.data.goodId,
+        "status": 1,
+        "pageNum": 0,
+        "pageSize": 20
+      },
+      complete: res=>{
+        if(!res.data.success){
+          console.log(res.data.msg)
+        }else{
+          console.log('res.data.dataList[0] ' + res.data.dataList);
+          if(res.data.dataList[0] != null){
+            this.setData({
+              couponCategory: res.data.dataList[0].couponCategory,
+              discountCoupon: res.data.dataList[0].discountCoupon
+            })
+          }
+        }
+      }
+    })
   },
 
     //显示对话框

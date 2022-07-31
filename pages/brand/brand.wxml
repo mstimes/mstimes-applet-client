@@ -1,0 +1,81 @@
+<view class="title-head">
+  <text>品牌·聚焦</text>
+</view>
+<!-- 
+<block wx:for="{{brandList}}" wx:index="{{index}}" wx:key="unique">
+<view style="width: 100%; height: 100%;">
+  <view class="mainContainer">
+    <image src="{{item.mainImage}}" class="mainImage" mode="widthFix"></image>
+    <view style=" display: flex; flex-direction: column-reverse;">
+      <scroll-view scroll-x="true"> 
+        <view class="banner" scroll-x="true"> 
+          <block wx:for="{{item.brandGoodsList}}" wx:index="{{index}}" wx:key="unique">
+            <navigator url="/pages/detail/detail?id={{item.goodId}}&isHistory" open-type="navigate" hover-class="other-navigator-hover">
+              <view class="banner_Item"> 
+                <image class="swiper-small-image" src="{{item.goodMainImage}}"/>
+                <view class="title-container">
+                  <text style="font-size: 18rpx; font-weight: 450; font-style:oblique; color: rgb(100, 100, 100);text-align: center">{{item.titleDesc}}</text>
+                </view>
+                <view style="text-align: center; margin-bottom: 20rpx; margin-top: 10rpx;">
+                  <text style="font-size: 26rpx; font-weight: 400; color: rgb(14, 13, 13)">¥{{item.goodPriceDotBefore}}</text>
+                  <text wx:if="{{item.goodPriceDotAfter > 0}}" style="font-size: 22rpx; font-weight: 400; color: rgb(14, 13, 13)">.{{item.goodPriceDotAfter}}</text>
+                </view>
+            </view> 
+          </navigator>
+          </block>
+        </view> 
+      </scroll-view>
+    </view>
+  </view>
+</view>
+</block>
+ -->
+
+<!--  page style 2 -->
+ <swiper class="swiper-block" circular="true" previous-margin="60rpx" next-margin="485rpx" current="0" bindchange="swiperChange">
+  <block wx:for="{{brandList}}" wx:index="{{index}}" wx:key="unique">
+    <swiper-item class="top-swiper-item" bindtap="swiperClick">
+      <view class="top-slide-image {{swiperIndex == index ? 'active' : ''}}">
+        <image class="swiper-main-image" src="{{item.mainImage}}"/>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="column-flex-container">
+  <view class="row-flex-start">
+    <image style="width: 125rpx; height: 80rpx; margin-left: 30rpx; margin-right: 5rpx; margin-top:20rpx; border-radius: 3rpx;" src="{{brandList[swiperIndex].brandLogo}}"/>
+    <view class="common-column-container">
+      <text style="font-size: small; font-weight: 500;">{{brandList[swiperIndex].brandName}}</text>
+      <text style="margin-top: 10rpx;">{{brandList[swiperIndex].brandIntroduce}}</text>
+    </view>
+  </view>
+  <view style="text-align: center; margin-bottom: 20rpx; margin-top: 5rpx; margin-left: 80rpx; margin-right: 80rpx; font-weight: 400; font-size: small;">
+    <text>{{brandList[swiperIndex].brandDetail}}</text>
+  </view>
+</view>
+
+<view class="brand-goods">
+    <view class="brand-goods-item"  wx:key="index" wx:for-index="i" wx:for="{{brandList[swiperIndex].brandGoodsList}}" >
+        <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" hover-class="other-navigator-hover">
+          <view class="brand-goods_view">
+            <image src="{{item.goodMainImage}}" style="margin-top:5px;width:100%;border-radius:5px" mode="widthFix"></image>
+          </view>
+          <view class="flex-row" style="display: block;">
+            <view class="brand-goods-sail-des-title">
+              <text>{{item.titleDesc}}</text>
+            </view>
+            <view class="brand-goods-sail-des">
+              <text>{{item.goodDetail}}</text>
+            </view>
+
+            <view class="brand-goods-sail-des-title" style="margin-bottom: 60rpx">
+              <text class="brand-goods-sail-best-small"> ¥</text>
+              <text class="brand-goods-sail-best">{{item.goodPriceDotBefore}}</text>
+              <text wx:if="{{item.goodPriceDotAfter > 0}}" class="brand-goods-sail-best-small">.{{item.goodPriceDotAfter}}</text>
+              <!-- <text class="order-sail-ori">¥{{item.oriPrice}}</text> -->
+            </view>
+         </view>
+      </navigator>
+    </view>
+  </view>

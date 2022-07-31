@@ -43,7 +43,7 @@
   <scroll-view scroll-x="true"> 
     <view class="banner" scroll-x="true"> 
       <block wx:for="{{monthlyImgUrls}}" wx:index="{{index}}" wx:key="unique">
-        <navigator url="/pages/detail/detail?id={{item.goodId}}&isHistory" open-type="navigate" hover-class="other-navigator-hover">
+        <navigator url="/pages/detail/detail?id={{item.goodId}}" open-type="navigate" hover-class="other-navigator-hover">
           <view class="banner_Item"> 
             <view style="font-style:oblique; margin-top: 5rpx; margin-left: 140rpx">
               <text style="font-size: 20rpx; font-weight: 600; color: white">TOP {{index+1}}</text>
