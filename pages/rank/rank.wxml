@@ -40,7 +40,7 @@
       <text style="margin-left: 15rpx; margin-top: 5rpx; font-size: 25rpx; font-weight: 800; color: white; ">月度排行</text>
     </view>
   </view>
-  <scroll-view scroll-x="true"> 
+  <!-- <scroll-view scroll-x="true">  -->
     <view class="banner" scroll-x="true"> 
       <block wx:for="{{monthlyImgUrls}}" wx:index="{{index}}" wx:key="unique">
         <navigator url="/pages/detail/detail?id={{item.goodId}}" open-type="navigate" hover-class="other-navigator-hover">
@@ -57,8 +57,8 @@
               <text style="font-size: 15rpx; font-weight: 500; color: rgb(160, 160, 160)">{{item.titleDesc}}</text>
             </view>
           </view> 
-      </navigator>
+        </navigator>
       </block>
     </view> 
-  </scroll-view>
+  <!-- </scroll-view> -->
 </view>

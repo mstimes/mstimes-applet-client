@@ -1,0 +1,23 @@
+<view class="c-top-header-white">
+  <image style="width: 35rpx; height: 35rpx; margin-top: 20rpx;" src="/images/pi_white1.png"></image>
+   PAI 官方精品店
+</view>
+
+<view class="contain">
+  <view class="register-coupon-container">
+   <!-- <view class="coupon-info-container"> -->
+    <view style="color: white; text-align: center; font-size: 140rpx; font-weight: 100; margin-top: 30rpx;">¥300</view>
+    <view style="color: white; text-align: center; font-size: 26rpx; font-weight: 300; margin-top: 10rpx;">会员首单购物券</view>
+   <!-- </view> -->
+  </view>
+
+  <view style="text-align: center; font-size: 30rpx; font-weight: 500; margin-top: 50rpx;">致热爱生活的你</view>
+  <view style="text-align: center; font-size: 30rpx; font-weight: 500; margin-top: 10rpx;">¥300会员首单购物礼</view>
+
+  <view class="get_coupon">
+    <button class="butt" size="small" style="width:70%" bindtap="toResultPage">立即注册领取</button>
+  </view>
+</view>
+
+
+

@@ -1,10 +1,15 @@
 {
   "pages": [
-    "pages/home/home",
+    "pages/vip/vip_page",
+    "pages/explore/explore",
+    "pages/coupon/invite/invite_custom",
+    "pages/coupon/result/receive_result",
+    "pages/hsitory/history",
     "pages/brand/brand",
+    "pages/home/home",
     "pages/order/order",
     "pages/order/records/order_records",
-    "pages/coupon/coupon",
+    "pages/coupon/share/coupon",
     "pages/login/login",
     "pages/detail/detail",
     "pages/index/index",
@@ -12,53 +17,47 @@
     "pages/logs/logs",
     "pages/order/result/result_page",
     "pages/webview/webview",
-    "pages/coupon/couponList",
+    "pages/coupon/show/couponList",
+    "pages/coupon/select/couponList",
     "pages/rank/rank",
     "pages/brand/brand_detail/brand_detail",
- 
-    "pages/hsitory/history"
-
+    "pages/shopping/cart",
+    "pages/vip_privilege/vip_privilege",
+    "pages/mycenter/my",
+    "pages/explore/scene/scene",
+    "pages/shopping/cart_page/cart"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarTitleText": "最懂你的贴身买手",
-    "navigationStyle": "default",
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "BlackBarry",
+    "navigationStyle": "custom",
     "navigationBarTextStyle": "black",
-    "navigationBarBackgroundColor": "#eeeeee"
+    "navigationBarBackgroundColor": "#000000"
   },
   "tabBar": {
     "selectedColor": "#ffffff",
-    "backgroundColor": "#24242A",
-    "color":"#989898",
-    "list": [{
-      "pagePath": "pages/home/home",
-      "text": "首页",
-      "iconPath": "images/home.png",
-      "selectedIconPath": "images/home.png"
+    "backgroundColor": "#000000",
+    "color":"black",
+    "list": [
+    {
+      "pagePath": "pages/vip/vip_page",
+      "iconPath": "images/home3.png",
+      "selectedIconPath": "images/home4.png"
     },
     {
-      "pagePath": "pages/hsitory/history",
-      "text": "蜜蜜花园",
-      "iconPath": "images/garden.png",
+      "pagePath": "pages/explore/explore",
+      "iconPath": "images/garden2.png",
       "selectedIconPath": "images/garden.png"
     },
     {
-      "pagePath": "pages/brand/brand",
-      "text": "品牌聚焦",
-      "iconPath": "images/brand19.png",
-      "selectedIconPath": "images/brand18.png"
+      "pagePath": "pages/shopping/cart",
+      "iconPath": "images/bag3.png",
+      "selectedIconPath": "images/bag4.png"
     },
     {
-      "pagePath": "pages/rank/rank",
-      "text": "排行榜",
-      "iconPath": "images/rank.png",
-      "selectedIconPath": "images/rank.png"
-    },
-    {
-      "pagePath": "pages/order/records/order_records",
-      "text": "我的",
-      "iconPath": "images/my1.png",
-      "selectedIconPath": "images/my1.png"
+      "pagePath": "pages/mycenter/my",
+      "iconPath": "images/my3.png",
+      "selectedIconPath": "images/my4.png"
     }]
   },
   "style": "v2",
@@ -68,5 +67,8 @@
       "version": "1.1.2",
       "provider": "wx6885acbedba59c14"
     }
-  }
+  },
+  "requiredPrivateInfos" : [
+    "chooseAddress"
+  ]
 }

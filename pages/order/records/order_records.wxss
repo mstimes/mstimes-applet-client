@@ -1,4 +1,6 @@
 /* pages/order/order_info.wxss */
+@import "../../common/common.wxss";
+
 .background {
   background-color:#f1f1f5d7;
 }

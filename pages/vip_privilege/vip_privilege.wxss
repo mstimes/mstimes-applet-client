@@ -1,0 +1,106 @@
+@import "../mycenter/my.wxss";
+@import "../vip/vip_page.wxss";
+@import "../explore/explore.wxss";
+@import "../common/common.wxss";
+
+.vip_rank_container {
+  background-color: rgb(253, 251, 251);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 23rpx;
+  font-weight: 400;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 10rpx;
+}
+
+.common-column-container {
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  margin-left: 40rpx;
+  width: 460rpx;
+  padding: 5px 0px 5px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.swiper-vip-card{
+  height: 400rpx;
+  width: 750rpx;
+}
+
+.page-section-spacing{
+  margin-top: 10rpx;
+}
+.scroll-view_H{
+  white-space: nowrap;
+}
+.scroll-view-item{
+  height: 300rpx;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  background:rgb(97, 96, 96);
+  width: 1px;
+  height: 1px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: 1px solid #0a0a0a;
+  /* width: 100%;
+  height: 300rpx; */
+}
+.h-line{
+  width: 400rpx;
+  height: 5rpx;
+  background:rgb(92, 91, 91);
+}
+
+.vip-privilege-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 50rpx;
+  margin-right: 10rpx;
+}
+
+.privilege-info-column{
+  margin-top: 40rpx;
+  margin-left: 60rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.c-seperate-a-line{
+  width:540rpx;
+  height:2rpx;
+  background:rgb(228, 227, 227);
+  margin-left: 160rpx;
+  margin-top: 30rpx;
+}
+
+.privilege-info-image{
+  width: 60rpx; 
+  height: 60rpx; 
+  margin-top: 50rpx;
+  margin-left: 10rpx;
+}
+
+.point-group{
+  position: relative;
+  bottom: 0rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.point-group .point{
+  width: 110rpx;
+  height: 5rpx;
+  background-color: rgba(70, 69, 69, 0.5);
+  /* margin: 0 5rpx; */
+}
+ 
+.point-group .point.active{
+  background: rgb(12, 12, 12);
+}

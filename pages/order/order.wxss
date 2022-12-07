@@ -1,5 +1,6 @@
 /* pages/order/order.wxss */
 @import '../../style/css/icons.wxss';
+@import '../common/common.wxss';
 
 .background {
   height: 1300rpx;
@@ -7,31 +8,29 @@
 }
 
 .add-address-container {
-  border-radius: 5px;
+  border-radius: 0px;
   background-color: white;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
+  margin-left: 0rpx;
+  margin-right: 0rpx;
   padding: 10px 10px 10px 0px;
 }
 .order-info-container {
-  border-radius: 5px;
+  border-radius: 0px;
   background-color: white;
-  margin-top: 15rpx;
+  /* margin-top: 15rpx;
   margin-left: 20rpx;
-  margin-right: 20rpx;
+  margin-right: 20rpx; */
   padding: 10px 10px 10px 0px;
-  height: 600rpx;
+  /* height: 600rpx; */
 }
 .row-space-between {
   background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 23rpx;
-  font-weight: 400;
-  margin-left: 120rpx;
-  margin-right: 30rpx;
+  margin-left: 40rpx;
   margin-top: 30rpx;
+  margin-bottom: 30rpx;
 }
 .row-flex-start {
   background-color: white;
@@ -43,7 +42,19 @@
   margin-left: 50rpx;
   margin-right: 30rpx;
   margin-top: 30rpx;
+  margin-bottom: 30rpx;
 }
+
+.order-info-row-flex {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 25rpx;
+  font-weight: 600;
+  margin-right: 30rpx;
+}
+
 .price-num-space-between {
   /* width: 500rpx; */
   background-color: white;
@@ -54,7 +65,7 @@
   font-weight: 400;
   margin-left: 5rpx;
   margin-right: 5rpx;
-  margin-top: 20rpx;
+  margin-top: 60rpx;
 }
 .statistic-container {
   background-color:rgb(245, 245, 245);
@@ -83,7 +94,7 @@
   margin-top: 5rpx;
   margin-bottom: 10rpx;
   margin-left: 40rpx;
-  width: 450rpx;
+  width: 400rpx;
   padding: 5px 0px 5px 0px;
   display: flex;
   flex-direction: column;
@@ -149,4 +160,47 @@
 
 .identify-input {
   width: 400rpx;
+}
+
+.c-seperate-h-line{
+  /* margin-top: 10rpx;
+  margin-bottom: 10rpx; */
+  width: 750rpx;
+  height: 3rpx;
+  background:rgb(242, 242, 242);
+}
+
+.go-buy-container {
+  font-size: 39rpx;
+  position: fixed;
+  background-color: rgb(255, 253, 253);
+  bottom: 0px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 0px 0px 20px 0px
+}
+
+.go-buy-butt {
+  font-size: 26rpx; 
+  width: 100%;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  border-radius: 0rpx;
+  /* margin-left: 0rpx;
+  margin-right: 20rpx; */
+  padding-top: 20rpx;
+}
+
+.bottom-column-flex {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+}
+
+.bottom-row-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

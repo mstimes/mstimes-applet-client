@@ -1,0 +1,85 @@
+.c-seperate-h-line{
+  width:580rpx;
+  height:2rpx;
+  background:rgb(219, 219, 219);
+}
+
+.c-seperate-a-line{
+  width:2rpx;
+  height:300rpx;
+  background:rgb(219, 219, 219);
+}
+
+.c-background {
+  height: 1300rpx;
+  background-color:#dcdce0d7;
+}
+
+.c-black-background {
+  height: 1300rpx;
+  background-color:#494949d7;
+}
+
+.c-top-header-black {
+  padding: 110rpx 0rpx 30rpx 0rpx;
+  background-color: black;
+  color: white;
+  font-size: 120; 
+  font-weight: 900; 
+  text-align: center;
+}
+
+.c-top-header-white {
+  padding: 110rpx 0rpx 30rpx 0rpx;
+  background-color: white;
+  color: black;
+  font-size: 120; 
+  font-weight: 900; 
+  text-align: center;
+}
+
+/*全局样式*/
+/* page { 
+  padding: 20px 0; 
+}  */
+  
+/*主容器*/
+.stepper { 
+  width: 70px; 
+  height: 23px; 
+  /*给主容器设一个边框*/
+  border: 1px solid #ccc; 
+  border-radius: 0px; 
+  margin:0 auto; 
+} 
+  
+/*加号和减号*/
+.stepper text { 
+  width: 25px; 
+  line-height: 22px; 
+  text-align: center; 
+  float: left; 
+} 
+  
+/*数值*/
+.stepper input { 
+  width: 20px; 
+  height: 0px; 
+  float: left; 
+  margin: 0 auto; 
+  text-align: center; 
+  font-size: 13px; 
+  /*给中间的input设置左右边框即可*/
+  /* border-left: 1px solid #ccc; 
+  border-right: 1px solid #ccc;  */
+} 
+  
+/*普通样式*/
+.stepper .normal{ 
+  color: black; 
+} 
+  
+/*禁用样式*/
+.stepper .disabled{ 
+  color: #ccc; 
+} 

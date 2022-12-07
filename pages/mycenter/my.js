@@ -8,15 +8,40 @@ Page({
     headImageUrl: '',
     nickName: '',
     userNumber: '',
+    consumePrice: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1;
+    var day = myDate.getDate() + 1;
     var loginInfo = wx.getStorageSync('serviceLogin');
-    // console.log('loginInfo ' + loginInfo.toString());
-    // console.log('loginInfo.headImageUrl ' + loginInfo.imageUrl);
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: 'https://server.ghomelifevvip.com/order/queryAccountOrderSummary',
+      data: {
+        "userNumber": loginInfo.userNumber,
+        "startTime": '2022-12-01',
+        "endTime": myDate.getFullYear() + '-' + month + '-' + day,
+      },
+      complete: res=>{
+        if(res.data.success){
+          console.log('获取总金额成功:' + res.data.dataList[0].sumPrice)
+          this.setData({
+            consumePrice: Math.round(res.data.dataList[0].sumPrice)
+          })
+        }else{
+          console.error('获取总金额失败！')
+        }
+      }
+    });
+
     this.setData({
       headImageUrl: loginInfo.imageUrl,
       nickName: loginInfo.name,
@@ -71,5 +96,21 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  openCustomer() {
+    wx.openCustomerServiceChat({
+      extInfo: {url: 'https://work.weixin.qq.com/kfid/kfcbea782ae5104bd97'},
+      corpId: 'ww3e861b16853d7d2b',
+      success(res) {
+        console.log('open customer success!');
+      }
+    })
+  },
+
+  toVipPrivilege() {
+    wx.navigateTo({
+      url: '/pages/vip_privilege/vip_privilege',
+    })
   }
 })

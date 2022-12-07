@@ -42,7 +42,7 @@
     "ignoreUploadUnusedFiles": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.15.0",
+  "libVersion": "2.20.3",
   "appid": "wx7b5b8c35d31af81f",
   "projectname": "mstimes-applet-client",
   "debugOptions": {

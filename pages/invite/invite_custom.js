@@ -1,4 +1,4 @@
-// pages/coupon/couponList.js
+// pages/invite/invite_custom.js
 Page({
 
   /**

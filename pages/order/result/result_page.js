@@ -19,7 +19,7 @@ Page({
 
   returnHomeButtonTap: function(){
     wx.switchTab({
-      url: '/pages/home/home',
+      url: 'pages/vip/vip_page',
     })
   }
 });

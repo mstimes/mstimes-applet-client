@@ -10,6 +10,11 @@ Page({
     totalOrderRecords: 0,
     loadedOrderRecords: 0,
     orderRecordList: [],
+    header: {
+      "color": "#000",
+      "flag": 1,
+      "name": "购买记录"
+    },
   },
 
   /**

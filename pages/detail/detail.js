@@ -446,5 +446,54 @@ Page({
       }
     })
   },
+
+  openCustomer() {
+    wx.openCustomerServiceChat({
+      extInfo: {url: 'https://work.weixin.qq.com/kfid/kfcbea782ae5104bd97'},
+      corpId: 'ww3e861b16853d7d2b',
+      success(res) {
+        console.log('open customer success!');
+      }
+    })
+  },
+
+  toBucketPage() {
+    wx.navigateTo({
+      url: '/pages/shopping/cart_page/cart',
+    })
+  },
+
+  addBucket() {
+    console.log('goodId ' + parseInt(this.data.globalId));
+    var loginInfo = wx.getStorageSync('serviceLogin');
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: "https://server.ghomelifevvip.com/bucket/addBucketInfo",
+      data: {
+        "num": 1,
+        "goodId": parseInt(this.data.globalId),
+        "userNumber": loginInfo.userNumber,
+        "specification": ''
+      },
+      complete: res=>{
+        if(!res.data.success){
+          console.log(res.data.msg)
+        }else{
+          wx.showToast({
+            title: '已加入购物袋',
+          })
+        }
+      }
+    })
+  },
+
+  goBack : function (){
+    wx.switchTab({
+      url: '/pages/vip/vip_page'
+    })
+  }
 })
 

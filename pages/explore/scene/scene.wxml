@@ -1,0 +1,56 @@
+<view class="c-top-header-white">
+  <image style="width: 35rpx; height: 35rpx; position: absolute; left: 20rpx; top: 130rpx" src="/images/arrow-left.png" bindtap="goBack"></image>
+  <image style="width: 35rpx; height: 35rpx; margin-top: 20rpx;" src="/images/pi2.png"></image>
+    PAI 官方精品店
+</view>
+
+<view style="text-align: center; margin-top: 10rpx;">
+  <view style="font-size: 25rpx; font-weight: 600; margin-top:10rpx;">#{{titleForDesc}}#</view>
+  <view style="font-size: 60rpx; font-weight: 600; margin-top:10rpx;">{{titleForEs}}</view>
+  <view style="font-size: 35rpx; font-weight: 600; margin-top:10rpx; margin-bottom: 50rpx;">{{titleForCh}}</view>
+</view>
+<view>
+  <image style="height: 1200rpx; width: 750rpx;" src="{{sceneMainImageUrl}}"></image>
+</view>
+
+<!-- 商品多了以后再分类 -->
+<!-- <scroll-view class="classify-srcolbox" scroll-x scroll-with-animation='true'>
+  <div wx:key="unique" wx:for="{{topicTypes}}" >
+    <div class="classify-item-line">
+      <button wx:if="{{item.topicName != null && currentTab != index}}" class="classify-button" data-classify='{{index}}'  bindtap='topicButtonSearch' style="width:100%">
+        <text style="font-size: 16rpx; font-weight: 400; color: black;">  {{item.topicName}}  </text>
+      </button>
+      <button wx:if="{{item.topicName != null && currentTab == index}}" class="selected-classify-button" data-classify='{{index}}'  bindtap='topicButtonSearch' style="width:100%">
+        <text style="font-size: 16rpx; font-weight: 400; color: black;">  {{item.topicName}}  </text>
+      </button>
+    </div>
+  </div>
+</scroll-view> -->
+
+<view class="scene-goods-container">
+  <view class="scene-goods-item"  wx:key="index" wx:for-index="i" wx:for="{{goodList}}" >
+    <!-- <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}&isHistory=false" hover-class="other-navigator-hover"> -->
+      <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" hover-class="other-navigator-hover">
+      <view class="order_star_view">
+        <image src="{{item.mainImage}}" style="margin-top:10px;width:100%;border-radius:5px;margin-left: 20rpx;" mode="widthFix"></image>
+      </view>
+      <view class="order-text-container">
+        <view class="flex-row" style="display: block;">
+          <view class="order-sail-des-title">
+            <text>{{item.brand}}</text>
+          </view>
+          <view class="order-sail-des">
+            <text>{{item.description}}</text>
+          </view>
+
+          <view class="order-sail-des-title" style="margin-bottom: 30rpx">
+            <text class="order-sail-best-small"> ¥</text>
+            <text class="order-sail-best">{{item.groupPriceDotBefore}}</text>
+            <text wx:if="{{item.groupPriceDotAfter > 0}}" class="order-sail-best-small">.{{item.groupPriceDotAfter}}</text>
+            <text class="order-sail-ori">¥{{item.oriPrice}}</text>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

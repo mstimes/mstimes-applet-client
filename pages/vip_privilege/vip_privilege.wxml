@@ -1,0 +1,164 @@
+<my-component my-property='{{header}}' />
+
+<view class="vip_rank_container">
+  <view class="common-column-container">
+    <text style="margin-top: 20rpx;font-size:30rpx;font-weight:300">当前等级</text>
+    <text style="margin-top: 10rpx;font-size:45rpx;font-weight:300">银卡会员</text>
+  </view>
+</view>
+
+<view class="point-group" style="margin-top:20rpx">
+  <view class="point{{index==swiperCurrent?' active':''}}" wx:for="{{privileges}}" wx:key="unique"></view>
+</view>
+
+<swiper class='swi' current="{{currentTab}}" duration="300" bindchange="swiperTab">
+  <swiper-item>
+    <view class="silver-vip-container" bindtap="toVipPrivilege">
+      <block>
+      <view class="row-info-between">
+        <view style="font-size: 36rpx; font-weight: 900; margin-top: 30rpx; margin-left: 50rpx;">
+          SILVER
+        </view>
+      </view>
+
+      <view class="row-info">
+        <view style="font-size: 24rpx; font-weight: 400;margin-top: 20rpx; margin-left: 50rpx;">
+        银卡会员
+        </view>
+      </view>
+
+      <view class="progress-box" style="margin-left: 40rpx; margin-right: 40rpx; margin-top: 20rpx;">
+        <progress percent="{{consumePrice/1000}}" show-info activeColor= "black" font-size= "10" stroke-width="1"></progress>
+      </view>
+      <view style="margin-left: 50rpx; font-size: 20rpx; margin-top: 10rpx;">{{consumePrice}}/1000</view>
+      <view style="font-size: 22rpx; font-weight: 400;margin-top: 30rpx;text-align: right; margin-right: 40rpx;">再消费{{1000 - consumePrice}}元即可升级为铂金会员</view>
+      </block>
+    </view>
+
+  <view style="margin-top:50rpx;">
+    <view class="vip-privilege-info">
+      <image class="privilege-info-image" style="width: 50rpx; height: 50rpx; margin-left: 20rpx;" src="/images/lijian.png"></image>
+      <view class="privilege-info-column">
+        <view style="font-size: 25rpx; font-weight: 500;">120元购物立减券</view>
+        <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">新会员注册得4张消费抵扣券</view>
+      </view>
+    </view>
+    <view class="c-seperate-a-line"></view>
+    <view class="vip-privilege-info">
+      <image class="privilege-info-image" src="/images/vip-discount.png"></image>
+      <view class="privilege-info-column">
+        <view style="font-size: 25rpx; font-weight: 500;">会员专属95折特权</view>
+        <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">银卡会员所有商品95折优惠</view>
+      </view>
+    </view>
+    <view class="c-seperate-a-line"></view>
+    <view class="vip-privilege-info" style="margin-left: 50rpx;">
+      <image style="width: 70rpx; height: 70rpx; margin-top: 50rpx; margin-left: 7rpx;" src="/images/fuli.png"></image>
+      <view class="privilege-info-column">
+        <view style="font-size: 25rpx; font-weight: 500;">会员专属福利品</view>
+        <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">享受会员福利品专区权益</view>
+      </view>
+    </view>
+    <view class="c-seperate-a-line"></view>
+    <view class="vip-privilege-info">
+      <image class="privilege-info-image" src="/images/vipday.png"></image>
+      <view class="privilege-info-column">
+        <view style="font-size: 25rpx; font-weight: 500;">会员日主题活动特权</view>
+        <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">享会员日主题活动参与资格</view>
+      </view>
+    </view>
+    <view class="c-seperate-a-line"></view>
+    <view class="vip-privilege-info">
+      <image class="privilege-info-image" src="/images/group.png"></image>
+      <view class="privilege-info-column">
+        <view style="font-size: 25rpx; font-weight: 500;">管家型私享社群</view>
+        <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">享社群专属福利特权</view>
+      </view>
+    </view>
+    <view class="c-seperate-a-line"></view>
+  </view>
+  </swiper-item>
+
+  <swiper-item>
+    <view class="platinum-vip-container" bindtap="toVipPrivilege">
+    <block>
+      <view class="row-info-between">
+        <view style="font-size: 33rpx; font-weight: 900; margin-top: 30rpx; margin-left: 50rpx; color: white;">
+          PLATINUM
+        </view>
+      </view>
+
+      <view class="row-info">
+        <view style="font-size: 24rpx; font-weight: 400;margin-top: 20rpx; margin-left: 50rpx; color: white">
+        铂金卡会员
+        </view>
+      </view>
+      <view class="progress-box" style="margin-left: 40rpx; margin-right: 40rpx; margin-top: 30rpx;">
+        <progress percent="{{consumePrice/3000}}" activeColor= "black" font-size= "10" stroke-width="1"></progress>
+      </view>
+      <view style="margin-left: 50rpx; font-size: 20rpx; color: white; margin-top: 20rpx;">{{consumePrice}}/3000</view>
+      <view style="font-size: 22rpx; font-weight: 400;margin-top: 40rpx;text-align: right; margin-right: 40rpx; color: white;">累计满消费{{3000 - consumePrice}}元即可升级为铂金会员</view>
+      </block>
+    </view>
+
+    <view style="margin-top:50rpx;">
+      <view class="vip-privilege-info">
+        <image class="privilege-info-image" style="width: 50rpx; height: 50rpx; margin-left: 20rpx;" src="/images/lijian.png"></image>
+        <view class="privilege-info-column" style="margin-left: 70rpx;">
+          <view style="font-size: 25rpx; font-weight: 500;">260元购物立减券</view>
+          <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">新会员注册得4张消费抵扣券</view>
+        </view>
+      </view>
+      <view class="c-seperate-a-line"></view>
+      <view class="vip-privilege-info">
+        <image class="privilege-info-image" src="/images/vip-discount.png"></image>
+        <view class="privilege-info-column" style="margin-left: 70rpx;">
+          <view style="font-size: 25rpx; font-weight: 500;">会员专88折特权</view>
+          <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">银卡会员所有商88折优惠</view>
+        </view>
+      </view>
+      <view class="c-seperate-a-line"></view>
+      <view class="vip-privilege-info" style="margin-left: 50rpx;">
+        <image style="width: 70rpx; height: 70rpx; margin-top: 50rpx; margin-left: 7rpx;" src="/images/try-free.png"></image>
+        <view class="privilege-info-column">
+          <view style="font-size: 25rpx; font-weight: 500;">会员0元试用</view>
+          <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">每月一次0元试用特权</view>
+        </view>
+      </view>
+      <view class="c-seperate-a-line"></view>
+      <view class="vip-privilege-info">
+        <image class="privilege-info-image" src="/images/vip-answer.png"></image>
+        <view class="privilege-info-column">
+          <view style="font-size: 25rpx; font-weight: 500;">私人专属客服</view>
+          <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">享私人1对1专属服务</view>
+        </view>
+      </view>
+      <view class="c-seperate-a-line"></view>
+      <view class="vip-privilege-info" style="margin-left: 50rpx;">
+        <image style="width: 70rpx; height: 70rpx; margin-top: 50rpx; margin-left: 7rpx;" src="/images/fuli.png"></image>
+        <view class="privilege-info-column">
+          <view style="font-size: 25rpx; font-weight: 500;">会员专属福利品</view>
+          <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">享受会员福利品专区权益</view>
+        </view>
+      </view>
+      <view class="c-seperate-a-line"></view>
+      <view class="vip-privilege-info">
+        <image class="privilege-info-image" src="/images/vipday.png"></image>
+        <view class="privilege-info-column">
+          <view style="font-size: 25rpx; font-weight: 500;">会员日主题活动特权</view>
+          <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">享会员日主题活动参与资格</view>
+        </view>
+      </view>
+      <view class="c-seperate-a-line"></view>
+      <view class="vip-privilege-info">
+        <image class="privilege-info-image" src="/images/group.png"></image>
+        <view class="privilege-info-column">
+          <view style="font-size: 25rpx; font-weight: 500;">管家型私享社群</view>
+          <view style="font-size: 23rpx; font-weight: 300; margin-top: 10rpx;">享社群专属福利特权</view>
+        </view>
+      </view>
+      <view class="c-seperate-a-line"></view>
+    </view>
+  </swiper-item>
+</swiper>
+

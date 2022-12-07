@@ -1,0 +1,46 @@
+<view class="c-top-header-black">
+  <image style="width: 35rpx; height: 35rpx; margin-top: 20rpx;" src="/images/pi_white1.png"></image>
+   PAI 官方精品店
+</view>
+<view class="classify">
+  <scroll-view class="classify-srcolbox" scroll-x scroll-with-animation='true'>
+    <div wx:key="unique" wx:for="{{topicTypes}}" >
+        <div class="classify-item-line">
+          <button wx:if="{{item.topicName != null && currentTab != index}}" class="classify-button" data-classify='{{index}}'  bindtap='topicButtonSearch' style="width:100%">
+            <text style="font-size: 16rpx; font-weight: 400; color: white;">  {{item.topicName}}  </text>
+          </button>
+          <button wx:if="{{item.topicName != null && currentTab == index}}" class="selected-classify-button" data-classify='{{index}}'  bindtap='topicButtonSearch' style="width:100%">
+            <text style="font-size: 16rpx; font-weight: 400; color: white;">  {{item.topicName}}  </text>
+          </button>
+        </div>
+    </div>
+  </scroll-view>
+</view>
+
+<swiper class='swi' current="{{currentTab}}" duration="300" bindchange="swiperTab">
+    <block wx:for="{{topicTypes}}" wx:key="index">
+      <swiper-item><view>
+      <view class="outter-container">
+        <block wx:for="{{scenesMap[item.topicId]}}" wx:key="index">
+          <navigator url="/pages/explore/scene/scene?topicId={{item.topicId}}&sceneId={{item.sceneId}}" open-type="navigate" hover-class="other-navigator-hover">
+            <view class="row-flex-container">
+              <view style="margin-top: 40rpx; font-weight: 600; width: 16%; font-size: 20rpx;color: white;">{{item.sceneName}}</view>
+              <view class="column-flex-container" style="width: 84%;">
+                <view style="margin-top: 10rpx; margin-bottom: 20rpx;">
+                  <scroll-view class="scroll-view_H" scroll-x>
+                    <block wx:for="{{item.sceneImageList}}" wx:key="index">
+                        <image class="x-banner-image" src="{{item}}"/>
+                    </block>
+                  </scroll-view> 
+                </view>
+                <view style="font-size: 30rpx; font-weight: 500;margin-top: 20rpx; margin-bottom: 10rpx;color: white;">{{item.sceneTitle}}</view>
+                <view style="margin-bottom: 10rpx;color: white;">{{item.sceneDesc}}</view>
+              </view>
+            </view>
+          </navigator>
+         </block>
+        </view>
+      </view></swiper-item>
+    </block> 
+</swiper>
+

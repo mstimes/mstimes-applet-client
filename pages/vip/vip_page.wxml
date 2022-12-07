@@ -1,0 +1,169 @@
+<!-- <swiper class="home-swiper" circular="{{circular}}" current='{{current}}' bindtap="chuangEvent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange='swiperChange' indicator-active-color='#fff'>
+  <block wx:key="unique" wx:for="{{imgUrls}}" >
+    <swiper-item class="home-swiper-item">
+        <image src="{{item.url}}" class="slide-image" style="width:100%" bindtap="swiperClick"></image>
+    </swiper-item>
+  </block>
+</swiper> -->
+
+<!-- <view>
+  <image src="https://ghomelifevvip.com/home4.jpeg" class="slide-image" style="width:100%; height: 1200rpx;" bindtap="swiperClick"></image>
+</view> -->
+
+<view class="vip-background">
+  <view class="swiper-group">
+    <swiper class="swiper" bindanimationfinish="swiperAnimationListener" indicator-dot="false" autoplay="false" current="{{swiperCurrent}}">
+      <view class="swiper-item" wx:for="{{imgs}}" wx:key="*this">
+          <swiper-item>
+            <navigator url="/pages/explore/scene/scene?topicId={{item.topicId}}&sceneId={{item.sceneId}}" open-type="navigate" hover-class="other-navigator-hover">
+              <image src="{{item.mainImageUrl}}"></image>
+            </navigator>
+          </swiper-item>        
+      </view>
+    </swiper>
+    <view class="point-group">
+      <view class="point{{index==swiperCurrent?' active':''}}" wx:for="{{imgs}}" wx:key="unique"></view>
+    </view>
+
+    <view class="home-left-motto">
+      <swiper class='swi' current="{{swiperCurrent}}" duration="300" >
+        <block wx:for="{{imgs}}" wx:key="index">
+          <swiper-item><view>
+            <block wx:for="{{item.goodInfoList}}" wx:key="index">
+              <image class="top-banner-image" data-id='{{item.goodId}}' src="{{item.mainImage}}" bindtap="goDetailTap"/>
+            </block>
+          </view></swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+
+  <view class="home-left-motto">
+    <view style="padding:10px 20px 10px 20px">
+      <view class="bload_word">
+        <text style="font-size: 32rpx;font-weight:400;font-family:NSimSun;color:#ffffff;margin-left: 20rpx;">新品·尝鲜</text>
+      </view>
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">- TASTE FOR NEW PRODUCTS -</text>
+    </view>
+    <swiper class="swiper-block" previous-margin="90rpx" next-margin="90rpx" current="0" bindchange="swiperChange">
+      <block wx:for="{{imgLastUpUrls}}" wx:index="{{index}}" wx:key="unique" >
+        <swiper-item class="top-swiper-item" data-id='{{item.goodId}}' bindtap="goDetailTap">
+          <view class="top-slide-image {{swiperIndex == index ? 'active' : ''}}">
+            <image class="swiper-main-image" src="{{item.mainImage}}"/>
+            <view class="swiper-text-container">
+              <view class="row-flex">
+                <view class="common-flex">
+                  <text style="font-size: 26rpx; font-weight: 450; font-style:oblique; color: white">{{item.brand}}</text>
+                  <text style="font-size: 18rpx; font-weight: 500; color: white">{{item.titleDesc}}</text>
+                </view>
+                <text style="font-size: 28rpx; font-weight: 500; margin-top: 10rpx; margin-right: 5rpx; color: white">¥{{item.groupPrice}}</text>
+              </view>
+            </view>
+            <view class="swiper-text-des-container">
+              <text style="font-size: 16rpx; font-weight: 400; color: rgb(160, 160, 160); ">{{item.description}}</text>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="home-left-motto">
+    <view style="padding:40px 20px 10px 20px">
+      <view class="bload_word">
+        <text style="font-size: 32rpx;font-weight:400;font-family:NSimSun;color:#ffffff;margin-left: 20rpx;">会员·私享</text>
+      </view>
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">- EXLUSIVE FOR MEMBERS -</text>
+    </view>
+
+    <scroll-view class="scroll-view_H" scroll-x>
+      <block wx:for="{{imgVipPrivateUrls}}" wx:key="index">
+          <image class="private-share-banner" data-id='{{item.goodId}}' src="{{item.mainImage}}" bindtap="goDetailTap"/>
+      </block>
+    </scroll-view> 
+  </view>
+
+
+  <view class="home-left-motto">
+    <view style="padding:40px 20px 10px 20px">
+      <view class="bload_word">
+        <text style="font-size: 32rpx;font-weight:400;font-family:NSimSun;color:#ffffff;margin-left: 20rpx;">会员·套装</text>
+      </view>
+      <!-- #aba8a8 -->
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">- GROUP PURCHASE FOR MEMEBERS -</text>
+    </view>
+    <scroll-view class="scroll-view_H" scroll-x>
+      <block wx:for="{{imgVipGroupUrls}}" wx:key="index">
+          <image class="lastup-banner-image" data-id='{{item.goodId}}' src="{{item.mainImage}}" bindtap="goDetailTap"/>
+      </block>
+    </scroll-view> 
+  </view>
+
+
+  <view class="home-left-motto">
+    <view style="padding:40px 20px 10px 20px">
+      <view class="bload_word">
+        <text style="font-size: 32rpx;font-weight:400;font-family:NSimSun;color:#ffffff;margin-left: 20rpx;">会员·0元试用</text>
+      </view>
+      <!-- #aba8a8 -->
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">- FREE TRIAL FOR MEMBERS -</text>
+    </view>
+
+  <view style="background-color: black;">
+    <view wx:key="unique" wx:for="{{imgVipFreeUrls}}" >
+        <view class="try-good-container" data-id='{{item.goodId}}' bindtap="trialTap">
+          <view class="try-good-row-flex" >
+            <image src="{{item.mainImage}}" style="width:30%; border-radius:3px; margin-left: 30rpx;" mode="widthFix"></image>
+            <view class="try-column-container">
+              <view class="try-product-title">
+                <text>{{item.title}}</text>
+              </view>
+              <view class="try-goods-des" style="font-weight: 700">
+                <text style="margin-left: 10rpx;">申领对象：铂金会员及以上</text>
+                <text style="color: white; font-size: 18rpx; margin-right: 20rpx;">剩余1000份</text>
+              </view>
+
+              <text style="color: white; font-size: 20rpx; font-weight: 400;  text-align: right; margin-right: 35rpx; margin-top: 50rpx;"> 立即领取 </text>
+            </view>
+          </view>
+        </view>
+        <view style="padding: 10px 0px 0px 0px; background-color: #0d0d0e;"></view>
+      </view>
+    </view>
+  </view>
+    
+
+  <view class="home-left-motto">
+    <view style="padding:40px 20px 10px 20px">
+      <view class="bload_word">
+        <text style="font-size: 32rpx;font-weight:400;font-family:NSimSun;color:#ffffff;margin-left: 20rpx;">甄选·推荐</text>
+      </view>
+      <!-- #aba8a8 -->
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">- RECOMMEND AND SELECTIONS -</text>
+    </view>
+
+  </view>
+  <view class="recommond-container">
+    <view class="recommand-item"  wx:key="index" wx:for-index="i" wx:for="{{goodList}}" >
+      <!-- <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}&isHistory=false" hover-class="other-navigator-hover"> -->
+        <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" hover-class="other-navigator-hover">
+        <view class="order_star_view">
+          <image src="{{item.mainImage}}" style="border-radius: 5rpx;" mode="widthFix"></image>
+        </view>
+        <view class="order-sail-des-title">
+          <text>{{item.brand}}</text>
+        </view>
+        <view class="order-sail-des">
+          <text>{{item.description}}</text>
+        </view>
+
+        <view class="order-sail-des-title" style="margin-bottom: 30rpx">
+          <text class="order-sail-best-small"> ¥</text>
+          <text class="order-sail-best">{{item.groupPriceDotBefore}}</text>
+          <text wx:if="{{item.groupPriceDotAfter > 0}}" class="order-sail-best-small">.{{item.groupPriceDotAfter}}</text>
+          <text class="order-sail-ori">¥{{item.oriPrice}}</text>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

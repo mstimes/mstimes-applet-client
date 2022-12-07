@@ -1,0 +1,200 @@
+@import "../../common/common.wxss";
+@import "../../order/records/order_records.wxss";
+
+.swi {
+  width: 100%;
+  height: 100vh;
+ 
+}
+.swiper-tab{
+  width: 100%;
+  border-bottom: 2rpx solid #ccc;
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-weight: bold;
+}
+.swiper-tab-item{
+  display: inline-block;
+  width: 33.33%;
+  color:red;
+}
+.active{
+  color:aqua;
+  border-bottom: 4rpx solid red;
+}
+
+.contain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+}
+
+.do-buy-butt {
+  font-size: 22rpx; 
+  background-color: black;
+  margin-top: 60rpx;
+  border-radius: 0rpx;
+  width: 10%;
+  height: 70rpx
+}
+
+.do-buy-container {
+  /* font-size: 39rpx; */
+  /* position: fixed; */
+  /* bottom: 15px; */
+  margin-top: 30rpx;
+  /* display: flex; */
+  width: 30%;
+  /* justify-content: center; */
+  /* padding: 0px 0px 0px 0px */
+}
+
+/* .bucket-row-flex {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 23rpx;
+  font-weight: 400;
+  margin-top: 20rpx;
+  height: 240rpx;
+} */
+
+.bucket-row-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 23rpx;
+  font-weight: 400;
+  margin-left: 10rpx;
+  margin-right: 0rpx;
+  margin-top: 10rpx;
+  height: 260rpx;
+}
+
+.row-flex-bettween {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 23rpx;
+  font-weight: 400;
+  margin-top: 60rpx;
+}
+
+.c-seperate-h-line{
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  width: 750rpx;
+  height: 1rpx;
+  background:rgb(242, 242, 242);
+}
+
+.common-column-container {
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  margin-left: 40rpx;
+  width: 400rpx;
+  padding: 5px 0px 5px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.movable-area{
+  width: 100%;
+  height: 300rpx;
+}
+.movable-view{
+  width: 100%;
+  height: 100%;
+}
+.touch-item {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom:1px solid rgb(242, 242, 242);
+  width: 100%;
+  height: 100%;
+  overflow: hidden
+}
+.content {
+  width: 100%;
+  padding: 10px;
+  line-height: 22px;
+  margin-right:0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  margin-left: -90px
+}
+.del {
+  background-color: rgb(126, 36, 3);
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.touch-move-active .content,
+.touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.weui-cell {
+  margin-top: 100rpx;
+}
+
+checkbox .wx-checkbox-input {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 0rpx;
+  border-color: rgb(31, 30, 30);
+
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  border-color: rgb(31, 30, 30);
+  background-color: rgb(31, 30, 30);
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  color:#fff;
+}
+
+.bottom-column-flex {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+}
+
+.go-buy-container {
+  font-size: 39rpx;
+  position: fixed;
+  background-color: rgb(255, 253, 253);
+  bottom: 0px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 0px 0px 20px 0px
+}
+
+.go-buy-butt {
+  font-size: 26rpx; 
+  width: 100%;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  border-radius: 0rpx;
+  /* margin-left: 0rpx;
+  margin-right: 20rpx; */
+  padding-top: 20rpx;
+}

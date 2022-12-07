@@ -1,0 +1,249 @@
+@import "../common/common.wxss";
+@import "../rank/rank.wxss";
+@import "../home/home.wxss";
+@import "../hsitory/history.wxss";
+
+.vip-background {
+  /* text-align: center; */
+  background-color:#0d0d0e;
+}
+
+.hidden-left-right{
+  width:100%;
+  overflow-x:hidden;
+}
+
+.emoji {
+  background: url('https://ghomelifevvip.com/home4.jpeg') no-repeat scroll 0 0 transparent;
+  width: 29px;
+  height: 29px;
+  vertical-align: middle;
+}
+
+.home-motto {
+  text-align: center;
+  background-color:#0d0d0e;
+}
+
+.home-left-motto {
+  /* text-align: center; */
+  background-color:#0d0d0e;
+}
+
+.lastup-image-border {
+  background-color: #090909;
+  width: 60%;
+  padding: 20px 25px 5px 25px;
+}
+
+.banner{
+  height:200rpx; 
+  width:60%;
+  display: flex;
+  display: -webkit-box;
+  flex-direction: column;
+  margin-top: 10rpx;
+} 
+
+.scroll-view_H{
+  white-space: nowrap;
+ }
+
+ .lastup-banner-image{
+  width: 80%; 
+  height: 600rpx;
+  margin-top: 10rpx;
+  margin-left: 40rpx;
+}
+
+.swiper-group{
+  position: relative;
+}
+ 
+.swiper{
+   height: 1180rpx;
+   width: 750rpx;
+}
+ 
+.swiper-item image{
+   height: 1200rpx;
+   width: 750rpx;
+}
+ 
+.point-group{
+  position: relative;
+  bottom: 150rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.point-group .point{
+  width: 80rpx;
+  height: 2rpx;
+  background-color: rgba(255, 255, 255, 0.5);
+  /* margin: 0 5rpx; */
+}
+ 
+.point-group .point.active{
+  background: #fff;
+}
+
+.scroll-view_xxx{
+  white-space: nowrap;
+ }
+
+.top-banner-image{
+  width: 30%; 
+  height: 220rpx;
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  border-radius: 5%;
+}
+
+.private-share-banner{
+  width: 40%; 
+  height: 300rpx;
+  margin-top: 10rpx;
+  margin-left: 30rpx;
+}
+
+.monday-good-container {
+  border-radius: 5px;
+  background-color: black;
+  margin-left: 0rpx;
+  margin-right: 20rpx;
+  padding: 5px 10px 23px 8px;
+  height: 160rpx;
+}
+
+.try-goods-des{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20rpx;
+  font-family: STKaiti;
+  font-weight: 200;
+  padding: 0px 0px 0px 0px;
+  color: #cac9c9;
+}
+
+.try-good-container {
+  /* border-radius: 5px; */
+  /* background-color:rgb(247, 244, 244); */
+  background-color: white;
+  /* margin-top: 15rpx; */
+  margin-left: 0rpx;
+  margin-right: 0rpx;
+  /* margin-bottom: 20rpx; */
+  padding: 0px 0px 0px 0px;
+  /* height: 360rpx; */
+}
+
+.try-column-container {
+  margin-top: 0rpx;
+  margin-bottom: 0rpx;
+  margin-left: 40rpx;
+  width: 450rpx;
+  padding: 5px 0px 5px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.try-product-title {
+  font-weight: 900; 
+  color: white;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  margin-bottom: 26rpx;
+}
+
+.try-good-row-flex {
+  background-color:black;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 23rpx;
+  font-weight: 400;
+}
+
+.do-try-container {
+  font-size: 39rpx;
+  display: flex;
+  width: 100%;
+  /* justify-content: center; */
+  border-color: white;
+  padding: 0px 0px 5px 0px;
+  text-align: right;
+  margin-right: 20rpx;
+}
+.do-try-butt {
+  font-size: 25rpx; 
+  /* width: 100%; */
+  background-color: white;
+  width: 100rpx;
+  height: 60rpx
+}
+
+.recommond-container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  background-color: #171718;
+}
+.recommand-item{
+  width: 48%;
+  margin-top: 20rpx;
+  margin-left: 7rpx;
+  margin-right: 7rpx;
+  /* height: 250rpx; */
+  /* background-color:#f7f7f7; */
+  /* border: 1px solid rgb(250, 248, 248); */
+  /* border: 1px solid rgb(36, 36, 36); */
+  position: relative;
+  background-color: black;
+  border-radius: 5rpx;
+}
+
+.swiper-main-image{
+  height: 480rpx; 
+  width: 480rpx;  
+}
+
+.top-slide-image{
+  height:800rpx;
+  width: 550rpx;
+  border-radius: 9rpx;
+  box-shadow: 0px 0px 30rpx rgba(0, 0,0,.2); 
+  margin: 80rpx 60rpx;
+  z-index: 1;  
+}
+
+.order_star_view{
+  padding: 0px 1px 0px 0px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.order-sail-des-title{
+  text-align: center;
+  font-size: 26rpx;
+  font-family: STKaiti;
+  font-weight: 400;
+  padding: 10px;
+  color: white
+}
+
+.order-sail-des {
+  text-align: center;
+  font-size: 20rpx;
+  font-family: STKaiti;
+  color:#a3a2a2;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.swiper-block{
+  height: 750rpx;
+  width: 100%;
+  background-color: black;
+}
