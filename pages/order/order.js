@@ -1,9 +1,5 @@
 // pages/order/order.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     showAddress: false,
     receiverName: '',
@@ -27,69 +23,77 @@ Page({
     needRealName: false,
     tax: 0,
     couponCategory: '',
-    discountCoupon: 0
+    discountCoupon: 0,
+    couponSize: 0,
+    header: {
+      "color": "#000",
+      "flag": 1,
+      "name": "订单结算"
+    },
+    orderRecords: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var sumPrice = options.groupPrice * options.num;
-    console.log('sumPrice ' + sumPrice);
-    console.log('num ' + options.num);
-    if(parseFloat(options.tax) > 0){
-      sumPrice = parseFloat(sumPrice) + parseFloat(options.tax);
-      console.log('sumPrice include tax ' + sumPrice);
-    }
-    if(sumPrice.toString().indexOf(".") < 0){
-      sumPrice = sumPrice + ".00"
+    var discountCoupon = wx.getStorageSync('selectedDiscountCoupon');
+    var couponCategory = wx.getStorageSync('selectedCouponCategory');
+    if(discountCoupon > 0){
+      this.setData({
+        discountCoupon: discountCoupon,
+        couponCategory: couponCategory,
+      });
     }else {
-      sumPrice = sumPrice + "0"
+      var orderRecords = wx.getStorageSync('bucketToOrderRecords');
+
+      this.setData({
+        orderRecords: orderRecords,
+        sumPrice: options.sumPrice
+      });
+  
+      this.getRealNameIdentifyInfo();
+      this.getUserCouponInfo();
+  
+      var loginInfo = wx.getStorageSync('serviceLogin');
+      wx.request({
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: "POST",
+        url: 'https://server.ghomelifevvip.com/user/queryLastUsualAddress',
+        data: {
+          "userNumber": loginInfo.userNumber,
+        },
+        complete: res=>{
+          if(res.data.success){
+            console.log('存在常用地址 ' + res.data.dataList[0])
+            // 渲染常用地址信息
+            this.setData({
+              showAddress: true,
+              receiverName: res.data.dataList[0].name,
+              receiverPhone: res.data.dataList[0].phoneNo,
+              receiverAddress: res.data.dataList[0].address,
+            });
+          }else{
+            console.error('不能存在常用地址 ' + res.data.msg)
+          }
+        }
+      })
     }
 
-    this.setData({
-      goodId: options.goodId,
-      imageUrl: options.imageUrl,
-      globalTitle: options.globalTitle,
-      groupPrice: options.groupPrice,
-      selectedClassify: options.selectedClassify,
-      selectedSpecific: options.selectedSpecific,
-      num: options.num,
-      sumPrice: sumPrice,
-      classifyId: options.classifyId,
-      specificId: options.specificId,
-      goodType: options.goodType,
-      tax: options.tax
-    });
-
-    this.getRealNameIdentifyInfo();
-    this.getUserCouponInfo();
-
-    var loginInfo = wx.getStorageSync('serviceLogin');
-    wx.request({
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      method: "POST",
-      url: 'https://server.ghomelifevvip.com/user/queryLastUsualAddress',
-      data: {
-        "userNumber": loginInfo.userNumber,
-      },
-      complete: res=>{
-        if(res.data.success){
-          console.log('存在常用地址 ' + res.data.dataList[0])
-          // 渲染常用地址信息
-          this.setData({
-            showAddress: true,
-            receiverName: res.data.dataList[0].name,
-            receiverPhone: res.data.dataList[0].phoneNo,
-            receiverAddress: res.data.dataList[0].address,
-          });
-        }else{
-          console.error('不能存在常用地址 ' + res.data.msg)
-        }
-      }
-    })
+    // var sumPrice = options.groupPrice * options.num;
+    // console.log('sumPrice ' + sumPrice);
+    // console.log('num ' + options.num);
+    // if(parseFloat(options.tax) > 0){
+    //   sumPrice = parseFloat(sumPrice) + parseFloat(options.tax);
+    //   console.log('sumPrice include tax ' + sumPrice);
+    // }
+    // if(sumPrice.toString().indexOf(".") < 0){
+    //   sumPrice = sumPrice + ".00"
+    // }else {
+    //   sumPrice = sumPrice + "0"
+    // }
   },
 
   /**
@@ -103,7 +107,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad();
   },
 
   /**
@@ -117,7 +121,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.setStorageSync('selectedDiscountCoupon', 0);
   },
 
   /**
@@ -143,41 +147,54 @@ Page({
 
   getAddressButtonTap: function(){
     var _this = this; 
-    wx.chooseAddress({
-      success (res) {
-        _this.setData({
-          showAddress: true,
-          receiverName: res.userName,
-          receiverPhone: res.telNumber,
-          receiverAddress: res.provinceName + ' ' + res.cityName + ' ' + res.countyName + ' ' + res.detailInfo
-        });
-      },
-      complete(res){
-        console.log("complete.");
-        // 保存最新地址信息
-        var loginInfo = wx.getStorageSync('serviceLogin');
-        wx.request({
-          header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          method: "POST",
-          url: 'https://server.ghomelifevvip.com/user/createUsualAddress',
-          data: {
-            "userNumber": loginInfo.userNumber,
-            "phoneNo": res.telNumber,
-            "name": res.userName,
-            "address": res.provinceName + ' ' + res.cityName + ' ' + res.countyName + ' ' + res.detailInfo,
-          },
-          complete: res=>{
-            if(res.data.success){
-              console.log('保存常用地址成功！' + res.data.dataList[0])
-            }else{
-              console.error('保存常用地址失败！' + res.data.msg)
+    if(wx.chooseAddress){
+      wx.chooseAddress({
+        fail: function(err){
+          wx.showToast({
+            icon: 'error',
+            title: err,
+          })
+         },
+        success (res) {
+          _this.setData({
+            showAddress: true,
+            receiverName: res.userName,
+            receiverPhone: res.telNumber,
+            receiverAddress: res.provinceName + ' ' + res.cityName + ' ' + res.countyName + ' ' + res.detailInfo
+          });
+        },
+        complete(res){
+          console.log("complete.");
+          // 保存最新地址信息
+          var loginInfo = wx.getStorageSync('serviceLogin');
+          wx.request({
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: "POST",
+            url: 'https://server.ghomelifevvip.com/user/createUsualAddress',
+            data: {
+              "userNumber": loginInfo.userNumber,
+              "phoneNo": res.telNumber,
+              "name": res.userName,
+              "address": res.provinceName + ' ' + res.cityName + ' ' + res.countyName + ' ' + res.detailInfo,
+            },
+            complete: res=>{
+              if(res.data.success){
+                console.log('保存常用地址成功！' + res.data.dataList[0])
+              }else{
+                console.error('保存常用地址失败！' + res.data.msg)
+              }
             }
-          }
-        });
-      }
-    })
+          });
+        }
+      })
+    }else {
+      wx.showToast({
+        icon: 'error',
+        title: '当前微信版本不支持',
+      })
+    }
   },
 
   paymentButtonTap: function(){
@@ -206,23 +223,24 @@ Page({
       var loginInfo = wx.getStorageSync('serviceLogin');
       wx.request({
         header: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
         method: "POST",
         url: 'https://server.ghomelifevvip.com/order/uploadOrderInfo',
         data: {
+          "uploadOrderInfos": JSON.stringify(this.data.orderRecords),
           "userNumber": loginInfo.userNumber,
-          "goodId": this.data.goodId,
-          "couponCode": this.data.couponCode,
-          "mbeanCounts": this.data.mbeansCounts,
-          "classify": this.data.selectedClassify,
-          "specific": this.data.selectedSpecific,
-          "selectNum": this.data.num,
           "person": this.data.receiverName,
           "telNumber": this.data.receiverPhone,
           "address": this.data.receiverAddress,
-          "classifyId": this.data.classifyId,
-          "specificId": this.data.specificId,
+          "couponCode": this.data.couponCode,
+          // "goodId": this.data.goodId,
+          // "mbeanCounts": this.data.mbeansCounts,
+          // "classify": this.data.selectedClassify,
+          // "specific": this.data.selectedSpecific,
+          // "selectNum": this.data.num,
+          // "classifyId": this.data.classifyId,
+          // "specificId": this.data.specificId,
         },
         complete: res=>{
           if(res.data.success){
@@ -340,7 +358,7 @@ Page({
       url: 'https://server.ghomelifevvip.com/coupon/queryAllUserCoupons',
       data: {
         "userNumber": loginInfo.userNumber,
-        "goodId": this.data.goodId,
+        "goodId": 0,
         "status": 1,
         "pageNum": 0,
         "pageSize": 20
@@ -349,11 +367,9 @@ Page({
         if(!res.data.success){
           console.log(res.data.msg)
         }else{
-          console.log('res.data.dataList[0] ' + res.data.dataList);
           if(res.data.dataList[0] != null){
             this.setData({
-              couponCategory: res.data.dataList[0].couponCategory,
-              discountCoupon: res.data.dataList[0].discountCoupon
+              couponSize: res.data.dataList.length
             })
           }
         }
@@ -465,5 +481,9 @@ Page({
         })
       }
     },
-
+    goSelectCouponTap: function(){
+      wx.navigateTo({
+        url: "/pages/coupon/select/couponList"
+      })
+    }
 })

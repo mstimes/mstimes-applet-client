@@ -1,0 +1,56 @@
+<!-- <my-component my-property='{{header}}' /> -->
+<view class="c-top-header-white" style="font-size: 30rpx;">
+    购物袋
+</view>
+
+<view class="c-seperate-h-line"></view>
+<view wx:if="{{bucketRecords.length == 0}}" style="display:flex;flex-direction:column;align-items:center;justify-content: center; margin-top: 500rpx;">
+  <view class="contain">
+    <view style="display:flex;flex-direction:column;align-items:center;justify-content: center;">
+      <image style="width: 80rpx; height: 80rpx; margin-bottom: 10rpx;" src="/images/shopping_bag.png"></image>
+    </view>
+    <text style="font-size: 30rpx; font-weight: 500;">购物袋中暂无商品</text>
+
+    <button class="do-buy-butt" bindtap="doBuyButtonTap"> 
+      <text style="color: white; padding-top: 10rpx;"> 开始购物 </text>
+    </button>
+  </view>
+</view>
+
+<view wx:if="{{bucketRecords.length > 0}}" wx:for="{{bucketRecords}}" wx:key="{{index}}">
+  <movable-area class='movable-area'>
+    <movable-view direction="horizontal" class='movable-view'>
+      <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+        <view class="content">
+          <view class="bucket-row-flex">
+          <checkbox checked="{{item.isChecked}}" class="weui-cell" data-index="{{index}}" bindtap="selectCheckBox"></checkbox>
+          <image style="width: 220rpx; height: 220rpx; margin-left: 50rpx; margin-right:10rpx; margin-top:20rpx" src="https://ghomelifevvip.com/{{item.mainImage}}"></image>
+          <view class="common-column-container">
+            <text style="margin-top: 10rpx;font-size:30rpx;font-weight:600">{{item.brand}}</text>
+            <text style="margin-top: 10rpx; margin-left:0rpx;font-size:26rpx;font-weight:300">{{item.titleDesc}}</text>
+            <view class="row-flex-bettween">
+              <text style="margin-top: 15rpx; margin-bottom: 5rpx; margin-left:10rpx;;font-size:26rpx;font-weight:600">¥ {{item.price}}</text>
+              <view class="stepper" style="margin-top: 15rpx;  align-items: flex-end; margin-right: 50rpx;"> 
+                <text class="{{minusStatus}}" data-index="{{index}}" bindtap="bindMinus">-</text> 
+                <input disabled='disabled' type="number" bindchange="bindManual" value="{{item.num}}" /> 
+                <text class="normal" data-index="{{index}}" bindtap="bindPlus">+</text>
+              </view>
+              <!-- <text style="margin-top: 25rpx; margin-bottom: 5rpx; margin-right:10rpx;">{{item.num}}</text> -->
+            </view>
+            </view>
+          </view>
+        </view>
+        <view class="del" data-index="{{index}}" bindtap="delTap">删除</view>
+      </view>
+    </movable-view>
+  </movable-area>
+</view>
+
+<view wx:if="{{bucketRecords.length > 0}}" class="go-buy-container" bindtap='goBuyButtonTap'>
+  <view class="bottom-column-flex">
+    <text style="font-size: 26rpx; text-align: right; margin-bottom: 25rpx; font-weight: 500;">合计：¥{{sumPrice}}元</text>
+    <button class="go-buy-butt" style="width: 700rpx; height: 80rpx"> 
+      <text style="color: white"> 立即结算 </text>
+    </button>
+  </view>
+</view>

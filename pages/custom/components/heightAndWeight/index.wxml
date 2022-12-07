@@ -1,0 +1,12 @@
+<view style="height:165rpx;positive:relative;">
+  <view style="margin-bottom:20rpx;font-size:24rpx;position:absolute;width:570rpx;text-align: center;">
+    <text style="color: #4377E9 " ><text style="font-size: 44rpx;font-family: DIN-Bold, DIN;font-weight: bold;color: #4377E9 ;line-height: 54rpx;">{{currentNumber}}</text> {{ unit }}</text>
+    <text class="line"></text>
+  </view>
+  <swiper duration="10" class="swiperss" bindchange="getCurrent" display-multiple-items="{{multipleItems}}" easing-function = "linear" current="{{ current }}">
+    <swiper-item class="swiperItems" wx:for="{{multipleItems + offset * 2}}" wx:key="index">
+      <view wx:if="{{arr[item]!=''}}"   class="{{arr[item]%5==0?'linestwo':'lines'}}" ></view>
+      <view style="color: #BBBEC3;">{{arr[item]%5==0?arr[item]:''}}</view>
+    </swiper-item>
+  </swiper>
+</view>

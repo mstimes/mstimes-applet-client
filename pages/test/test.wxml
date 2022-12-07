@@ -1,0 +1,17 @@
+<view class="swiper-tab">
+  <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">一</view>
+  <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">二</view>
+  <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">三</view>
+  <view class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="clickTab">四</view>
+  <view class="swiper-tab-item {{currentTab==4?'active':''}}" data-current="4" bindtap="clickTab">五</view>
+  <view class="swiper-tab-item {{currentTab==5?'active':''}}" data-current="5" bindtap="clickTab">六</view>
+</view>
+  
+<swiper class='swi' current="{{currentTab}}" duration="300" bindchange="swiperTab">
+  <swiper-item><view>第一屏</view></swiper-item>
+  <swiper-item><view>第二屏</view></swiper-item>
+  <swiper-item><view>第三屏</view></swiper-item>
+  <swiper-item><view>第四屏</view></swiper-item>
+  <swiper-item><view>第五屏</view></swiper-item>
+  <swiper-item><view>第六屏</view></swiper-item>
+</swiper>

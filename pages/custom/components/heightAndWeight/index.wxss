@@ -1,0 +1,50 @@
+/* components/heightAndWeight/index.wxss */
+.swiperss{
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  overflow: visible;
+}
+.swiperItems{
+ 
+  font-size:24rpx;
+  position:relative;
+  margin-top: 74rpx;
+  border-top:1px solid #F5F7F9; 
+  height: 120rpx !important;
+  width: calc(570rpx / 19) !important;
+  overflow: visible;
+}
+.swiperItems > .lines{
+  background-color:#D2D6DF  ;
+  margin-bottom: 10rpx;
+  width:1px;height:35rpx;
+  margin-left: 15rpx;
+}
+.linestwo{
+  margin: 0 auto;
+  width:1px;height:63rpx;
+  background-color:#D2D6DF ;
+  margin-left: 16rpx;
+}
+.lines + view{
+  font-size: 24rpx;
+  font-family: DIN-Regular, DIN;
+  font-weight: 400;
+  color: #D9D9D9;
+  line-height: 30rpx;
+  width: 100%;
+  text-align: center;
+}
+.line{
+  position: absolute;
+  left:50.4%;
+  top: 64rpx;
+  transform: translateX(-50%);
+  width: 5rpx;
+  height: 40rpx;
+  background: #43A3FF;
+  box-shadow: 0px 0px 2rpx 0px #43A3FF;
+  z-index: 6;
+  margin-right: 10rpx;
+}

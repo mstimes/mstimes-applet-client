@@ -48,7 +48,7 @@ Page({
           for (var i = 0; i < mainList.length; i++){
             mainList[i].mainImage = "https://ghomelifevvip.com/" + mainList[i].mainImage;
           }
-          // console.log(mainList)
+          console.log(mainList)
           this.setData({
             monthlyImgUrls: mainList,
           })

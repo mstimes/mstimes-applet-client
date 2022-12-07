@@ -1,58 +1,77 @@
 <!--pages/order/order.wxml-->
-<view class="background">
-  <view style="text-align: center;padding: 10px 0px 10px 0px">
-    <text style="font-size: 28rpx; font-weight: 400" >确认订单</text>
-  </view>
+<my-component my-property='{{header}}' />
 
+<!-- <view class="background"> -->
+  <!-- <view style="text-align: center;padding: 10px 0px 10px 0px">
+    <text style="font-size: 28rpx; font-weight: 400" >订单结算</text>
+  </view> -->
+
+  <view class="c-seperate-h-line"></view>
   <view wx:if="{{!showAddress}}" class="add-address-container" bindtap="getAddressButtonTap">
     <!-- <text style="margin-left:20px">+</text> -->
     <icon style="margin-left:20px" class="iconfont icon-jiahao"></icon>
     <text style="font-size: 25rpx; font-weight: 400; margin-left: 20rpx; margin-bottom:5px">请添加收货地址</text>
   </view>
-
   <view wx:if="{{showAddress}}" class="add-address-container" bindtap="getAddressButtonTap">
     <view class="common-column-container">
       <icon style="margin-left:8px; margin-bottom:5px" class="iconfont icon-dizhi"></icon>
       <text style="font-size: 25rpx; font-weight: 400; margin-left: 20rpx">{{receiverName}} {{receiverPhone}}</text>
       <text style="font-size: 25rpx; font-weight: 400; margin-left: 20rpx; margin-top: 10rpx">{{receiverAddress}}</text>
     </view>
-    
   </view>
 
+  <view class="c-seperate-h-line"></view>
   <view class="order-info-container">
-    <view class="row-flex-start">
-      <image style="width: 140rpx; height: 140rpx; margin-left: 5rpx; margin-right:10rpx; margin-top:30rpx" src="{{imageUrl}}"></image>
-      <view class="common-column-container">
-          <text style="font-size:25rpx; font-weight:500">{{globalTitle}}</text>
-          <text style="margin-top: 10rpx;">分类：{{selectedClassify}}</text>
-          <text style="margin-top: 5rpx; margin-bottom: 5rpx">规格：{{selectedSpecific}}</text>
+    <view wx:for="{{orderRecords}}" wx:key="{{index}}">
+      <view class="row-flex-start">
+        <image style="width: 180rpx; height: 180rpx; margin-left: 30rpx; margin-right:10rpx; margin-top:20rpx" src="https://ghomelifevvip.com/{{item.mainImage}}"></image>
+        <view class="common-column-container">
+          <view class="order-info-row-flex">
+            <text style="font-size: 30rpx; font-weight: 600">{{item.brand}}</text>
+            <text style="font-size: 28rpx; font-weight: 500; margin-top: 10rpx;">¥{{item.price * item.num}}</text>
+          </view>
+          <text style="margin-top: 5rpx; font-size: 23rpx;">{{item.titleDesc}}</text>
+          <!--<text style="margin-top: 5rpx; margin-bottom: 5rpx">规格：{{selectedSpecific}}</text> -->
           <view class="price-num-space-between">
             <view>
               <text>¥ </text>
-              <text style="font-size:30rpx; font-weight:500">{{groupPrice}}</text>
-              <text> /件</text>
+              <text style="font-size:25rpx; font-weight:400;">{{item.price}}</text>
+              <text style="font-size: 23rpx; font-weight:400;"> /件</text>
             </view>
-            
-            <view class="num-container" style="font-size:22rpx; font-weight:400; margin-top:5rpx;">x {{num}}</view>
+            <view class="num-container" style="font-size:22rpx; font-weight:400; margin-top:5rpx; margin-right: 120rpx;">x {{item.num}}</view>
           </view>
         </view>
-    </view>
-    <view class="row-space-between">
-      <text>配送方式</text>
-      <text>快递 免邮</text>
-    </view>
-    <view class="row-space-between">
-      <text>优惠券</text>
-      <view wx:if="{{discountCoupon > 0}}">
-        <text style="color:grey; margin-left:30rpx;">省¥{{discountCoupon}}元；{{couponCategory}}</text>
-        <text style="margin-left:80rpx; margin-right:10rpx; color:rgb(233, 2, 2); font-weight:600">- ¥{{discountCoupon}}.00</text>
       </view>
-      <view wx:if="{{discountCoupon == 0}}">
-        <text style="color:grey;">0张优惠券可用</text>
-      </view>
+      <view class="c-seperate-h-line"></view>
     </view>
 
-    <view class="statistic-container">
+  <view class="order-info-container">
+    <view class="row-space-between" style="margin-top: 10rpx;">
+      <text style="font-size: 26rpx; font-weight: 900;">配送方式</text>
+      <text style="font-size: 23rpx; font-weight: 400; color: grey;">快递 免邮</text>
+    </view>
+    <view class="c-seperate-h-line"></view>
+    <view class="row-space-between">
+      <text style="font-size: 26rpx; font-weight: 900;">优惠券</text>
+      <view wx:if="{{couponSize > 0}}" bindtap="goSelectCouponTap">
+        <view wx:if="{{discountCoupon == 0}}">
+          <text style="font-size: 23rpx; font-weight: 400; color: rgb(85, 84, 84);">{{couponSize}}张优惠券可用</text>
+        </view>
+
+        <view wx:if="{{discountCoupon > 0}}">
+          <text style="font-size: 25rpx; font-weight: 400; color:rgb(122, 3, 3);">{{couponCategory}}； -{{discountCoupon}}元</text>
+        </view>
+        <!-- <text style="color:grey; margin-left:30rpx;">省¥{{discountCoupon}}元；{{couponCategory}}</text>
+        <text style="margin-left:80rpx; margin-right:10rpx; color:rgb(233, 2, 2); font-weight:600">- ¥{{discountCoupon}}.00</text> -->
+      </view>
+      <view wx:if="{{couponSize == 0}}">
+        <text style="font-size: 23rpx; font-weight: 400; color: grey;">0张优惠券可用</text>
+      </view>
+    </view>
+    <view class="c-seperate-h-line"></view>
+  </view>
+
+    <!-- <view class="statistic-container">
       <view class="statistic-row">
         <view class="column-container">
           <view wx:if="{{tax > 0}}">
@@ -70,19 +89,34 @@
           <text style="margin-right:40rpx; margin-top:15rpx; font-size:26rpx; font-weight:400">¥ {{sumPrice - discountCoupon}}</text>
         </view>
       </view>
-    </view>
-  </view>
+    </view> -->
+  <!-- </view> -->
 
-  <view class="do-buy-container">
+  <!-- <view class="do-buy-container">
       <button class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="paymentButtonTap"> 
-      <!-- <button wx:if="{{needRealName}}" class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="showModal">  -->
       <text style="color: white"> 立即支付 ¥ {{sumPrice - discountCoupon}}</text>
       <text wx:if="{{goodType == 1}}" style="color: white"> (含税费)</text>
     </button>
+  </view> -->
+
+<view class="go-buy-container" bindtap='goBuyButtonTap'>
+  <view class="bottom-column-flex">
+    <view class="bottom-row-flex">
+      <view class="bottom-column-flex">
+        <text style="font-size: 20rpx; margin-bottom: 10rpx; font-weight: 400;">小计：¥{{sumPrice}}</text>
+        <text style="font-size: 20rpx; margin-bottom: 10rpx; font-weight: 400;">优惠券扣减：¥{{discountCoupon}}</text>
+        <text style="font-size: 20rpx; margin-bottom: 25rpx; font-weight: 400;">运费：¥0.00</text>
+      </view>
+      <text style="font-size: 26rpx; text-align: right; margin-top: 40rpx; font-weight: 500;">合计：¥{{sumPrice - discountCoupon}}元</text>
+    </view>
+    <button class="go-buy-butt" style="width: 700rpx; height: 80rpx" bindtap="paymentButtonTap"> 
+      <text style="color: white"> 去支付 </text>
+    </button>
   </view>
+</view>
 
    <!--屏幕背景变暗的背景 -->
-   <view class="commodity_screen" wx:if="{{showModalStatus}}"></view>
+<view class="commodity_screen" wx:if="{{showModalStatus}}"></view>
   <!--弹出框 -->
   <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
     <view style="display: flex;flex-direction: row-reverse;" bindtap="closeRealNameModal">

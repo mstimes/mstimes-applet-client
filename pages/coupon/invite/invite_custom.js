@@ -62,5 +62,35 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  toResultPage: function () {
+    var shareUser = wx.getStorageSync('shareUser');
+    var loginInfo = wx.getStorageSync('serviceLogin');
+
+    // 申请优惠券
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: "https://server.ghomelifevvip.com/coupon/createUserCoupons",
+      data: {
+        "category" : 1,
+        "receiverNo" : loginInfo.userNumber,
+        "sharerNo": shareUser,
+      },
+      complete: res=>{
+        if(!res.data.success){
+          console.log(res.data.msg)
+        }else{
+          console.log("createUserCoupons success!");
+        }
+      }
+    })
+
+    wx.navigateTo({
+      url: `${'/pages/coupon/result/receive_result'}`,
+    })
   }
 })

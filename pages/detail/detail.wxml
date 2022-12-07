@@ -1,4 +1,8 @@
-<!--detail.wxml-->
+<view class="c-top-header-white">
+  <image style="width: 35rpx; height: 35rpx; position: absolute; left: 20rpx; top: 130rpx" src="/images/arrow-left.png" bindtap="goBack"></image>
+  <image style="width: 35rpx; height: 35rpx; margin-top: 20rpx;" src="/images/pi2.png"></image>
+    PAI 官方精品店
+</view>
 <view class="detail-container">
   <view>
     <swiper class="detail-swiper" circular="{{circular}}" current="{{current}}" bindtap="chuangEvent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color='#fff'>
@@ -153,8 +157,19 @@
   </view> -->
 
   <view class="do-buy-container" wx:if="{{!isHistory}}">
-    <button class="do-buy-butt" style="width: 600rpx; height: 70rpx" bindtap="showModal"> 
-      <text style="color: white"> 立即下单 </text>
+    <view class="bottom-column-info" bindtap="openCustomer">
+      <image style="width: 60rpx; height: 60rpx; margin-left: 30rpx;" src="/images/answer.png"></image>
+      <text style="font-size: 20rpx; font-weight: 300; margin-left: 40rpx;">客服</text>
+    </view>
+    <view class="bottom-column-info" bindtap="toBucketPage">
+      <image style="width: 60rpx; height: 60rpx; margin-left: 30rpx;" src="/images/shopping_bag.png"></image>
+      <text style="font-size: 20rpx; font-weight: 300; margin-left: 30rpx;">购物袋</text>
+    </view>
+    <button class="join-bucket-butt" style="width: 250rpx; height: 80rpx; " bindtap="addBucket"> 
+      <text style="color: white; margin-top: 30rpx; font-size: 26rpx; font-weight: 500;"> 加入购物袋 </text>
+    </button>
+    <button class="do-buy-butt" style="width: 250rpx; height: 80rpx;" bindtap="showModal"> 
+      <text style="color: black; margin-top: 30rpx; font-size: 26rpx; font-weight: 500;"> 立即购买 </text>
     </button>
   </view>
 
@@ -214,8 +229,8 @@
     </view>
     </view>
 
-    <view class="do-buy-container" bindtap='doBuyButtonTap'>
-    <button class="do-buy-butt" style="width: 600rpx; height: 70rpx"> 
+  <view class="confirm-buy-container" bindtap='doBuyButtonTap'>
+    <button class="confirm-buy-butt" style="width: 600rpx; height: 80rpx"> 
       <text style="color: white"> 确认下单 </text>
     </button>
   </view>
