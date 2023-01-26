@@ -203,7 +203,7 @@ Page({
 
   checkLogin: function () {
     var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
-    if(getServiceLoginInfo.userNumber == null){
+    if(getServiceLoginInfo.userNumber == null || getServiceLoginInfo.wxOpenId == null){
       //跳转到登录页
       wx.redirectTo({
         url: "/pages/login/login?originPage=history"

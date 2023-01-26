@@ -1,0 +1,144 @@
+@import "../../common/common.wxss";
+@import "../../rank/rank.wxss";
+@import "../../detail/detail.wxss";
+
+.background {
+  background-color: white;
+}
+
+.outter-container {
+  border-radius: 0px;
+  background-color: black;
+  margin-bottom: 30rpx;
+  padding: 0px 0px 0px 0px;
+}
+
+.row-flex-container {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 23rpx;
+  font-weight: 400;
+  margin-left: 20rpx;
+  margin-right: 30rpx;
+  margin-bottom: 0rpx;
+}
+
+.column-flex-container {
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  margin-left: 0rpx;
+  width: 450rpx;
+  padding: 5px 0px 5px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.x-banner-image{
+  width: 180rpx; 
+  height: 270rpx; 
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+}
+.scroll-view-item_H {
+  width: 82px;				/*设置scroll-view-item宽高*/
+  height: 41px;
+  line-height: 41px;		/*文本居中对齐*/
+  text-align: center;		
+  flex-shrink: 0;        	/*空间不足时，项目不进行压缩*/
+}
+
+.classify{
+  padding: 15px 0px 10px 10px;
+  background-color: rgb(249, 249, 249);
+}
+
+.classify-item-line {
+  /* line-height: 80rpx; */
+  display: inline-block;
+  background-color: rgb(249, 249, 249);
+  /* margin-right: 20rpx; */
+  text-align: center;
+  width: 20%;
+}
+
+.classify-item-line:nth-of-type(2n) {
+  background-color: rgb(249, 249, 249);
+}
+
+.classify-button{
+  width: 60rpx;
+  height: 120rpx;
+  border-radius: 0px;
+  /* background: rgb(163, 3, 3); */
+  background: rgb(249, 249, 249);
+  font-weight: 400;
+  /* color: white; */
+  font-size: 20rpx;
+  border: black;
+  /* border: 1px solid rgb(228, 226, 226); */
+}
+
+.selected-classify-button{
+  border-radius: 0px;
+  height: 120rpx;
+  /* background: rgb(233, 231, 231); */
+  background: rgb(249, 249, 249);
+  font-weight: 400;
+  font-size: 22rpx;
+  /* border: black; */
+  /* border: 1px solid rgb(228, 226, 226); */
+}
+
+.c-seperate-h-line{
+  width: 580rpx;
+  height: 1rpx;
+  background: rgb(245, 245, 245);
+}
+
+.swi {
+  width: 100%;
+  /* height: 150vh; */
+}
+
+.swiper-tab-item{
+  display: inline-block;
+  width: 33.33%;
+  color:red;
+}
+
+.subclassify-item {
+  /* text-align: center; */
+  height: 1500rpx;
+  width: 150rpx;
+  background-color: rgb(243, 242, 242);
+  /* padding-top: 20rpx; */
+}
+
+.subclassify-item:nth-of-type(2n) {
+  background-color: #ffffff;
+}
+
+.subclassify-button{
+  padding-top: 25rpx;
+  padding-bottom: 35rpx;
+  background-color: rgb(243, 242, 242);
+  width: 150rpx;
+  height: 40rpx;
+  text-align: center;
+}
+
+.selected-subclassify-button{
+  padding-top: 25rpx;
+  padding-bottom: 35rpx;
+  background-color: white;
+  width: 150rpx;
+  height: 40rpx;
+  text-align: center;
+  /* text-decoration: underline solid black; */
+}
+
+.scroll-view_H{
+  white-space: nowrap;
+}

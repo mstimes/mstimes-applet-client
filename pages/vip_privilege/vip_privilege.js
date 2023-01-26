@@ -13,34 +13,37 @@ Page({
   toView: 'green',
   privileges : ["SILVER", "PLATINUM"],
   consumePrice: 0,
+  vipLevel: 1,
  },
+
  onLoad:function(options){
   var myDate = new Date();
   var month = myDate.getMonth() + 1;
   var day = myDate.getDate() + 1;
   var loginInfo = wx.getStorageSync('serviceLogin');
-    wx.request({
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      method: "POST",
-      url: 'https://server.ghomelifevvip.com/order/queryAccountOrderSummary',
-      data: {
-        "userNumber": loginInfo.userNumber,
-        "startTime": '2022-12-01',
-        "endTime": myDate.getFullYear() + '-' + month + '-' + day,
-      },
-      complete: res=>{
-        if(res.data.success){
-          console.log('获取总金额成功:' + res.data.dataList[0].sumPrice)
-          this.setData({
-            consumePrice: Math.round(res.data.dataList[0].sumPrice)
-          })
-        }else{
-          console.error('获取总金额失败！')
-        }
+  wx.request({
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    method: "POST",
+    url: 'https://server.ghomelifevvip.com/vip/queryVipLevelInfo',
+    data: {
+      "userNumber": loginInfo.userNumber,
+      "startTime": '2021-01-01',
+      "endTime": myDate.getFullYear() + '-' + month + '-' + day,
+    },
+    complete: res=>{
+      if(res.data.success){
+        this.setData({
+          consumePrice: Math.round(res.data.dataList[0].consumePrice),
+          vipLevel: res.data.dataList[0].level,
+          currentTab: res.data.dataList[0].level-1
+        })
+      }else{
+        console.error('获取总金额失败！')
       }
-    });
+    }
+  });
  },
  //滑动切换
  swiperTab:function( e ){

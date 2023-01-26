@@ -1,4 +1,10 @@
 // pages/order/order.js
+var filters = {
+      toFix: function (value) {
+          return value.toFixed(2)
+      }
+  }
+
 Page({
   data: {
     showAddress: false,
@@ -23,77 +29,126 @@ Page({
     needRealName: false,
     tax: 0,
     couponCategory: '',
-    discountCoupon: 0,
+    discountCoupon: 0.00,
     couponSize: 0,
     header: {
       "color": "#000",
       "flag": 1,
       "name": "订单结算"
     },
-    orderRecords: []
+    orderRecords: [],
+    goBuyButton: 0,
+    vipDiscountPrice: 0.00,
+    vipDiscount: 0,
+    isOnShow: 0,
+    isBucket: 0,
+    vipLevel: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var vipLevel = wx.getStorageSync('vipLevel');
+    var vipDiscount = 0.9;
+    if(vipLevel == 2){
+      vipDiscount = 0.85;
+    }
+    this.setData({
+      vipDiscount: vipDiscount,
+      vipLevel: vipLevel,
+    })
+
+    if(options != undefined){
+      this.setData({
+        isBucket: options.isBucket
+      })
+
+      if(options.goBuyButton != undefined && options.goBuyButton == 1){
+        var sumPrice = Math.round(options.groupPrice * options.num * 100) / 100;
+        this.setData({
+          imageUrl:  options.imageUrl,
+          globalTitle: options.globalTitle,
+          groupPrice: options.groupPrice,
+          goodId: options.goodId,
+          num: options.num,
+          goBuyButton: options.goBuyButton,
+          selectedClassify: options.selectedClassify,
+          classifyId: options.classifyId,
+          specificId: options.specificId,
+          selectedSpecific: options.selectedSpecific,
+          vipLevel: vipLevel,
+          sumPrice: sumPrice,
+          vipDiscountPrice: Math.round(sumPrice * (1 - vipDiscount) * 100) / 100,
+        })
+      }else {
+        var orderRecords = wx.getStorageSync('bucketToOrderRecords');
+        this.setData({
+          orderRecords: orderRecords,
+          sumPrice: options.sumPrice,
+          vipDiscountPrice: Math.round(options.sumPrice * (1 - vipDiscount) * 100) / 100,
+          globalTitle: options.globalTitle
+        });
+      }
+    }
+
+    console.log('-------- sum price ' + this.data.sumPrice);
+
     var discountCoupon = wx.getStorageSync('selectedDiscountCoupon');
     var couponCategory = wx.getStorageSync('selectedCouponCategory');
+    var couponType = wx.getStorageSync('couponType');
     if(discountCoupon > 0){
+      var couponCode = wx.getStorageSync('selectedCouponCode')
+      console.log('selectedCouponCode ' + couponCode);
+      if(couponType == 5){
+        console.log('couponType == 5')
+        var factor = 10;
+        console.log('discountCoupon ' + discountCoupon)
+        if(discountCoupon > 10){
+          factor = 100;
+        }
+        console.log('this.data.sumPrice ' + this.data.sumPrice);
+        discountCoupon = this.data.sumPrice * (1 - discountCoupon / factor);
+        // discountCoupon = (this.data.sumPrice * this.data.vipDiscount) * (1 - discountCoupon / factor);
+        console.log('discountCoupon  .... ' + discountCoupon)
+        discountCoupon = Math.round(discountCoupon * 100) / 100;
+      }
+
       this.setData({
         discountCoupon: discountCoupon,
         couponCategory: couponCategory,
+        couponCode: couponCode
       });
-    }else {
-      var orderRecords = wx.getStorageSync('bucketToOrderRecords');
+    } 
 
-      this.setData({
-        orderRecords: orderRecords,
-        sumPrice: options.sumPrice
-      });
-  
-      this.getRealNameIdentifyInfo();
-      this.getUserCouponInfo();
-  
-      var loginInfo = wx.getStorageSync('serviceLogin');
-      wx.request({
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        method: "POST",
-        url: 'https://server.ghomelifevvip.com/user/queryLastUsualAddress',
-        data: {
-          "userNumber": loginInfo.userNumber,
-        },
-        complete: res=>{
-          if(res.data.success){
-            console.log('存在常用地址 ' + res.data.dataList[0])
-            // 渲染常用地址信息
-            this.setData({
-              showAddress: true,
-              receiverName: res.data.dataList[0].name,
-              receiverPhone: res.data.dataList[0].phoneNo,
-              receiverAddress: res.data.dataList[0].address,
-            });
-          }else{
-            console.error('不能存在常用地址 ' + res.data.msg)
-          }
+    this.getRealNameIdentifyInfo();
+    this.getUserCouponInfo();
+
+    var loginInfo = wx.getStorageSync('serviceLogin');
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: 'https://server.ghomelifevvip.com/user/queryLastUsualAddress',
+      data: {
+        "userNumber": loginInfo.userNumber,
+      },
+      complete: res=>{
+        if(res.data.success){
+          console.log('存在常用地址 ' + res.data.dataList[0])
+          // 渲染常用地址信息
+          this.setData({
+            showAddress: true,
+            receiverName: res.data.dataList[0].name,
+            receiverPhone: res.data.dataList[0].phoneNo,
+            receiverAddress: res.data.dataList[0].address,
+          });
+        }else{
+          console.error('不能存在常用地址 ' + res.data.msg)
         }
-      })
-    }
-
-    // var sumPrice = options.groupPrice * options.num;
-    // console.log('sumPrice ' + sumPrice);
-    // console.log('num ' + options.num);
-    // if(parseFloat(options.tax) > 0){
-    //   sumPrice = parseFloat(sumPrice) + parseFloat(options.tax);
-    //   console.log('sumPrice include tax ' + sumPrice);
-    // }
-    // if(sumPrice.toString().indexOf(".") < 0){
-    //   sumPrice = sumPrice + ".00"
-    // }else {
-    //   sumPrice = sumPrice + "0"
-    // }
+      }
+    })
   },
 
   /**
@@ -220,47 +275,95 @@ Page({
         title: '请填写收件地址',
       })
     }else{
-      var loginInfo = wx.getStorageSync('serviceLogin');
-      wx.request({
-        header: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        method: "POST",
-        url: 'https://server.ghomelifevvip.com/order/uploadOrderInfo',
-        data: {
-          "uploadOrderInfos": JSON.stringify(this.data.orderRecords),
-          "userNumber": loginInfo.userNumber,
-          "person": this.data.receiverName,
-          "telNumber": this.data.receiverPhone,
-          "address": this.data.receiverAddress,
-          "couponCode": this.data.couponCode,
-          // "goodId": this.data.goodId,
-          // "mbeanCounts": this.data.mbeansCounts,
-          // "classify": this.data.selectedClassify,
-          // "specific": this.data.selectedSpecific,
-          // "selectNum": this.data.num,
-          // "classifyId": this.data.classifyId,
-          // "specificId": this.data.specificId,
-        },
-        complete: res=>{
-          if(res.data.success){
-            console.log('下单成功 ' + res.data.dataList[0])
-            this.callWxPayment(res.data.dataList[0]);
-  
-          }else{
-            console.error('下单失败 ' + res.data.msg)
-            wx.showToast({
-              icon: 'error',
-              title: res.data.msg,
-            })
-          }
+      if(this.data.isBucket == 1){
+          var loginInfo = wx.getStorageSync('serviceLogin');
+          wx.request({
+            header: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            method: "POST",
+            url: 'https://server.ghomelifevvip.com/order/uploadOrderInfoForBucket',
+            data: {
+              "uploadOrderInfos": JSON.stringify(this.data.orderRecords),
+              "userNumber": loginInfo.userNumber,
+              "person": this.data.receiverName,
+              "telNumber": this.data.receiverPhone,
+              "address": this.data.receiverAddress,
+              "couponCode": this.data.couponCode,
+              // "goodId": this.data.goodId,
+              // "mbeanCounts": this.data.mbeansCounts,
+              // "classify": this.data.selectedClassify,
+              // "specific": this.data.selectedSpecific,
+              // "selectNum": this.data.num,
+              // "classifyId": this.data.classifyId,
+              // "specificId": this.data.specificId,
+            },
+            complete: res=>{
+              if(res.data.success){
+                console.log('下单成功 ' + res.data.dataList[0])
+                this.callWxPayment(res.data.dataList[0]);
+      
+              }else{
+                console.error('下单失败 ' + res.data.msg)
+                wx.showToast({
+                  icon: 'error',
+                  title: res.data.msg,
+                })
+              }
+            }
+          })
+        }else {
+          this.uploadOrderInfoForSingle()
         }
-      })
-    }
+      }
+  },
+
+  uploadOrderInfoForSingle (){
+    var loginInfo = wx.getStorageSync('serviceLogin');
+    console.log('uuu ' + loginInfo.userNumber);
+    wx.request({
+      header: {
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      url: 'https://server.ghomelifevvip.com/order/uploadOrderInfoForSingle',
+      data: {
+        "userNumber": loginInfo.userNumber,
+        "person": this.data.receiverName,
+        "telNumber": this.data.receiverPhone,
+        "address": this.data.receiverAddress,
+        "couponCode": this.data.couponCode,
+        "goodId": this.data.goodId,
+        "mbeanCounts": this.data.mbeansCounts,
+        "classify": this.data.selectedClassify,
+        "specific": this.data.selectedSpecific,
+        "selectNum": this.data.num,
+        "classifyId": this.data.classifyId,
+        "specificId": this.data.specificId,
+      },
+      complete: res=>{
+        if(res.data.success){
+          console.log('下单成功 ' + res.data.dataList[0])
+          this.callWxPayment(res.data.dataList[0]);
+        }else{
+          console.error('下单失败 ' + res.data.msg)
+          wx.showToast({
+            icon: 'error',
+            title: res.data.msg,
+          })
+        }
+      }
+    })
   },
 
   callWxPayment: function(outTradeNo){
-    var _this = this; 
+    console.log("------ " + this.data.groupPrice + " , ---- " + this.data.vipDiscount);
+    var sumPrice = Math.round((this.data.groupPrice * this.data.num - this.data.discountCoupon) * 10) / 10;
+    // var sumPrice = Math.round((this.data.groupPrice * this.data.num * this.data.vipDiscount - this.data.discountCoupon) * 10) / 10;
+    if(this.data.isBucket == 1){
+      sumPrice = this.data.sumPrice
+    }
+
     var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
     wx.request({
       header: {
@@ -271,7 +374,7 @@ Page({
       data: {
         "outTradeNo" : outTradeNo,
         "goodName": this.data.globalTitle,
-        "totalFee": this.data.groupPrice * this.data.num,
+        "totalFee": sumPrice,
         "openId": wechatAuthSession.openid,
       },
       complete: res=>{
@@ -288,14 +391,16 @@ Page({
             paySign: prepayResponse.sign,
             success (res) {
               console.log('调用微信支付成功！')
+              var localSumPrice = wx.getStorageSync('localSumPrice');
+              wx.setStorageSync('localSumPrice', localSumPrice - sumPrice)
               wx.redirectTo({
-                url: "/pages/order/result/result_page?paymentSuccess=1&orderNumber=" + outTradeNo + "&sumPrice=" + _this.data.sumPrice
+                url: "/pages/order/result/result_page?paymentSuccess=1&orderNumber=" + outTradeNo + "&sumPrice=" + sumPrice
               })
             },
             fail (res) {
               console.log('调用微信支付失败！')
               wx.redirectTo({
-                url: "/pages/order/result/result_page?paymentSuccess=0&orderNumber=" + outTradeNo + "&sumPrice=" + _this.data.sumPrice
+                url: "/pages/order/result/result_page?paymentSuccess=0&orderNumber=" + outTradeNo + "&sumPrice=" + sumPrice
               })
             }
           })

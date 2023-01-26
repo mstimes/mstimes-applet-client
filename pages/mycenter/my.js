@@ -9,6 +9,7 @@ Page({
     nickName: '',
     userNumber: '',
     consumePrice: 0,
+    vipLevel: 1
   },
 
   /**
@@ -24,17 +25,17 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       method: "POST",
-      url: 'https://server.ghomelifevvip.com/order/queryAccountOrderSummary',
+      url: 'https://server.ghomelifevvip.com/vip/queryVipLevelInfo',
       data: {
         "userNumber": loginInfo.userNumber,
-        "startTime": '2022-12-01',
+        "startTime": '2021-01-01',
         "endTime": myDate.getFullYear() + '-' + month + '-' + day,
       },
       complete: res=>{
         if(res.data.success){
-          console.log('获取总金额成功:' + res.data.dataList[0].sumPrice)
           this.setData({
-            consumePrice: Math.round(res.data.dataList[0].sumPrice)
+            consumePrice: Math.round(res.data.dataList[0].consumePrice),
+            vipLevel: res.data.dataList[0].level
           })
         }else{
           console.error('获取总金额失败！')
@@ -53,8 +54,18 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.checkLogin();
   },
+
+  checkLogin: function () {
+    var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
+    if(getServiceLoginInfo.userNumber == null || getServiceLoginInfo.wxOpenId == null){
+      wx.redirectTo({
+        url: "/pages/login/login?originPage=my"
+      })
+    }
+  },
+
 
   /**
    * 生命周期函数--监听页面显示

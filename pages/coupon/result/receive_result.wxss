@@ -1,4 +1,7 @@
 /* pages/coupon/coupon.wxss */
+@import '../select/couponList.wxss';
+@import '../../common/common.wxss';
+
 page{
   height:100%
 }
@@ -6,10 +9,10 @@ page{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   width: 100%;
   height: 100%;
-  position: absolute; 
+  position: absolute;
 }
 .image-about{
   /* padding:10px 0px 20px 0px; */
@@ -23,29 +26,10 @@ page{
   align-items: center;
   justify-content: center; */
 }
-.get_coupon {
-  /* background:  #ffffff; */
-  /* position: fixed; */
-  bottom: 0;
-  left: 0;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  padding: 35rpx 0;
-}
-.butt {
-  font-size: 25rpx; 
-  width: 100%;
-  font-weight: 400;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  color:#ffffff;
-  background-color: #090909;
-}
+/* 
+
 
 .img-class{
-  /* width: 100px;
-  height: 100px; */
   z-index: -1;
   position: fixed;
 }
@@ -67,9 +51,6 @@ page{
   width: 80%;
   background-color: white;
   border: 1px solid black;
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* justify-content: flex-start; */
   font-size: 23rpx;
   font-weight: 400;
   margin-bottom: 30rpx;
@@ -85,4 +66,23 @@ page{
 .coupon-info-container {
   width: 48%;
   height: 350rpx;
+} */
+
+.get_coupon {
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 15rpx 0;
+}
+
+.butt {
+  font-size: 25rpx; 
+  width: 100%;
+  font-weight: 400;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color:#ffffff;
+  background-color: #090909;
 }

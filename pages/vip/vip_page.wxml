@@ -10,6 +10,8 @@
   <image src="https://ghomelifevvip.com/home4.jpeg" class="slide-image" style="width:100%; height: 1200rpx;" bindtap="swiperClick"></image>
 </view> -->
 
+<wxs module="filters" src="../../utils/utils.wxs"></wxs>
+
 <view class="vip-background">
   <view class="swiper-group">
     <swiper class="swiper" bindanimationfinish="swiperAnimationListener" indicator-dot="false" autoplay="false" current="{{swiperCurrent}}">
@@ -59,9 +61,26 @@
                 <text style="font-size: 28rpx; font-weight: 500; margin-top: 10rpx; margin-right: 5rpx; color: white">¥{{item.groupPrice}}</text>
               </view>
             </view>
-            <view class="swiper-text-des-container">
-              <text style="font-size: 16rpx; font-weight: 400; color: rgb(160, 160, 160); ">{{item.description}}</text>
+            <view style="display: flex; flex-direction: row;">
+              <view class="row-flex" style="position: absolute; left: 0px; bottom: 0; margin-bottom: 25rpx; margin-left: 55rpx;">
+                <view wx:if="{{vipLevel == 1}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 160rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx;">
+                  银卡会员9折
+                  <view style="width: 160rpx; background-color: rgb(224, 223, 223);">
+                    <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 160rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.9)}}</text>
+                  </view>
+                </view>
+                <view wx:if="{{vipLevel == 2}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 160rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx;">
+                  铂金会员85折
+                  <view style="width: 160rpx; background-color: rgb(224, 223, 223);">
+                    <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 160rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.85)}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class="swiper-text-des-container">
+                <text style="font-size: 16rpx; font-weight: 400; color: rgb(160, 160, 160); ">{{item.description}}</text>
+              </view>
             </view>
+            
           </view>
         </swiper-item>
       </block>
@@ -76,27 +95,116 @@
       <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">- EXLUSIVE FOR MEMBERS -</text>
     </view>
 
-    <scroll-view class="scroll-view_H" scroll-x>
-      <block wx:for="{{imgVipPrivateUrls}}" wx:key="index">
-          <image class="private-share-banner" data-id='{{item.goodId}}' src="{{item.mainImage}}" bindtap="goDetailTap"/>
-      </block>
-    </scroll-view> 
-  </view>
+    <swiper class="swiper-vip-block" previous-margin="30rpx" next-margin="400rpx" current="0" bindchange="swiperChange">
+      <block wx:for="{{imgVipPrivateUrls}}" wx:index="{{index}}" wx:key="unique" >
+        <swiper-item class="vip-swiper-item" data-id='{{item.goodId}}' bindtap="goDetailTap">
+          <image class="swiper-vip-image" src="{{item.mainImage}}"/>
 
+          <view class="swiper-vip-container">
+            <view class="common-flex" style="width: 300rpx;">
+                <!-- <view style="color:white; font-size: 23rpx; color: grey; background-color: white; width: 100rpx; text-align: center; margin-left: 5rpx;">折上9折</view> -->
+              <view class="row-flex">
+                <view class="vip-common-flex" style="width: 1000rpx;">
+                  <text style="font-size: 24rpx; font-weight: 450; font-style:oblique; color: white">{{item.brand}}</text>
+                  <text style="font-size: 18rpx; font-weight: 400; color: white">{{item.titleDesc}}</text>
+                </view>
+                <!-- <view class="vip-common-flex" style="margin-left: 20rpx;"> -->
+                  <text style="font-size: 28rpx; font-weight: 300; margin-top: 0rpx; margin-right: 5rpx; color: white; margin-top: 10rpx;">¥{{item.groupPrice}}</text>
+                  <!-- <text style="font-size: 24rpx; font-weight: 400; margin-top: 5rpx; margin-right: 5rpx; color: white; margin-left: 10rpx; text-decoration:line-through; color: #828283">¥{{item.oriPrice}}</text> -->
+                <!-- </view> -->
+              </view>
+              <view class="row-flex" style="position: absolute; right: 0px; bottom: 0; margin-bottom: 20rpx">
+                <view wx:if="{{vipLevel == 1}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 160rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx;">
+                  银卡会员9折
+                  <view style="width: 160rpx; background-color: rgb(224, 223, 223);">
+                    <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 160rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.9)}}</text>
+                  </view>
+                </view>
+                <view wx:if="{{vipLevel == 2}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 160rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx;">
+                  铂金会员85折
+                  <view style="width: 160rpx; background-color: rgb(224, 223, 223);">
+                    <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 160rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.85)}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
 
   <view class="home-left-motto">
     <view style="padding:40px 20px 10px 20px">
       <view class="bload_word">
         <text style="font-size: 32rpx;font-weight:400;font-family:NSimSun;color:#ffffff;margin-left: 20rpx;">会员·套装</text>
       </view>
-      <!-- #aba8a8 -->
       <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">- GROUP PURCHASE FOR MEMEBERS -</text>
     </view>
-    <scroll-view class="scroll-view_H" scroll-x>
+
+    <swiper class="swiper-group-block" previous-margin="20rpx" next-margin="100rpx" current="0" bindchange="swiperChange">
+      <block wx:for="{{imgVipGroupUrls}}" wx:index="{{index}}" wx:key="unique" >
+        <swiper-item class="vip-swiper-item" data-id='{{item.goodId}}' bindtap="goDetailTap">
+          <image class="lastup-banner-image" data-id='{{item.goodId}}' src="{{item.mainImage}}" bindtap="goDetailTap"/>
+          <view class="swiper-vip-container">
+            <view class="common-flex" style="width: 530rpx;">
+              <view class="row-flex" style="margin-left: 50rpx;">
+                <view class="vip-common-flex" style="width: 1000rpx;">
+                  <text style="font-size: 24rpx; font-weight: 450; font-style:oblique; color: white">{{item.brand}}</text>
+                  <text style="font-size: 18rpx; font-weight: 400; color: white">{{item.titleDesc}}</text>
+                </view>
+                <text style="font-size: 28rpx; font-weight: 300; margin-top: 0rpx; margin-right: 5rpx; color: white; margin-top: 10rpx;">¥{{item.groupPrice}}</text>
+              </view>
+              <view class="row-flex" style="position: absolute; right: 0px; bottom: 0; margin-bottom: 30rpx">
+                <view wx:if="{{vipLevel == 1}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 200rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx;">
+                  银卡会员9折
+                  <view style="width: 200rpx; background-color: rgb(224, 223, 223);">
+                    <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 200rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.9)}}</text>
+                  </view>
+                </view>
+                <view wx:if="{{vipLevel == 2}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 200rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx;">
+                  铂金会员85折
+                  <view style="width: 200rpx; background-color: rgb(224, 223, 223);">
+                    <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 200rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.85)}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <!-- <scroll-view class="scroll-view_H" scroll-x>
       <block wx:for="{{imgVipGroupUrls}}" wx:key="index">
           <image class="lastup-banner-image" data-id='{{item.goodId}}' src="{{item.mainImage}}" bindtap="goDetailTap"/>
+          <view class="swiper-vip-container">
+            <view class="common-flex" style="width: 300rpx;">
+              <view class="row-flex">
+                <view class="vip-common-flex" style="width: 1000rpx;">
+                  <text style="font-size: 24rpx; font-weight: 450; font-style:oblique; color: white">{{item.brand}}</text>
+                  <text style="font-size: 18rpx; font-weight: 400; color: white">{{item.titleDesc}}</text>
+                </view>
+                <text style="font-size: 28rpx; font-weight: 300; margin-top: 0rpx; margin-right: 5rpx; color: white; margin-top: 10rpx;">¥{{item.groupPrice}}</text>
+              </view>
+              <view class="row-flex" style="position: absolute; right: 0px; bottom: 0; margin-bottom: 20rpx">
+                <view wx:if="{{vipLevel == 1}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 160rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx;">
+                  银卡会员9折
+                  <view style="width: 160rpx; background-color: rgb(224, 223, 223);">
+                    <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 160rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.9)}}</text>
+                  </view>
+                </view>
+                <view wx:if="{{vipLevel == 2}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 160rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx;">
+                  铂金会员85折
+                  <view style="width: 160rpx; background-color: rgb(224, 223, 223);">
+                    <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 160rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.85)}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
       </block>
-    </scroll-view> 
+    </scroll-view>  -->
   </view>
 
 
@@ -141,7 +249,6 @@
       <!-- #aba8a8 -->
       <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">- RECOMMEND AND SELECTIONS -</text>
     </view>
-
   </view>
   <view class="recommond-container">
     <view class="recommand-item"  wx:key="index" wx:for-index="i" wx:for="{{goodList}}" >
@@ -157,11 +264,30 @@
           <text>{{item.description}}</text>
         </view>
 
-        <view class="order-sail-des-title" style="margin-bottom: 30rpx">
-          <text class="order-sail-best-small"> ¥</text>
-          <text class="order-sail-best">{{item.groupPriceDotBefore}}</text>
-          <text wx:if="{{item.groupPriceDotAfter > 0}}" class="order-sail-best-small">.{{item.groupPriceDotAfter}}</text>
-          <text class="order-sail-ori">¥{{item.oriPrice}}</text>
+        <view style="display: flex; flex-direction: row;">
+          <view class="row-flex" style="position: absolute; right: 0px; bottom: 0; margin-bottom: 25rpx; margin-right: 10rpx;">
+            <view wx:if="{{vipLevel == 1}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 140rpx; text-align: center; text-overflow: ellipsis; margin-right: 10rpx;">
+              银卡会员9折
+              <view style="width: 140rpx; background-color: rgb(224, 223, 223);">
+                <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 140rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.9)}}</text>
+              </view>
+            </view>
+            <view wx:if="{{vipLevel == 2}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 140rpx; text-align: center; text-overflow: ellipsis; margin-right: 10rpx;">
+              铂金会员85折
+              <view style="width: 140rpx; background-color: rgb(224, 223, 223);">
+                <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 140rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.85)}}</text>
+              </view>
+            </view>
+          </view>
+          <view style="display: flex; flex-direction: column; margin-left: 40rpx; margin-top: 20rpx;">
+            <view class="order-sail-des-title" style="margin-bottom: 0rpx">
+              <text class="order-sail-best-small"> ¥</text>
+              <text class="order-sail-best">{{item.groupPriceDotBefore}}</text>
+              <text wx:if="{{item.groupPriceDotAfter > 0}}" class="order-sail-best-small">.{{item.groupPriceDotAfter}}</text>
+            </view>
+            <text class="order-sail-ori" style="margin-bottom: 20rpx; margin-left: 10rpx;">¥{{item.oriPrice}}</text>
+          </view>
+
         </view>
       </navigator>
     </view>

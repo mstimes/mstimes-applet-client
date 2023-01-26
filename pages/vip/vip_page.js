@@ -1,4 +1,11 @@
 var app=getApp()
+
+var filters = {
+      toFix: function (value) {
+          return value.toFixed(2)
+      }
+  }
+
 Page({
  data:{
   currentTab:0,
@@ -17,7 +24,8 @@ Page({
   pageNum: 0,
   pageSize: 20,
   loadedCounts: 0,
-  totalCounts: 0
+  totalCounts: 0,
+  vipLevel: 1
  },
  
  onLoad:function(options){
@@ -28,6 +36,7 @@ Page({
   this.loadGoodsForVipPrivate();
   this.loadGoodsForVipGroup();
   this.loadGoodsForFree();
+  this.loadVipLevelInfo();
 
   //获取最近上新
   var getLastUpUrl = "https://server.ghomelifevvip.com/goods/queryGoodsListByType?type=1";
@@ -52,6 +61,35 @@ Page({
       }
     }
   })
+ },
+
+ loadVipLevelInfo(){
+  var myDate = new Date();
+  var month = myDate.getMonth() + 1;
+  var day = myDate.getDate() + 1;
+  var loginInfo = wx.getStorageSync('serviceLogin');
+  wx.request({
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    method: "POST",
+    url: 'https://server.ghomelifevvip.com/vip/queryVipLevelInfo',
+    data: {
+      "userNumber": loginInfo.userNumber,
+      "startTime": '2021-01-01',
+      "endTime": myDate.getFullYear() + '-' + month + '-' + day,
+    },
+    complete: res=>{
+      if(res.data.success){
+        wx.setStorageSync('vipLevel', res.data.dataList[0].level)
+        this.setData({
+          vipLevel: res.data.dataList[0].level,
+        })
+      }else{
+        console.error('获取总金额失败！')
+      }
+    }
+  });
  },
 
  loadGoodsForVipPrivate() {
@@ -266,5 +304,7 @@ Page({
       icon:'error',
       duration: 2000
     })
-  }
+  },
+
+    
 })

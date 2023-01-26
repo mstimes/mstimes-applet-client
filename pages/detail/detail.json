@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "product-cart": "../custom/components/bottomUp/index",
+    "my-component": "/pages/custom/custom_component"
+  }
 }

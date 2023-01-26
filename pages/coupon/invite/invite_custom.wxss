@@ -9,24 +9,29 @@ page{
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
   position: absolute; 
 }
+
+.main-image-column {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40rpx;
+}
+
+.main-image-border{
+  display: flex;
+  width: 90%;
+  height: 1000rpx;
+  /* position: absolute; */
+  border: 1px solid black;
+}
+
 .image-about{
-  /* padding:10px 0px 20px 0px; */
-  /* margin: 0 auto; */
   display:flex;      
   width:70%;          
-  /* justify-content: center;    */
-
-  /* margin-top: 100px; */
-  /* text-align: center;
-  align-items: center;
-  justify-content: center; */
 }
+
 .get_coupon {
-  /* background:  #ffffff; */
-  /* position: fixed; */
   bottom: 0;
   left: 0;
   display: flex;
@@ -34,22 +39,23 @@ page{
   justify-content: center;
   padding: 35rpx 0;
 }
+
 .butt {
   font-size: 25rpx; 
   width: 100%;
+  height: 80rpx;
   font-weight: 400;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  border-radius: 0%;
+  padding-top: 20rpx;
   color:#ffffff;
   background-color: #090909;
 }
 
 .img-class{
-  /* width: 100px;
-  height: 100px; */
   z-index: -1;
   position: fixed;
 }
+
 .text_num{
   width: 100px;
   height: 100px;
@@ -63,13 +69,10 @@ page{
 }
 
 .register-coupon-container {
-  border-radius: 3%;
+  border-radius: 1%;
   height: 300rpx;
   width: 80%;
   background-color: black;
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* justify-content: flex-start; */
   font-size: 23rpx;
   font-weight: 400;
 }
@@ -84,4 +87,43 @@ page{
 .coupon-info-container {
   width: 48%;
   height: 350rpx;
+}
+
+.vip-privilage-container {
+  margin-top: 20rpx;
+  height: 350rpx;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgb(77, 76, 76);
+}
+
+.vip-privilage-header {
+  background-color: white;
+  height: 40rpx;
+  width: 50%;
+  margin-top: 360rpx;
+  position: absolute;
+}
+
+.vip-privilage-row {
+  margin-top: 60rpx;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.vip-privilage-element {
+  width: 25%;
+  height: 130rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.vip-privilage-column {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50rpx;
+  margin-left: 20rpx;
+  width: 24%;
 }

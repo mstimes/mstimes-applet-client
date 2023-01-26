@@ -1,149 +1,164 @@
-<view class="c-top-header-white">
-  <image style="width: 35rpx; height: 35rpx; position: absolute; left: 20rpx; top: 130rpx" src="/images/arrow-left.png" bindtap="goBack"></image>
-  <image style="width: 35rpx; height: 35rpx; margin-top: 20rpx;" src="/images/pi2.png"></image>
-    PAI 官方精品店
+<wxs module="filters" src="../../utils/utils.wxs"></wxs>
+
+<view class="page-section-spacing">
+  <scroll-view scroll-y="true" style="height: 1200rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <block wx:key="unique" wx:for="{{detailRotateImages[0].rotateImages}}">
+      <image src="{{item}}" class="scroll-view-item" style="width:100%"></image>
+    </block>
+  </scroll-view>
 </view>
+
+<image style="width: 40rpx; height: 40rpx; position: absolute; top: 0; left: 0; margin-top: 120rpx; margin-left: 30rpx;" src="/images/arrow-left.png" bindtap="goBack"></image>
+
+<!-- <view style="display: flex; flex-direction: row;">
+  <image style="width: 80rpx; height: 80rpx; position: absolute; bottom: 0; right: 0; margin-bottom: 450rpx; margin-right: 200rpx;" src="/images/join-bucket1.png"></image>
+  <image style="width: 70rpx; height: 70rpx; position: absolute; bottom: 0; right: 0; margin-bottom: 460rpx; margin-right: 120rpx;" src="/images/bucket1.png"></image>
+  <image style="width: 80rpx; height: 80rpx; position: absolute; bottom: 0; right: 0; margin-bottom: 450rpx; margin-right: 30rpx;" src="/images/buy.png"></image>
+</view> -->
+
 <view class="detail-container">
-  <view>
-    <swiper class="detail-swiper" circular="{{circular}}" current="{{current}}" bindtap="chuangEvent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  indicator-active-color='#fff'>
-      <block wx:key="unique" wx:for="{{detailRotateImages[0].rotateImages}}">
-        <swiper-item class="detail-swiper-item"> 
-        <image src="{{item}}" class="slide-image" style="width:100%"></image>
-        </swiper-item>
-      </block>
-    </swiper>
-    <view class="title-container">
-      <!-- <view class="price">
-        <text>¥{{detailRotateImages[0].groupPrice}}</text>
-      </view> -->
-      <view class="price">
-        <text class="price-small">¥</text>
-        <text class="price-sail-best">{{detailRotateImages[0].groupPriceDotBefore}}</text>
-        <text wx:if="{{detailRotateImages[0].groupPriceDotAfter > 0}}" class="price-small">.{{detailRotateImages[0].groupPriceDotAfter}}</text>
-        <text class="price-sail-ori">¥{{detailRotateImages[0].oriPrice}}</text>
+  <view class="title-info-container">
+    <view style="display: flex; flex-direction: row; justify-content: space-between; margin-right: 5rpx;">
+
+      <view style="display: flex; flex-direction: column;">
+        <view class="title">
+          <text >{{detailRotateImages[0].brand}}</text>
+        </view>
+        <view style="color:grey; font-size: 23rpx; font-weight: 400; margin-left: 15rpx;">
+          <text>{{detailRotateImages[0].titleDesc}}</text>
+        </view>
+        <view class="detail-details-title">
+          <text>{{detailRotateImages[0].description}}</text>
+        </view>
       </view>
-      <view class="title">
-        <text >{{detailRotateImages[0].title}}</text>
-      </view>
-      <view class="detail-details-title">
-        <text>{{detailRotateImages[0].description}}</text>
+
+      <view style="display: flex; flex-direction: column; margin-left: 70rpx; margin-top: 10rpx;">
+        <view style="display: flex; flex-direction: row; margin-top: 20rpx; margin-right: 40rpx; margin-bottom: 10rpx; justify-content: right;">
+          <text class="price-sail-best">¥{{detailRotateImages[0].groupPriceDotBefore}}</text>
+          <text wx:if="{{detailRotateImages[0].groupPriceDotAfter > 0}}" class="price-small">.{{detailRotateImages[0].groupPriceDotAfter}}</text>
+          <text class="price-sail-ori">¥{{detailRotateImages[0].oriPrice}}</text>
+        </view>
+
+        <!-- <view style="display: flex; flex-direction: row; margin-top: 20rpx; margin-bottom: 10rpx;">
+          <view wx:if="{{vipLevel == 1}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; height: 40rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx; padding: 5rpx 20rpx 5rpx 20rpx; width: 240rpx;">
+            银卡会员9折 | 
+              <text style="font-size: 25rpx; font-weight: 400; margin-top: 10rpx; margin-right: 0rpx; color: white;">¥{{filters.toFix(detailRotateImages[0].groupPrice * 0.9)}}</text>
+          </view>
+          <view wx:if="{{vipLevel == 2}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 220rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx;">
+            铂金会员85折
+            <view style="width: 220rpx; background-color: rgb(224, 223, 223);">
+              <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 220rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(detailRotateImages[0].groupPrice * 0.85)}}</text>
+            </view>
+          </view>
+        </view> -->
+
       </view>
     </view>
   </view>
 
-  <view class="title-container">
-    <view style="text-align: center;color:#c00606">
-      <text style="font-size:12px">图文详情</text>
-    </view>
-  </view>
   <view class="pride-all">
-  <view class="pride-container" style="margin-top:2px">
-    <view class="pride-item" hidden = "{{detailRotateImages[0].brand == null}}">
-      <text class="detail-details">品牌:</text>
-    </view>
-    <view class="pride-items" hidden = "{{detailRotateImages[0].brand == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].brand}}</text>
-    </view>
-  </view>
+    <view class="pride-container">
+      <view style="margin-top: 30rpx; margin-bottom: 20rpx; width: 200rpx; margin-left: 30rpx;">
+        <text style="font-size: 25rpx; font-weight: 500;">商品详情</text>
+      </view>
+      <view class="row-flex">
+        <view class="pride-item" hidden = "{{detailRotateImages[0].brand == null}}">
+          <text class="detail-details">商品品牌</text>
+        </view>
+        <view class="pride-items" hidden = "{{detailRotateImages[0].brand == null}}">
+          <text class="detail-details-text">{{detailRotateImages[0].brand}}</text>
+        </view>
+      </view>
+      <view class="row-flex" hidden = "{{detailRotateImages[0].material == null}}">
+        <view class="pride-item">
+          <text class="detail-details">商品材质</text>
+        </view>
+        <view class="pride-items">
+          <text class="detail-details-text">{{detailRotateImages[0].material}}</text>
+        </view>
+      </view>
 
-  <!-- <view class="pride-container">
-    <view class="pride-item" hidden = "{{detailRotateImages[0].goodName == null}}">
-      <text class="detail-details">品名:</text>
-    </view>
-    <view class="pride-items" hidden = "{{detailRotateImages[0].goodName == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].goodName}}</text>
-    </view>
-  </view> -->
+      <view class="row-flex" hidden = "{{detailRotateImages[0].component == null}}">
+        <view class="pride-item">
+          <text class="detail-details">商品成分</text>
+        </view>
+        <view class="pride-items">
+          <text class="detail-details-text">{{detailRotateImages[0].component}}</text>
+        </view>
+      </view>
 
-  <view class="pride-container">
-    <view class="pride-item" hidden = "{{detailRotateImages[0].material == null}}">
-      <text class="detail-details">材质:</text>
-    </view>
-    <view class="pride-items" hidden = "{{detailRotateImages[0].material == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].material}}</text>
-    </view>
-  </view>
+      <view class="row-flex" hidden = "{{detailRotateImages[0].productionDate == null}}">
+        <view class="pride-item">
+          <text class="detail-details">生产日期</text>
+        </view>
+        <view class="pride-items">
+          <text class="detail-details-text">{{detailRotateImages[0].productionDate}}</text>
+        </view>
+      </view>
 
-  <view class="pride-container">
-    <view class="pride-item" hidden = "{{detailRotateImages[0].component == null}}">
-      <text class="detail-details">成分:</text>
-    </view>
-    <view class="pride-items" hidden = "{{detailRotateImages[0].component == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].component}}</text>
-    </view>
-  </view>
+      <view class="row-flex" hidden = "{{detailRotateImages[0].expirationDate == null}}">
+        <view class="pride-item">
+          <text class="detail-details">保质期限</text>
+        </view>
+        <view class="pride-items">
+          <text class="detail-details-text">{{detailRotateImages[0].expirationDate}}</text>
+        </view>
+      </view>
 
-  <view class="pride-container">
-    <view class="pride-item" hidden = "{{detailRotateImages[0].productionDate == null}}">
-      <text class="detail-details">生产日期:</text>
-    </view>
-    <view class="pride-items" hidden = "{{detailRotateImages[0].productionDate == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].productionDate}}</text>
-    </view>
-  </view>
+      <view class="row-flex" hidden = "{{detailRotateImages[0].guaranteePeriod == null}}">
+        <view class="pride-item">
+          <text class="detail-details">质保期限</text>
+          </view>
+          <view class="pride-items">
+            <text class="detail-details-text">{{detailRotateImages[0].guaranteePeriod}}</text>
+          </view>
+        </view>
 
-  <view class="pride-container">
-    <view class="pride-item" hidden = "{{detailRotateImages[0].expirationDate == null}}">
-      <text class="detail-details">保质期:</text>
-    </view>
-    <view class="pride-items" hidden = "{{detailRotateImages[0].expirationDate == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].expirationDate}}</text>
-    </view>
-  </view>
+        <view class="row-flex" hidden = "{{detailRotateImages[0].productionPlace == null}}">
+          <view class="pride-item" >
+            <text class="detail-details">商品产地</text>
+          </view>
+          <view class="pride-items">
+            <text class="detail-details-text">{{detailRotateImages[0].productionPlace}}</text>
+          </view>
+        </view>
 
-  <view class="pride-container">
-    <view class="pride-item" hidden = "{{detailRotateImages[0].guaranteePeriod == null}}">
-     <text class="detail-details">质保期:</text>
-    </view>
-    <view class="pride-items" hidden = "{{detailRotateImages[0].guaranteePeriod == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].guaranteePeriod}}</text>
-    </view>
-  </view>
+        <view class="row-flex" hidden = "{{detailRotateImages[0].shippingInfo == null}}">
+          <view class="pride-item" >
+            <text class="detail-details">发货地区</text>
+          </view>
+          <view class="pride-items">
+            <text class="detail-details-text">{{detailRotateImages[0].shippingInfo}}</text>
+          </view>
+        </view>
 
-  <view class="pride-container">
-    <view class="pride-item" hidden = "{{detailRotateImages[0].productionPlace == null}}">
-      <text class="detail-details">产地:</text>
-    </view>
-    <view class="pride-items" hidden = "{{detailRotateImages[0].productionPlace == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].productionPlace}}</text>
-    </view>
-  </view>
+        <view class="row-flex" hidden = "{{detailRotateImages[0].unShippingInfo == null}}">
+          <view class="pride-item" >
+            <text class="detail-details">不发货地</text>
+          </view>
+          <view class="pride-items">
+            <text class="detail-details-text">{{detailRotateImages[0].unShippingInfo}}</text>
+          </view>
+        </view>
 
-  <view class="pride-container">
-    <view class="pride-item" hidden = "{{detailRotateImages[0].shippingInfo == null}}">
-      <text class="detail-details">发货地/快递:</text>
-    </view>
-    <view class="pride-items" hidden = "{{detailRotateImages[0].shippingInfo == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].shippingInfo}}</text>
-    </view>
-  </view>
+        <view class="row-flex" hidden = "{{detailRotateImages[0].shippingTimeLimit == null}}">
+          <view class="pride-item">
+            <text class="detail-details">发货时效</text>
+          </view>
+          <view class="pride-items">
+            <text class="detail-details-text">{{detailRotateImages[0].shippingTimeLimit}}</text>
+          </view>
+        </view>
 
-  <view class="pride-container">
-    <view class="pride-item" hidden = "{{detailRotateImages[0].unShippingInfo == null}}">
-      <text class="detail-details">不发货:</text>
+        <view class="row-flex" hidden = "{{detailRotateImages[0].afterSales == null}}">
+          <view class="pride-item"  >
+            <text class="detail-details">售后标准</text>
+          </view>
+          <view class="pride-items" style="padding:2px 6px 10px 6px">
+            <text class="detail-details-text">{{detailRotateImages[0].afterSales}}</text>
+          </view>
+        </view>
     </view>
-    <view class="pride-items" hidden = "{{detailRotateImages[0].unShippingInfo == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].unShippingInfo}}</text>
-    </view>
-  </view>
-
-  <view class="pride-container">
-    <view class="pride-item" hidden = "{{detailRotateImages[0].shippingTimeLimit == null}}">
-      <text class="detail-details">发货时效:</text>
-    </view>
-    <view class="pride-items" hidden = "{{detailRotateImages[0].shippingTimeLimit == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].shippingTimeLimit}}</text>
-    </view>
-  </view>
-
-  <view class="pride-container">
-    <view class="pride-item"  hidden = "{{detailRotateImages[0].afterSales == null}}">
-      <text class="detail-details">售后:</text>
-    </view>
-    <view class="pride-items" style="padding:2px 6px 10px 6px"  hidden = "{{detailRotateImages[0].afterSales == null}}">
-      <text class="detail-details-text">{{detailRotateImages[0].afterSales}}</text>
-    </view>
-  </view>
   </view>
 
   <view class="image-flow">
@@ -151,10 +166,6 @@
       <image class="image-padd" src="{{item}}" style="width:100%"  mode="widthFix"></image>
     </view>
   </view>
-
-  <!-- <view class="share-button">
-    <button class="butt" type="primary" size="small" open-type="share">分享</button>
-  </view> -->
 
   <view class="do-buy-container" wx:if="{{!isHistory}}">
     <view class="bottom-column-info" bindtap="openCustomer">
@@ -165,10 +176,10 @@
       <image style="width: 60rpx; height: 60rpx; margin-left: 30rpx;" src="/images/shopping_bag.png"></image>
       <text style="font-size: 20rpx; font-weight: 300; margin-left: 30rpx;">购物袋</text>
     </view>
-    <button class="join-bucket-butt" style="width: 250rpx; height: 80rpx; " bindtap="addBucket"> 
+    <button class="join-bucket-butt" style="width: 250rpx; height: 80rpx; " bindtap="showModalByBucket"> 
       <text style="color: white; margin-top: 30rpx; font-size: 26rpx; font-weight: 500;"> 加入购物袋 </text>
     </button>
-    <button class="do-buy-butt" style="width: 250rpx; height: 80rpx;" bindtap="showModal"> 
+    <button class="do-buy-butt" style="width: 250rpx; height: 80rpx;" bindtap="showModal">
       <text style="color: black; margin-top: 30rpx; font-size: 26rpx; font-weight: 500;"> 立即购买 </text>
     </button>
   </view>
@@ -179,24 +190,25 @@
     </button>
   </view>
 
-  <!--屏幕背景变暗的背景 -->
   <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
-  <!--弹出框 -->
   <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
     <view class="inner_box">
-    <view style="text-align: center;padding: 8px 0px 10px 0px">
+    <!-- <view style="text-align: center;padding: 8px 0px 10px 0px">
       <text style="font-size: 22rpx; font-weight: 400;color:#c00606" >¥ </text>
-      <text style="font-size: 35rpx; font-weight: 400;color:#c00606" >{{groupPrice}} </text>
-      <text style="font-size: 22rpx; font-weight: 400;color:#c00606" > 蜜糖价</text>
-    </view>
+      <text wx:if="{{vipLevel == 1}}" style="font-size: 35rpx; font-weight: 400;color:#c00606" >{{filters.toFix(groupPrice * 0.9)}}</text>
+      <text wx:if="{{vipLevel == 1}}" style="font-size: 22rpx; font-weight: 400;color: #c00606" > 银卡会员价</text>
+
+      <text wx:if="{{vipLevel == 2}}" style="font-size: 35rpx; font-weight: 400;color:#c00606" >{{filters.toFix(groupPrice * 0.85)}}</text>
+      <text wx:if="{{vipLevel == 2}}" style="font-size: 22rpx; font-weight: 400;color: #c00606" > 铂金会员价</text>
+    </view> -->
     <text class="bottom-title-container">分类</text>
     <view class='button_container'>
       <block wx:for="{{classifyButtons}}" wx:key="classifyButtons">
         <view class="button_padding" >
-          <button wx:if="{{initSelectClassifyButton}}" class='{{item.id == 0 ? "checked_button" : "normal_button"}}' style="height:30px;width:unset" data-id='{{item.id}}' bindtap='radioClassifyButtonTap'>
+          <button wx:if="{{initSelectClassifyButton}}" class='{{item.id == 0 ? "checked_button" : "normal_button"}}' style="height:unset;width:unset" data-id='{{item.id}}' bindtap='radioClassifyButtonTap'>
             <text class="button_words">{{item.name}}</text>
           </button>
-          <button wx:if="{{!initSelectClassifyButton}}" class='{{item.checked?"checked_button":"normal_button"}}' style="height:30px;width:unset" data-id='{{item.id}}' bindtap='radioClassifyButtonTap'>
+          <button wx:if="{{!initSelectClassifyButton}}" class='{{item.checked?"checked_button":"normal_button"}}' style="height:unset;width:unset" data-id='{{item.id}}' bindtap='radioClassifyButtonTap'>
            <text class="button_words">{{item.name}}</text>
           </button>
         </view>
@@ -207,10 +219,10 @@
     <view class='button_container'>
       <block wx:for="{{specificButtons}}" wx:key="specificButtons">
         <view class="button_padding" >
-          <button wx:if="{{initSelectSpecificButton}}" class='{{item.id == 0 ? "checked_button" : "normal_button"}}'  style="width:unset;height:30px" data-id='{{item.id}}' bindtap='radioSpecificButtonTap'>
+          <button wx:if="{{initSelectSpecificButton}}" class='{{item.id == 0 ? "checked_button" : "normal_button"}}'  style="width:unset;height:unset" data-id='{{item.id}}' bindtap='radioSpecificButtonTap'>
             <text style="font-size: 25rpx; font-weight: 400">{{item.name}}</text>
           </button>
-          <button wx:if="{{!initSelectSpecificButton}}" class='{{item.checked?"checked_button":"normal_button"}}' style="width:unset;height:30px" data-id='{{item.id}}' bindtap='radioSpecificButtonTap'>
+          <button wx:if="{{!initSelectSpecificButton}}" class='{{item.checked?"checked_button":"normal_button"}}' style="width:unset;height:unset" data-id='{{item.id}}' bindtap='radioSpecificButtonTap'>
             <text style="font-size: 25rpx; font-weight: 400">{{item.name}}</text>
           </button>
         </view>
@@ -227,12 +239,18 @@
         </view>
       </view>
     </view>
+  </view>
+
+    <view wx:if="{{isShowBucket == 0}}" class="confirm-buy-container" bindtap='doBuyButtonTap'>
+      <button class="confirm-buy-butt" style="width: 600rpx; height: 80rpx"> 
+        <text style="color: white"> 确认下单 </text>
+      </button>
     </view>
 
-  <view class="confirm-buy-container" bindtap='doBuyButtonTap'>
-    <button class="confirm-buy-butt" style="width: 600rpx; height: 80rpx"> 
-      <text style="color: white"> 确认下单 </text>
-    </button>
-  </view>
+    <view wx:if="{{isShowBucket == 1}}" class="confirm-buy-container" bindtap='joinBucketButtonTap'>
+      <button class="confirm-buy-butt" style="width: 600rpx; height: 80rpx"> 
+        <text style="color: white"> 加入购物车 </text>
+      </button>
+    </view>
   </view>
 </view>

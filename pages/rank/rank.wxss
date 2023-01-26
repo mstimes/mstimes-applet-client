@@ -55,9 +55,9 @@
   -webkit-box-orient: vertical; */
   line-height: 1;
   text-align: right;
-  margin-left: 170rpx; 
+  margin-left: 260rpx; 
   margin-right: 80rpx; 
-  margin-top: 10rpx; 
+  margin-top: 20rpx; 
   text-overflow: ellipsis;
 }
 
@@ -112,7 +112,7 @@
   height:450rpx; 
   width:100%;
   display: flex;
-  display: -webkit-box;
+  /* display: -webkit-box; */
   flex-direction: column;
   margin-top: 10rpx;
 } 

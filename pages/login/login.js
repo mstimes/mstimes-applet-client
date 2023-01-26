@@ -1,29 +1,22 @@
 // pages/login/login.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    originPage:null,
+    originPage: null,
   },
 
-  //登录逻辑
   getUserProfile(){
-    // 获取用户信息
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
     wx.getUserProfile({
-      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      desc: '用于完善会员资料', 
       success: (res) => {
         wx.setStorageSync('userInfo', res.userInfo)
-        // console.log(res.userInfo)
+        console.log(res.userInfo)
         this.serviceLogin()
       }
     })
   },
+  
   serviceLogin(){
     var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
-    // console.log(wechatAuthSession.unionid)
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -38,47 +31,66 @@ Page({
         console.log(res)
         if(res.data.success){
           wx.setStorageSync('serviceLogin',res.data.dataList[0])
+          console.log('open id ' + res.data.dataList[0].openId);
+          if(res.data.dataList[0].openId == null){
+            console.log('openId is null.');
+            wx.request({
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              method: "POST",
+              url: 'https://server.ghomelifevvip.com/user/updateOpenId',
+              data: {
+                type: res.data.dataList[0].userType,
+                openId: wechatAuthSession.openid,
+                unionId: wechatAuthSession.unionid
+              },
+              complete: res => {
+                console.log('update open id.')
+                var getServiceLoginInfo = wx.getStorageSync('serviceLogin');
+                getServiceLoginInfo.wxOpenId = wechatAuthSession.openid;
+                wx.setStorageSync('serviceLogin', getServiceLoginInfo);
+              }
+            })
+          }
           this.backPage()
         }else{
-          console.log("走登录流程")
-          this.newServiceRegist()
+          this.newServiceRegister()
         }
       }
     })
   },
-  //后端新用户注册流程
- newServiceRegist(){
-  var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
-  var userInfo = wx.getStorageSync('userInfo')
-  // console.log('新用户注册传的对象')
-  // console.log(userInfo)
-  var shareUser = wx.getStorageSync('shareUser')
-  if(shareUser == null){
-    shareUser = ''
-  }
-  wx.request({
-    header: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    method: "POST",
-    url: 'https://server.ghomelifevvip.com/user/newUserForApplet',
-    data: {
-      shareUser: shareUser,
-      unionId: wechatAuthSession.unionid,
-      name: userInfo.nickName,
-      imageUrl: userInfo.avatarUrl,
-    },
-    complete: res => {
-      console.log(res)
-      if(res.data.success){
-        wx.setStorageSync('serviceLogin',res.data.dataList[0])
-      }else{
-        console.log('新用户首次注册接口失败' + res.data.msg)
-      }
-      this.backPage()
+  
+  newServiceRegister(){
+    var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
+    var userInfo = wx.getStorageSync('userInfo')
+    var shareUser = wx.getStorageSync('shareUser')
+    if(shareUser == null){
+      shareUser = ''
     }
-  })
- },
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: 'https://server.ghomelifevvip.com/user/newUserForApplet',
+      data: {
+        shareUser: shareUser,
+        unionId: wechatAuthSession.unionid,
+        name: userInfo.nickName,
+        imageUrl: userInfo.avatarUrl,
+      },
+      complete: res => {
+        console.log(res)
+        if(res.data.success){
+          wx.setStorageSync('serviceLogin',res.data.dataList[0])
+        }else{
+          console.log('新用户首次注册接口失败' + res.data.msg)
+        }
+        this.backPage()
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -91,21 +103,26 @@ Page({
   },
   //处理页面跳转返回
   backPage(){
+    console.log('this.data.originPage ' + this.data.originPage);
     if(this.data.originPage == 'detail'){
       wx.redirectTo({
         url: "/pages/detail/detail?id=" + this.data.detailId
       })
-    } else if(this.data.originPage == 'history'){
+    } else if(this.data.originPage == 'explore'){
       wx.switchTab({
-        url: '/pages/hsitory/history',
+        url: '/pages/explore/explore',
+      })
+    } else if(this.data.originPage == 'shopping'){
+      wx.switchTab({
+        url: '/pages/shopping/cart',
       })
     } else if(this.data.originPage == 'my'){
       wx.switchTab({
-        url: '/pages/order/records/order_records',
+        url: '/pages/market/my_center/my',
       })
     } else{
       wx.switchTab({
-        url: '/pages/home/home',
+        url: '/pages/vip/vip_page',
       })
     }
 
@@ -131,6 +148,7 @@ Page({
             if(res.data.success){
               // console.log(res)
               wx.setStorageSync('wechatAuthSession', res.data.dataList[0])
+              console.log('unionid ' + res.data.dataList[0].unionid + ', openid ' + res.data.dataList[0].openid);
             }else{
               wx.showToast({
                 title: '微信授权网咯请求失败',
@@ -153,10 +171,9 @@ Page({
           icon: 'error'
         })
       }
-
     }
   })
-  },
+},
 
   /**
    * 生命周期函数--监听页面显示

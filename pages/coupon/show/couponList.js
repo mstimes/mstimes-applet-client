@@ -56,7 +56,7 @@ Page({
         if(!res.data.success){
           console.log(res.data.msg)
         }else{
-          console.log("coupon list " + res.data.dataList + ", pageTotalCount" + res.data.pageTotalCount)
+          console.log("coupon list " + res.data.dataList[0].discountCoupon + ", pageTotalCount" + res.data.pageTotalCount)
           var couponListTemp = this.data.couponList;
           var usedCouponListTemp = this.data.usedCouponList;
           if(status == 1){

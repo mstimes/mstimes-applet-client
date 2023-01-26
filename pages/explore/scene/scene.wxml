@@ -1,3 +1,5 @@
+<wxs module="filters" src="../../../utils/utils.wxs"></wxs>
+
 <view class="c-top-header-white">
   <image style="width: 35rpx; height: 35rpx; position: absolute; left: 20rpx; top: 130rpx" src="/images/arrow-left.png" bindtap="goBack"></image>
   <image style="width: 35rpx; height: 35rpx; margin-top: 20rpx;" src="/images/pi2.png"></image>
@@ -10,7 +12,8 @@
   <view style="font-size: 35rpx; font-weight: 600; margin-top:10rpx; margin-bottom: 50rpx;">{{titleForCh}}</view>
 </view>
 <view>
-  <image style="height: 1200rpx; width: 750rpx;" src="{{sceneMainImageUrl}}"></image>
+  <image style="height: 1125rpx; width: 750rpx;" src="{{sceneMainImageUrl}}"></image>
+  <!-- <image style="height: 1200rpx; width: 750rpx;" src="{{sceneMainImageUrl}}"></image> -->
 </view>
 
 <!-- 商品多了以后再分类 -->
@@ -30,23 +33,36 @@
 <view class="scene-goods-container">
   <view class="scene-goods-item"  wx:key="index" wx:for-index="i" wx:for="{{goodList}}" >
     <!-- <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}&isHistory=false" hover-class="other-navigator-hover"> -->
-      <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" hover-class="other-navigator-hover">
+      <navigator class="home-sail-but" url="/pages/detail/detail?fromScenePage=1&id={{item.goodId}}" hover-class="other-navigator-hover">
       <view class="order_star_view">
         <image src="{{item.mainImage}}" style="margin-top:10px;width:100%;border-radius:5px;margin-left: 20rpx;" mode="widthFix"></image>
       </view>
       <view class="order-text-container">
         <view class="flex-row" style="display: block;">
-          <view class="order-sail-des-title">
-            <text>{{item.brand}}</text>
+          <view class="scene-good-title">
+            <text>{{item.title}}</text>
           </view>
-          <view class="order-sail-des">
+          <view class="scene-good-desc">
             <text>{{item.description}}</text>
           </view>
 
-          <view class="order-sail-des-title" style="margin-bottom: 30rpx">
-            <text class="order-sail-best-small"> ¥</text>
-            <text class="order-sail-best">{{item.groupPriceDotBefore}}</text>
-            <text wx:if="{{item.groupPriceDotAfter > 0}}" class="order-sail-best-small">.{{item.groupPriceDotAfter}}</text>
+          <view style="display: flex; flex-direction: row; margin-top: 20rpx; margin-bottom: 10rpx; justify-content: center;">
+            <view wx:if="{{vipLevel == 1}}" style="font-size: 21rpx; color: #DCDCDC; background-color: #808080; height: 40rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx; padding: 5rpx 20rpx 5rpx 20rpx; ">
+              银卡会员9折 | 
+              <!-- <view style="width: 220rpx; background-color: rgb(224, 223, 223);"> -->
+                <text style="font-size: 23rpx; font-weight: 400; margin-top: 10rpx; margin-right: 0rpx; color: white;">¥{{filters.toFix(item.groupPrice * 0.9)}}</text>
+              <!-- </view> -->
+            </view>
+            <view wx:if="{{vipLevel == 2}}" style="font-size: 21rpx; color: #DCDCDC; background-color: #808080; height: 40rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx; padding: 5rpx 20rpx 5rpx 20rpx; ">
+              铂金会员85折 | 
+                <text style="font-size: 23rpx; font-weight: 400; margin-top: 15rpx; margin-right: 0rpx; color: white;">¥{{filters.toFix(item.groupPrice * 0.85)}}</text>
+            </view>
+          </view>
+
+          <view class="scene-good-des-title" style="margin-bottom: 20rpx">
+             <text class="scene-good-best-small">¥{{item.groupPrice}}</text>
+            <!-- <text class="order-sail-best">{{item.groupPriceDotBefore}}</text>
+            <text wx:if="{{item.groupPriceDotAfter > 0}}" class="order-sail-best-small">.{{item.groupPriceDotAfter}}</text> -->
             <text class="order-sail-ori">¥{{item.oriPrice}}</text>
           </view>
         </view>

@@ -54,17 +54,6 @@
   /* padding: 0px 0px 0px 0px */
 }
 
-/* .bucket-row-flex {
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  font-size: 23rpx;
-  font-weight: 400;
-  margin-top: 20rpx;
-  height: 240rpx;
-} */
-
 .bucket-row-flex {
   display: flex;
   flex-direction: row;
@@ -74,7 +63,7 @@
   margin-left: 10rpx;
   margin-right: 0rpx;
   margin-top: 10rpx;
-  height: 260rpx;
+  height: 300rpx;
 }
 
 .row-flex-bettween {
@@ -83,7 +72,7 @@
   justify-content: space-between;
   font-size: 23rpx;
   font-weight: 400;
-  margin-top: 60rpx;
+  margin-top: 10rpx;
 }
 
 .c-seperate-h-line{
@@ -106,7 +95,7 @@
 
 .movable-area{
   width: 100%;
-  height: 300rpx;
+  height: 380rpx;
 }
 .movable-view{
   width: 100%;

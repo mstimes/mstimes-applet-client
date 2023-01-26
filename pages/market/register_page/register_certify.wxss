@@ -1,0 +1,25 @@
+@import "../../common/common.wxss";
+
+.background {
+  background-color:rgb(248, 248, 248);
+  height: 100vh;
+}
+
+.c-seperate-h-line{
+  width: 680rpx;
+  height: 1rpx;
+  background: rgb(238, 237, 237);
+}
+
+.next-butt {
+  font-size: 23rpx; 
+  width: 100%;
+  background-color: black;
+  /* color: white; */
+  border: 1px solid black;
+  border-radius: 10rpx;
+  margin-left: 0rpx;
+  margin-right: 20rpx;
+  margin-bottom: 30rpx;
+  padding-top: 25rpx;
+}

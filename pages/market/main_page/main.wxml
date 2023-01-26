@@ -1,0 +1,291 @@
+<!-- <swiper class="home-swiper" circular="{{circular}}" current='{{current}}' bindtap="chuangEvent" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange='swiperChange' indicator-active-color='#fff'>
+  <block wx:key="unique" wx:for="{{imgUrls}}" >
+    <swiper-item class="home-swiper-item">
+        <image src="{{item.url}}" class="slide-image" style="width:100%" bindtap="swiperClick"></image>
+    </swiper-item>
+  </block>
+</swiper> -->
+
+<!-- <view>
+  <image src="https://ghomelifevvip.com/home4.jpeg" class="slide-image" style="width:100%; height: 1200rpx;" bindtap="swiperClick"></image>
+</view> -->
+
+<view class="c-top-header-black">
+  <!-- <image style="width: 35rpx; height: 35rpx; margin-top: 20rpx;" src="/images/pi_white1.png"></image> -->
+   {{marketName}}
+</view>
+
+<wxs module="filters" src="../../../utils/utils.wxs"></wxs>
+
+<view class="background">
+  <view class="classify_container">
+    <view class="classify-row">
+      <view class="vip-privilage-column" style="margin-top: 55rpx;">
+        <view data-id='11' data-index='0' bindtap='toClassifyPage'>
+          <image style="width: 55rpx; height: 55rpx; margin-left: 40rpx;" src="/images/xxls.png"></image>
+          <view style="font-size: 25rpx; font-weight: 500; margin-top: 15rpx; margin-left: 20rpx;">休闲零食</view>
+        </view>
+
+        <view data-id='15' data-index='4' bindtap='toClassifyPage'>
+          <image style="width: 65rpx; height: 65rpx; margin-left: 35rpx; margin-top: 50rpx;" src="/images/ghmz.png"></image>
+          <view style="font-size: 25rpx; font-weight: 500; margin-top: 15rpx; margin-left: 15rpx;">个护美妆</view>
+        </view>
+      </view>
+
+      <view class="vip-privilage-column">
+        <view data-id='12' data-index='1' bindtap='toClassifyPage'>
+          <image style="width: 60rpx; height: 60rpx; margin-left: 40rpx; margin-top: 2rpx;" src="/images/ssms.png"></image>
+          <view style="font-size: 25rpx; font-weight: 500; margin-top: 15rpx; margin-left: 20rpx;">速食美食</view>
+        </view>
+
+        <view data-id='16' data-index='5' bindtap='toClassifyPage'>
+          <image style="width: 55rpx; height: 55rpx; margin-left: 40rpx; margin-top: 55rpx;" src="/images/bjys.png"></image>
+          <view style="font-size: 25rpx; font-weight: 500; margin-top: 20rpx; margin-left: 15rpx;">保健养生</view>
+        </view>
+      </view>
+
+      <view class="vip-privilage-column" style="margin-top: 45rpx;">
+        <view data-id='13' data-index='2' bindtap='toClassifyPage'>
+          <image style="width: 60rpx; height: 60rpx; margin-left: 40rpx; margin-top: 10rpx;" src="/images/jsyl.png"></image>
+          <view style="font-size: 25rpx; font-weight: 500; margin-top: 15rpx; margin-left: 20rpx;">酒水饮料</view>
+        </view>
+
+        <view data-id='17' data-index='6' bindtap='toClassifyPage'>
+          <image style="width: 55rpx; height: 55rpx; margin-left: 40rpx; margin-top: 55rpx;" src="/images/rybh.png"></image>
+          <view style="font-size: 25rpx; font-weight: 500; margin-top: 20rpx; margin-left: 20rpx;">日用百货</view>
+        </view>
+      </view>
+
+      <view class="vip-privilage-column">
+        <view data-id='14' data-index='3' bindtap='toClassifyPage'>
+          <image style="width: 60rpx; height: 60rpx; margin-left: 40rpx; margin-top: 4rpx;" src="/images/lytl.png"></image>
+          <view style="font-size: 25rpx; font-weight: 500; margin-top: 15rpx; margin-left: 20rpx;">粮油调料</view>
+        </view>
+
+        <view data-id='18' data-index='7' bindtap='toClassifyPage'>
+          <image style="width: 50rpx; height: 50rpx; margin-left: 42rpx; margin-top: 60rpx;" src="/images/jydq.png"></image>
+          <view style="font-size: 25rpx; font-weight: 500; margin-top: 20rpx; margin-left: 20rpx;">家居家电</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- <view class="swiper-group">
+    <swiper class="swiper" bindanimationfinish="swiperAnimationListener" indicator-dot="false" autoplay="false" current="{{swiperCurrent}}">
+      <view class="swiper-item" wx:for="{{imgs}}" wx:key="*this">
+          <swiper-item>
+            <navigator url="/pages/explore/scene/scene?topicId={{item.topicId}}&sceneId={{item.sceneId}}" open-type="navigate" hover-class="other-navigator-hover">
+              <image src="{{item.mainImageUrl}}"></image>
+            </navigator>
+          </swiper-item>        
+      </view>
+    </swiper>
+    <view class="point-group">
+      <view class="point{{index==swiperCurrent?' active':''}}" wx:for="{{imgs}}" wx:key="unique"></view>
+    </view>
+
+    <view class="home-left-motto">
+      <swiper class='swi' current="{{swiperCurrent}}" duration="300" >
+        <block wx:for="{{imgs}}" wx:key="index">
+          <swiper-item><view>
+            <block wx:for="{{item.goodInfoList}}" wx:key="index">
+              <image class="top-banner-image" data-id='{{item.goodId}}' src="{{item.mainImage}}" bindtap="goDetailTap"/>
+            </block>
+          </view></swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view> -->
+
+  <!-- <view class="home-left-motto">
+    <view style="padding:10px 20px 10px 20px">
+      <view class="bload_word">
+        <text style="font-size: 32rpx;font-weight:400;font-family:NSimSun;color:black;margin-left: 20rpx;">新品尝鲜</text>
+      </view>
+    </view>
+    <swiper class="swiper-block" previous-margin="90rpx" next-margin="90rpx" current="0" bindchange="swiperChange">
+      <block wx:for="{{imgLastUpUrls}}" wx:index="{{index}}" wx:key="unique" >
+        <swiper-item class="top-swiper-item" data-id='{{item.goodId}}' bindtap="goDetailTap">
+          <view class="top-slide-image {{swiperIndex == index ? 'active' : ''}}">
+            <image class="swiper-main-image" src="{{item.mainImage}}"/>
+            <view class="swiper-text-container">
+              <view class="row-flex">
+                <view class="common-flex">
+                  <text style="font-size: 26rpx; font-weight: 450; font-style:oblique; color: white">{{item.brand}}</text>
+                  <text style="font-size: 18rpx; font-weight: 500; color: white">{{item.titleDesc}}</text>
+                </view>
+                <text style="font-size: 28rpx; font-weight: 500; margin-top: 10rpx; margin-right: 5rpx; color: white">¥{{item.groupPrice}}</text>
+              </view>
+            </view>
+            <view style="display: flex; flex-direction: row;">
+              <view class="row-flex" style="position: absolute; left: 0px; bottom: 0; margin-bottom: 25rpx; margin-left: 55rpx;">
+                <view wx:if="{{vipLevel == 1}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 160rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx;">
+                  银卡会员9折
+                  <view style="width: 160rpx; background-color: rgb(224, 223, 223);">
+                    <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 160rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.9)}}</text>
+                  </view>
+                </view>
+                <view wx:if="{{vipLevel == 2}}" style="font-size: 23rpx; color: #DCDCDC; background-color: #808080; width: 160rpx; text-align: center; text-overflow: ellipsis; margin-right: 30rpx;">
+                  铂金会员85折
+                  <view style="width: 160rpx; background-color: rgb(224, 223, 223);">
+                    <text style="font-size: 24rpx; font-weight: 600; margin-top: 0rpx; margin-right: 0rpx; color: black; width: 160rpx; margin-left: 10rpx; margin-left: 10rpx; margin-right: 10rpx;">¥{{filters.toFix(item.groupPrice * 0.85)}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class="swiper-text-des-container">
+                <text style="font-size: 16rpx; font-weight: 400; color: rgb(160, 160, 160); ">{{item.description}}</text>
+              </view>
+            </view>
+            
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view> -->
+
+  <image style="width: 750rpx; height: 344rpx; margin-top: 10rpx;" src="https://ghomelifevvip.com/jrfl1.jpeg"/>
+  <view style="background-color:#f7f7f7;" wx:key="unique" wx:for="{{imgLastUpUrls}}" >
+    <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" open-type="navigate" hover-class="other-navigator-hover">
+      <view class="detail-image-container" >
+        <image src="{{item.mainImage}}" style="margin-top:0px;width:100%; border-top-left-radius: 10rpx; border-top-right-radius: 10rpx;" mode="widthFix"></image>
+        <view style="width: 100%; height: 160rpx;">
+          <view style="display: flex; flex-direction: row; justify-content: space-between;">
+            <view style="font-size: 24rpx; width: 50%; margin-top: 20rpx; margin-left: 10rpx;">
+              <text>{{item.title}}</text>
+              <view style="margin-top: 10rpx; margin-left: 20rpx;">
+                {{item.description}}
+              </view>
+            </view>
+
+            <view style="width: 50%; font-size: 30rpx; font-weight: 600; text-align: end; margin-right: 15rpx; margin-top: 50rpx; margin-bottom: 30rpx;">
+              <text style="font-size: 24rpx;">限时福利价</text>
+              <text class="home-sail-best-small">¥</text>
+              <text class="home-sail-best">{{item.groupPriceDotBefore}}</text>
+              <text wx:if="{{item.groupPriceDotAfter > 0}}" class="home-sail-best-small">.{{item.groupPriceDotAfter}}</text>
+              <!-- <text class="home-sail-ori">¥{{item.oriPrice}}</text> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+
+  <image style="width: 100%; height: 360rpx; margin-top: 10rpx;" src="https://ghomelifevvip.com/wxhg1.jpeg"/>
+  <swiper class="swiper-group-block1" previous-margin="30rpx" next-margin="110rpx" current="0" bindchange="swiperChange">
+    <block wx:for="{{imgVipGroupUrls}}" wx:index="{{index}}" wx:key="unique" >
+      <swiper-item class="vip-swiper-item1" data-id='{{item.goodId}}' bindtap="goDetailTap">
+        <image class="lastup-banner-image" data-id='{{item.goodId}}' src="{{item.mainImage}}" bindtap="goDetailTap"/>
+        <!-- <view class="seperate-h-line"></view> -->
+        <!-- <view class="swiper-vip-container1"> -->
+          <view style="width: 600rpx; height: 200rpx;">
+            <view class="row-flex" style="margin-left: 20rpx;">
+              <view class="vip-common-flex" style="width: 1000rpx;">
+                <text style="font-size: 24rpx; font-weight: 450; font-style:oblique; color: black">{{item.brand}}</text>
+                <text style="font-size: 18rpx; font-weight: 400; color: black">{{item.titleDesc}}</text>
+              </view>
+              <text style="font-size: 28rpx; font-weight: 500; margin-top: 0rpx; margin-right: 5rpx; color: black; margin-top: 10rpx; margin-right: 20rpx;">¥{{item.groupPrice}}</text>
+            </view> 
+          <!-- </view> -->
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- <view class="home-motto">
+    <view style="padding:40px 20px 10px 20px">
+      <text style="font-size: 28rpx;color:#adab8c;font-family:NSimSun;">PICK SUPER LIST\n</text>
+      <view class="bload_word">
+        <text style="font-size: 40rpx;font-weight:800;font-family:NSimSun;color:black">无限回购\n</text>
+      </view>
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">#今日上新# {{homeTodayDetail}}</text>
+    </view>
+  </view> -->
+  <image style="width: 100%; height: 360rpx; margin-top: 10rpx;" src="https://ghomelifevvip.com/wxhg1.jpeg"/>
+  <view class="outter-container">
+    <swiper class="swiper-vip-block" previous-margin="20rpx" next-margin="410rpx" current="0" bindchange="swiperChange">
+      <block wx:for="{{imgVipPrivateUrls}}" wx:index="{{index}}" wx:key="unique">
+        <swiper-item data-id='{{item.goodId}}' bindtap="goDetailTap">
+          <image class="swiper-vip-image" src="https://ghomelifevvip.com/{{item.rotateImages[0]}}"/>
+          <!-- <view class="seperate-wxhg-h-line"></view> -->
+          <view class="swiper-vip-container" style="margin-left: 10rpx;">
+            <view class="common-flex" style="width: 280rpx;">
+              <view class="row-flex">
+                <view class="vip-common-flex" style="width: 1000rpx;">
+                  <text style="font-size: 24rpx; font-weight: 450; font-style:oblique; color: black">{{item.brand}}</text>
+                  <text style="font-size: 18rpx; font-weight: 400; color: black">{{item.titleDesc}}</text>
+                </view>
+                <text style="font-size: 28rpx; font-weight: 500; margin-top: 0rpx; margin-right: 5rpx; color: black; margin-top: 10rpx;">¥{{item.groupPrice}}</text>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  
+
+
+  <!-- <view class="home-left-motto">
+    <view style="padding:40px 20px 10px 20px">
+      <view class="bload_word">
+        <text style="font-size: 32rpx;font-weight:400;font-family:NSimSun;color:#ffffff;margin-left: 20rpx;">会员·0元试用</text>
+      </view>
+      <text style="font-size: 22rpx;font-family:NSimSun;color:#adab8c">- FREE TRIAL FOR MEMBERS -</text>
+    </view>
+
+  <view style="background-color: black;">
+    <view wx:key="unique" wx:for="{{imgVipFreeUrls}}" >
+        <view class="try-good-container" data-id='{{item.goodId}}' bindtap="trialTap">
+          <view class="try-good-row-flex" >
+            <image src="{{item.mainImage}}" style="width:30%; border-radius:3px; margin-left: 30rpx;" mode="widthFix"></image>
+            <view class="try-column-container">
+              <view class="try-product-title">
+                <text>{{item.title}}</text>
+              </view>
+              <view class="try-goods-des" style="font-weight: 700">
+                <text style="margin-left: 10rpx;">申领对象：铂金会员及以上</text>
+                <text style="color: white; font-size: 18rpx; margin-right: 20rpx;">剩余1000份</text>
+              </view>
+
+              <text style="color: white; font-size: 20rpx; font-weight: 400;  text-align: right; margin-right: 35rpx; margin-top: 50rpx;"> 立即领取 </text>
+            </view>
+          </view>
+        </view>
+        <view style="padding: 10px 0px 0px 0px; background-color: #0d0d0e;"></view>
+      </view>
+    </view>
+  </view> -->
+    
+  <view style="text-align: center; background-color: #ECEAEA; padding-bottom: 30rpx; padding-top: 50rpx;">
+    <text style="font-size: 32rpx;font-weight:400;font-family:NSimSun;color:black;margin-left: 10rpx;">- 为你精选 -</text>
+  </view>
+  <view class="recommond-container">
+    <view class="recommand-item"  wx:key="index" wx:for-index="i" wx:for="{{goodList}}" >
+      <!-- <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}&isHistory=false" hover-class="other-navigator-hover"> -->
+        <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" hover-class="other-navigator-hover">
+        <view class="order_star_view">
+          <image src="{{item.mainImage}}" style="border-radius: 5rpx;" mode="widthFix"></image>
+        </view>
+        <view class="order-sail-des-title">
+          <text>{{item.brand}}</text>
+        </view>
+        <view class="order-sail-des">
+          <text>{{item.description}}</text>
+        </view>
+
+        <view style="display: flex; flex-direction: row;">
+          <view style="display: flex; flex-direction: column; margin-left: 40rpx; margin-top: 20rpx;">
+            <view class="order-sail-des-title" style="margin-bottom: 0rpx">
+              <text class="order-sail-best-small"> ¥</text>
+              <text class="order-sail-best">{{item.groupPriceDotBefore}}</text>
+              <text wx:if="{{item.groupPriceDotAfter > 0}}" class="order-sail-best-small">.{{item.groupPriceDotAfter}}</text>
+            </view>
+            <text class="order-sail-ori" style="margin-bottom: 20rpx; margin-left: 10rpx;">¥{{item.oriPrice}}</text>
+          </view>
+
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

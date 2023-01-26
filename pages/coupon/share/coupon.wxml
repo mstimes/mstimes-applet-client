@@ -1,25 +1,65 @@
 <my-component my-property='{{header}}' />
 
 <view class="contain">
-  <view style="text-align: center; font-size: 40rpx; font-weight: 500; margin-bottom: 50rpx;">会员注册礼</view>
+  <view style="text-align: center; font-size: 45rpx; font-weight: 400; margin-bottom: 50rpx;">会员邀请礼</view>
   <view class="register-coupon-container">
    <view class="coupon-info-container">
     <view style="color: white; text-align: center; font-size: 26rpx; font-weight: 400; margin-top: 50rpx;">好友可获得</view>
-    <view style="color: white; text-align: center; font-size: 80rpx; font-weight: 100; margin-top: 20rpx;">¥300</view>
-    <view style="color: white; text-align: center; font-size: 23rpx; font-weight: 300; margin-top: 20rpx;">会员奖励金</view>
-    <view style="color: white; text-align: center; font-size: 23rpx; font-weight: 400; margin-top: 20rpx;">通过分享链接获得</view>
+    <view style="color: white; text-align: center; font-size: 80rpx; font-weight: 100; margin-top: 20rpx;">¥120</view>
+    <view style="color: white; text-align: center; font-size: 23rpx; font-weight: 300; margin-top: 20rpx;">会员优惠券</view>
+    <view style="color: white; text-align: center; font-size: 23rpx; font-weight: 400; margin-top: 20rpx;">通过分享链接注册获得</view>
    </view>
    <view class="seperate-a-line"></view>
    <view class="coupon-info-container">
     <view style="color: white; text-align: center; font-size: 26rpx; font-weight: 400; margin-top: 50rpx;">您可同时获得</view>
-    <view style="color: white; text-align: center; font-size: 80rpx; font-weight: 100; margin-top: 20rpx;">¥300</view>
-    <view style="color: white; text-align: center; font-size: 23rpx; font-weight: 300; margin-top: 20rpx;">分享奖励金</view>
+    <view class="row-flex-info">
+      <view style="color: white; text-align: center; font-size: 80rpx; font-weight: 100; margin-top: 20rpx;">9</view>
+      <view style="color: white; text-align: center; font-size: 40rpx; font-weight: 100; margin-top: 60rpx;">折</view>
+    </view>
+    
+    <view style="color: white; text-align: center; font-size: 23rpx; font-weight: 300; margin-top: 20rpx;">折上折券最高减¥1000</view>
     <view style="color: white; text-align: center; font-size: 23rpx; font-weight: 400; margin-top: 20rpx;">每成功邀请1人可获得</view>
    </view>
   </view>
-  <view class="get_coupon">
-    <button class="butt" size="small" style="width:70%" bindtap="onShareAppMessage" open-type="share">微信分享</button>
-  </view>
+
+  <view class="step-info-container">
+    <view style="text-align: center; font-size: 30rpx; font-weight: 500; margin-top: 60rpx; margin-bottom: 40rpx;">简单三步 奖励到手</view>
+    <view class="step-info">
+      <image src="/images/1.png" style="width: 40rpx; height: 40rpx; margin-top: 15px; margin-left: 10rpx;" mode="widthFix"></image>
+      <view class="column-step-info">
+        <view style="font-size: 24rpx; font-weight: 400; margin-top: 20rpx; margin-left: 30rpx;">通过微信</view>
+        <view style="font-size: 24rpx; font-weight: 400; margin-top: 5rpx; margin-left: 30rpx;">分享好友</view>
+      </view>
+      <view style="font-size: 23rpx; font-weight: 400; margin-top: 35rpx; margin-left: 115rpx; color: grey;">·成功分享一位微信好友</view>
+    </view>
+    <view class="seperate-line"></view>
+    <view class="step-info">
+      <image src="/images/2.png" style="width: 40rpx; height: 40rpx; margin-top: 15px; " mode="widthFix"></image>
+      <view class="column-step-info">
+        <view style="font-size: 24rpx; font-weight: 400; margin-top: 20rpx; margin-left: 10rpx;">好友注册会员</view>
+        <view style="font-size: 24rpx; font-weight: 400; margin-top: 5rpx; margin-left: 10rpx;">成功领取优惠券</view>
+      </view>
+      <view class="column-step-info">
+        <view style="font-size: 23rpx; font-weight: 400; margin-top: 25rpx; margin-left: 50rpx; color: grey;">·好友通过分享链接注册会员</view>
+        <view style="font-size: 23rpx; font-weight: 400; margin-top: 5rpx; margin-left: 65rpx; color: grey;">·并成功领取优惠券</view>
+      </view>
+    </view>
+    <view class="seperate-line"></view>
+    <view class="step-info">
+      <image src="/images/3.png" style="width: 40rpx; height: 30rpx; margin-top: 15px;" mode="widthFix"></image>
+      <view class="column-step-info">
+        <view style="font-size: 24rpx; font-weight: 400; margin-top: 20rpx; margin-left: 35rpx;">领取成功</view>
+        <view style="font-size: 24rpx; font-weight: 400; margin-top: 5rpx; margin-left: 35rpx;">计入邀请</view>
+      </view>
+      <view class="column-step-info">
+        <view style="font-size: 23rpx; font-weight: 400; margin-top: 25rpx; margin-left: 90rpx; color: grey;">·计入一次成功邀请</view>
+        <view style="font-size: 23rpx; font-weight: 400; margin-top: 5rpx; margin-left: 95rpx; color: grey;">·并获得一张9折折上折券</view>
+      </view>
+    </view>
+   </view>
+  <!-- <view class="get_coupon"> -->
+  <!-- </view> -->
+  <button class="butt" style="width:70%" bindtap="onShareAppMessage" open-type="share">微信分享</button>
 </view>
 
 

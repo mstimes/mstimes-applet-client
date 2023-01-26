@@ -49,8 +49,13 @@
   white-space: nowrap;
  }
 
+.vip-private-container{
+  display: flex;
+  flex-direction: column;
+}
+
  .lastup-banner-image{
-  width: 80%; 
+  width: 600rpx; 
   height: 600rpx;
   margin-top: 10rpx;
   margin-left: 40rpx;
@@ -229,7 +234,9 @@
   font-size: 26rpx;
   font-family: STKaiti;
   font-weight: 400;
-  padding: 10px;
+  padding: 0px;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
   color: white
 }
 
@@ -245,5 +252,65 @@
 .swiper-block{
   height: 750rpx;
   width: 100%;
+  background-color: black;
+}
+
+.page-section-spacing{
+  margin-top: 60rpx;
+}
+.scroll-view_H{
+  white-space: nowrap;
+}
+.scroll-view-item{
+  height: 300rpx;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  width: 100%;
+  height: 300rpx;
+}
+
+.swiper-vip-image{
+  height: 300rpx; 
+  width: 300rpx;  
+}
+
+.swiper-vip-container {
+  width: 300rpx;
+  margin-top: 10rpx;
+  margin-right: 70rpx;
+}
+
+.swiper-vip-block{
+  height: 500rpx; 
+  /* width: 100%; */
+  background-color: black;
+}
+
+.vip-swiper-item{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.row-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 23rpx;
+  font-weight: 400;
+  margin-top: 10rpx; 
+}
+
+.vip-common-flex {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+.swiper-group-block{
+  height: 800rpx; 
+  /* width: 100%; */
   background-color: black;
 }

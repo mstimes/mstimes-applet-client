@@ -1,0 +1,57 @@
+<view class="c-top-header-white">
+  <image style="width: 40rpx; height: 40rpx; position: absolute; left: 20rpx; top: 115rpx" src="/images/arrow-left.png" bindtap="goBack"></image>
+    订单列表
+</view>
+
+<view id="tabs">
+  <view wx:for="{{tabs}}" data-idx="{{index}}" class="item {{checked==index?'active':''}}" bindtap="navTip">
+      {{item}}
+  </view>
+</view>
+ 
+<view style="background-color:#eeeeee;" wx:key="index" wx:for-index="i" wx:for="{{orderList}}" >
+  <view style="color: #eeeeee; height: 5rpx;">1</view>
+    <view class="order-records-container">
+      <view class="row-space-between">
+        <text style="font-size:25rpx; font-weight:400; padding: 0px 0px 0px 0px">订单编号 {{item.orderNumber}}</text>
+        <text wx:if="{{item.status == 0}}" style="font-size:22rpx; font-weight:400; color:grey">等待付款</text>
+        <text wx:if="{{item.status == 1}}" style="font-size:22rpx; font-weight:400; color:grey">买家已付款</text>
+        <text wx:if="{{item.status == 2}}" style="font-size:22rpx; font-weight:400; color:grey">支付失败</text>
+        <text wx:if="{{item.status == 6}}" style="font-size:22rpx; font-weight:400; color:grey">商家已发货</text>
+        <text wx:if="{{item.status == 7}}" style="font-size:22rpx; font-weight:400; color:grey">完成</text>
+      </view>
+      <view class="row-flex-start">
+        <image style="width: 160rpx; height: 160rpx; margin-left: 30rpx; margin-right:10rpx; margin-top:20rpx" src="https://ghomelifevvip.com/{{item.mainImage}}"></image>
+        <view class="common-column-container">
+          <text style="margin-top: 10rpx;font-size:25rpx;font-weight:400">{{item.title}}</text>
+            <text style="margin-top: 10rpx; margin-left:20rpx">分类：{{item.classify}}</text>
+            <view class="inner-row-space-between">
+              <text style="margin-top: 5rpx; margin-bottom: 5rpx; margin-left:20rpx">规格：{{item.specification}} </text>
+              <text style="margin-top: 5rpx; margin-bottom: 5rpx;margin-right:100rpx"> x {{item.orderCount}}</text>
+            </view>
+            <text style="margin-top: 25rpx; margin-bottom: 5rpx; margin-left:10rpx;">实付金额 {{item.realPrice * item.orderCount}} 元</text>
+          </view>
+      </view>
+      <view class="row-space-between">
+        <text>{{item.orderAddress}}</text>
+      </view>
+      <view class="row-space-between">
+        <text>收件人： {{item.person}}</text>
+        <text>下单时间  {{item.createTime}}</text>
+      </view>
+      <view style="display: flex; flex-direction: row; justify-content: flex-end;">
+        <view wx:if="{{item.status == 0}}" class="payment-butt" style="width: 130rpx; height: 40rpx; margin-bottom: 10rpx; "> 
+          <text style="color: black; font-size: 20rpx; text-align: center; padding: 10rpx 10rpx 10rpx 10rpx;">去支付</text>
+        </view>
+        <button wx:if="{{item.status == 7}}" class="payment-butt" style="width: 160rpx; height: 60rpx; margin-left: 320rpx; margin-bottom: 10rpx;"> 
+          <text style="color: black; font-size: 20rpx;">再次购买</text>
+        </button>
+        <view wx:if="{{item.status != 0}}" class="payment-butt" style="width: 150rpx; height: 40rpx; margin-left: 20rpx; margin-bottom: 10rpx;" data-id="{{item.wayBillToken}}" bindtap="searchLogisticDetail"> 
+          <text style="color: black; font-size: 20rpx; padding: 10rpx 10rpx 10rpx 10rpx;">查看物流信息</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{i + 1 == totalOrderRecords}}" style="text-align: center;padding: 10px 0px 20px 0px">
+      <text style="font-size: 25rpx; font-weight: 400" >没有更多数据 </text>
+    </view>
+  </view>

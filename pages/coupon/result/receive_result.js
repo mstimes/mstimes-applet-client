@@ -5,14 +5,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    couponList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var shareUser = wx.getStorageSync('shareUser');
+    console.log('options.userNumber ' + options.newUserNumber);
 
+    // 申请优惠券
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: "https://server.ghomelifevvip.com/coupon/createUserCoupons",
+      data: {
+        "methodType" : 1,
+        "receiverNo" : options.newUserNumber,
+        "sharerNo": shareUser,
+      },
+      complete: res=>{
+        if(!res.data.success){
+          console.log(res.data.msg)
+        }else{
+          console.log("createUserCoupons success! " + res.data.dataList);
+          this.setData({
+            couponList: res.data.dataList
+          })
+        }
+      }
+    })
   },
 
   /**

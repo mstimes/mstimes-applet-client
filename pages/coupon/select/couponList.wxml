@@ -6,14 +6,15 @@
         <image mode="aspectFill" style="width: 80%; height: 100rpx; margin-top: 200rpx" src="/images/no_data.jpeg"></image>
       </view>
       <block wx:for="{{couponList}}" wx:key="index">
-        <view class="row-flex-container">
-          <checkbox checked="{{item.isChecked}}" class="weui-cell" data-index="{{index}}" bindtap="selectedCheckTap"/>
+        <view class="row-flex-container" data-index="{{index}}" bindtap="selectedCheckTap">
+          <checkbox checked="{{item.isChecked}}" class="weui-cell" />
           <view class="column-flex-container">
             <view class="row-flex-container">
               <view class="coupon-container">
                 <view class="row-flex-price-container">
-                  <view style="font-size: 50rpx; margin-top: 50rpx; margin-left: 160rpx;">¥ </view>
+                  <view wx:if="{{item.couponType != 5}}" style="font-size: 50rpx; margin-top: 50rpx; margin-left: 0rpx;">¥ </view>
                   <view>{{item.discountCoupon}}</view>
+                  <view wx:if="{{item.couponType == 5}}" style="font-size: 50rpx; margin-top: 50rpx; margin-left: 10rpx;">折</view>
                 </view>
               </view>
               <view class="coupon-info-container">

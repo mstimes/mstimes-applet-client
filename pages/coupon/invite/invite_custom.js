@@ -15,11 +15,48 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
-
+    // 登录
+    wx.login({
+     success: res => {
+       // 发送 res.code 到后台换取 openId, sessionKey, unionId
+       // console.log("---------")
+       // console.log(res.code)
+       if (res.code) {
+         // 发起网络请求
+         wx.request({
+           url: 'https://server.ghomelifevvip.com/wechat/queryAuthSession',
+           data: {
+             code: res.code
+           },
+           success: res => {
+             if(res.data.success){
+               // console.log(res)
+               wx.setStorageSync('wechatAuthSession', res.data.dataList[0])
+             }else{
+               wx.showToast({
+                 title: '微信授权网咯请求失败',
+                 icon: 'error'
+               })
+             }
+           },
+           fail: res => {
+             if (res == null || res.data == null){
+               wx.showToast({
+                 title: '微信授权网咯请求失败',
+                 icon: 'error'
+               })
+             }
+           }
+         })
+       } else {
+         wx.showToast({
+           title: '登录失败！' + res.errMsg,
+           icon: 'error'
+         })
+       }
+     }
+   })
   },
 
   /**
@@ -65,32 +102,67 @@ Page({
   },
 
   toResultPage: function () {
-    var shareUser = wx.getStorageSync('shareUser');
-    var loginInfo = wx.getStorageSync('serviceLogin');
 
-    // 申请优惠券
+  },
+
+  newAccountRegister(e) {
+    var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
+    var shareUser = wx.getStorageSync('shareUser')
+    if(shareUser == null){
+      shareUser = ''
+    }
+
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       method: "POST",
-      url: "https://server.ghomelifevvip.com/coupon/createUserCoupons",
+      url: "https://server.ghomelifevvip.com/user/newUserForApplet",
       data: {
-        "category" : 1,
-        "receiverNo" : loginInfo.userNumber,
-        "sharerNo": shareUser,
+        "code": e.detail.code,
+        "unionId": wechatAuthSession.unionid,
+        "shareUser": shareUser,
       },
       complete: res=>{
         if(!res.data.success){
           console.log(res.data.msg)
         }else{
-          console.log("createUserCoupons success!");
+          console.log('register new account success. newUserNumber ' + res.data.dataList[0].userNumber);
+          wx.navigateTo({
+            url: '/pages/coupon/result/receive_result?newUserNumber=' + res.data.dataList[0].userNumber,
+          })
         }
       }
     })
+  },
 
-    wx.navigateTo({
-      url: `${'/pages/coupon/result/receive_result'}`,
-    })
-  }
+  newRegisterByShare (e){
+    console.log(e.detail.code)
+    if(e.detail.code != undefined){
+      var wechatAuthSession = wx.getStorageSync('wechatAuthSession')
+      wx.request({
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: "POST",
+        url: 'https://server.ghomelifevvip.com/user/login',
+        data: {
+          loginType: 1,
+          loginId: wechatAuthSession.unionid
+        },
+        complete: res => {
+          console.log(res)
+          if(res.data.success){
+            wx.showToast({
+              title: '您已注册会员    不能重复领取',
+              icon: 'error',
+              duration: 3000
+            })
+          }else{
+            this.newAccountRegister(e)
+          }
+        }
+      })
+    }
+  },
 })

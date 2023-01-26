@@ -25,6 +25,11 @@
   flex-direction: column;
 }
 
+.swi{
+  height: 90vh;
+  width: 100%;
+}
+
 .swiper-vip-card{
   height: 400rpx;
   width: 750rpx;

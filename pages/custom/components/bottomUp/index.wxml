@@ -1,0 +1,28 @@
+<view class="box" hidden="{{!hideModal}}">
+  <view class="empty-box" bindtap="hideModal" id="empty-box"></view>
+  <scroll-view scroll-y style="max-height:80vh;">
+    <view class="content" style="transform:translateY({{translateY}}px);" animation="{{animate}}">
+      <!-- boll -->
+      <view class="header" bindtouchstart="touchStart" bindtouchmove="touchMove">
+        <view></view>
+      </view>
+ 
+      <!-- 快递类型 -->
+      <view>
+        <view class="item" wx:for="{{list}}" wx:key="index" bindtap="changeItem" data-index="{{index}}">
+          <view class="item-name">{{item.name}}</view>
+          <view>
+            <view class="item-no-selected" wx:if="{{item.selected==0}}"></view>
+            <image class="item-selected" wx:if="{{item.selected==1}}" src="/assets/images/choose.png"></image>
+          </view>
+        </view>
+      </view>
+ 
+      <!-- 按钮 -->
+      <view class="button" bindtap="confirm">
+        <view>确认</view>
+      </view>
+ 
+    </view>
+  </scroll-view>
+</view>

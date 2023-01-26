@@ -22,7 +22,7 @@
 
 .c-top-header-black {
   padding: 110rpx 0rpx 30rpx 0rpx;
-  background-color: black;
+  background-color: rgb(29, 29, 29);
   color: white;
   font-size: 120; 
   font-weight: 900; 
@@ -33,6 +33,15 @@
   padding: 110rpx 0rpx 30rpx 0rpx;
   background-color: white;
   color: black;
+  font-size: 120; 
+  font-weight: 900; 
+  text-align: center;
+}
+
+.c-top-header-blue {
+  padding: 110rpx 0rpx 30rpx 0rpx;
+  background-color: #527EAD;
+  color: white;
   font-size: 120; 
   font-weight: 900; 
   text-align: center;

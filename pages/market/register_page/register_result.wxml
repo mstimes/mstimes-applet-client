@@ -1,0 +1,33 @@
+<view class="c-top-header-white">
+   申请开通店铺
+</view>
+
+<wxs module="filters" src="../../../utils/utils.wxs"></wxs>
+
+<view class="background">
+  <view style="display: flex; flex-direction: row; height: 80rpx; padding-top: 40rpx; margin-left: 200rpx;">
+    <image style="width: 35rpx; height: 35rpx; margin-right: 10rpx;" src="/images/black_1.png"/>
+    <text style="font-size: 25rpx; font-weight: 500;">添加店铺</text>
+    <image style="width: 35rpx; height: 35rpx; margin-right: 30rpx; margin-left: 10rpx;" src="/images/arrow.png"/>
+    <image style="width: 35rpx; height: 35rpx; margin-right: 10rpx;" src="/images/black_2.png"/>
+    <text style="font-size: 25rpx; font-weight: 500;">审核结果</text>
+    <!-- <image style="width: 35rpx; height: 35rpx; margin-right: 20rpx;" src="/images/arrow.png"/>
+    <image style="width: 35rpx; height: 35rpx; margin-right: 10rpx;" src="/images/grey_3.png"/>
+    <text style="font-size: 25rpx; font-weight: 500; color: grey;">申请结果</text> -->
+  </view>
+  
+  <view wx:if="{{auditStatus == 1}}" style="background-color: white; height: 1000rpx; margin-top: 0rpx; margin-left: 20rpx; margin-right: 20rpx; border-radius: 15rpx; display: flex; flex-direction: column; text-align: center;">
+    <image style="width: 200rpx; height: 200rpx; margin-left: 260rpx; margin-top: 200rpx;" src="/images/audit.png"></image>
+    <text style="margin-top: 60rpx; margin-left: 120rpx; margin-right: 120rpx; font-size: 28rpx; font-weight: 400;"> 店铺信息提交成功！请耐心等待审核，预计1-3个工作日完成。 </text>
+  </view>
+
+  <view wx:if="{{auditStatus == 2}}" style="background-color: white; height: 1000rpx; margin-top: 0rpx; margin-left: 20rpx; margin-right: 20rpx; border-radius: 15rpx; display: flex; flex-direction: column; text-align: center;">
+    <image style="width: 200rpx; height: 200rpx; margin-left: 260rpx; margin-top: 140rpx;" src="/images/audit1.png"></image>
+    <text style="margin-top: 30rpx; margin-left: 180rpx; margin-right: 180rpx; font-size: 28rpx; font-weight: 400;"> 恭喜店铺开通成功, 开始管理您的店铺吧！</text>
+   
+    <button class="next-butt" style="width: 600rpx; height: 80rpx; margin-top: 160rpx;" bindtap="nextTap"> 
+      <text style="color: white"> 进入我的店铺 </text>
+    </button>
+  </view>
+</view>
+

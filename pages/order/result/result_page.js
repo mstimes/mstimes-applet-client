@@ -7,6 +7,11 @@ Page({
     paymentResultSuccess: 1,
     orderNumber: '',
     sumPrice: 0,
+    header: {
+      "color": "#000",
+      "flag": 1,
+      "name": "支付结果"
+    },
   },
 
   onLoad: function (options) {
@@ -19,7 +24,7 @@ Page({
 
   returnHomeButtonTap: function(){
     wx.switchTab({
-      url: 'pages/vip/vip_page',
+      url: '/pages/market/main_page/main',
     })
   }
 });

@@ -1,3 +1,9 @@
+var filters = {
+      toFix: function (value) {
+          return value.toFixed(2)
+      }
+  }
+  
 var app=getApp()
   Page({
   data:{
@@ -14,6 +20,7 @@ var app=getApp()
     loadedCounts: 0,
     topicId: 0,
     sceneId: 0,
+    vipLevel: 1,
     header: {
       "color": "#000",
       "flag": 1,
@@ -22,9 +29,11 @@ var app=getApp()
   },
 
   onLoad:function(options){
+    var vipLevel = wx.getStorageSync('vipLevel');
     this.setData({
       topicId: options.topicId,
       sceneId: options.sceneId,
+      vipLevel: vipLevel,
     })
 
     this.getTopicSceneInfo(options.topicId, options.sceneId);

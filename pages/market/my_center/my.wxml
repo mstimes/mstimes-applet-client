@@ -1,0 +1,217 @@
+<view wx:if="{{userType == 0 || (userType == 1 && userLevel != 10)}}" class="c-top-header-white">
+   我的账户
+</view>
+<view wx:if="{{userType == 1 && userLevel == 10}}" class="c-top-header-white">
+   我的店铺
+</view>
+
+<view class="background" style="height: 1200rpx;">
+  <view class="row-flex-start">
+    <view wx:if="{{userType == 0 || (userType == 1 && userLevel != 10)}}">
+      <text style="margin-top: 5rpx;font-size:55rpx;font-weight:400">H</text>
+      <text style="margin-top: 5rpx;font-size:55rpx;font-weight:400;color:red">i</text>
+      <text style="margin-top: 5rpx;font-size:55rpx;font-weight:300">,</text>
+      <text style="margin-top: 10rpx; margin-left: 20rpx; font-size:50rpx; font-weight:300">{{nickName}}</text>
+    </view>
+
+    <view wx:if="{{userType == 1 && userLevel == 10}}" style="display: flex; flex-direction: row;">
+      <text style="margin-top: 20rpx; margin-left: 30rpx; font-size:50rpx; font-weight:300">{{nickName}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{userType == 0 || (userType == 1 && userLevel != 10)}}" class="c-empty-container">
+    <view style="display: flex; flex-direction: column;">
+      <text style="font-size: 30rpx; font-weight: 500; margin-left: 50rpx; margin-bottom: 30rpx;">我的订单</text>
+      <view style="display: flex; flex-direction: row;">
+        <navigator url="/pages/order/status/order_list?checkedIndex=4">
+          <view style="display: flex; flex-direction: column;">
+            <image src="/images/all_order.png" style="width: 55rpx; height: 55rpx; margin-top: 5px; margin-left: 55rpx;" mode="widthFix"></image>
+            <text style="font-size: 25rpx; font-weight: 400; margin-left: 35rpx; margin-top: 10rpx;">全部订单</text>
+          </view>
+        </navigator>
+        <view class="c-seperate-a-line" style="margin-left: 40rpx;"></view>
+        <navigator url="/pages/order/status/order_list?checkedIndex=0">
+          <view style="display: flex; flex-direction: column;">
+            <image src="/images/repay.png" style="width: 55rpx; height: 55rpx; margin-top: 5px; margin-left: 40rpx;" mode="widthFix"></image>
+            <text style="font-size: 25rpx; font-weight: 400; margin-left: 30rpx; margin-top: 10rpx;">待付款</text>
+          </view>
+        </navigator>
+        <navigator url="/pages/order/status/order_list?checkedIndex=1">
+          <view style="display: flex; flex-direction: column;">
+            <image src="/images/resend.png" style="width: 55rpx; height: 55rpx; margin-top: 5px; margin-left: 80rpx;" mode="widthFix"></image>
+            <text style="font-size: 25rpx; font-weight: 400; margin-left: 72rpx; margin-top: 10rpx;">待发货</text>
+          </view>
+        </navigator>
+        <navigator url="/pages/order/status/order_list?checkedIndex=2">
+          <view style="display: flex; flex-direction: column;">
+            <image src="/images/sended.png" style="width: 55rpx; height: 55rpx; margin-top: 5px; margin-left: 80rpx;" mode="widthFix"></image>
+            <text style="font-size: 25rpx; font-weight: 400; margin-left: 72rpx; margin-top: 10rpx;">已发货</text>
+          </view>
+        </navigator>
+        <navigator url="/pages/order/status/order_list?checkedIndex=3">
+          <view style="display: flex; flex-direction: column;">
+            <image src="/images/order_done.png" style="width: 55rpx; height: 55rpx; margin-top: 5px; margin-left: 80rpx;" mode="widthFix"></image>
+            <text style="font-size: 25rpx; font-weight: 400; margin-left: 72rpx; margin-top: 10rpx;">已完成</text>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{userType == 1 && userLevel == 10}}" class="c-empty-container">
+    <view style="display: flex; flex-direction: column;" bindtap="goBussinessHistoryTap">
+      <text style="font-size: 30rpx; font-weight: 500; margin-left: 50rpx; margin-bottom: 30rpx;">经营概况</text>
+      <view style="display: flex; flex-direction: row; align-content: space-around;">
+        <view style="display: flex; flex-direction: column; text-align: center; width: 250rpx;">
+          <text style="font-size: 25rpx; font-weight: 400; margin-left: 50rpx; margin-top: 10rpx; color: grey;">今日成交</text>
+          <view style="display: flex; flex-direction: row; margin: 0 auto;">
+            <text style="font-size: 25rpx; font-weight: 500; margin-left: 50rpx; margin-top: 30rpx; ">¥</text>
+            <text style="font-size: 35rpx; font-weight: 500; margin-left: 5rpx; margin-top: 20rpx; ">{{todaySales}}</text>
+            <!-- <text style="font-size: 25rpx; font-weight: 500; margin-left: 0rpx; margin-top: 33rpx; ">.00</text> -->
+          </view>
+        </view>
+        <view style="display: flex; flex-direction: column; text-align: center; width: 250rpx;">
+          <text style="font-size: 25rpx; font-weight: 400; margin-left: 50rpx; margin-top: 10rpx; color: grey;">今日收益</text>
+          <view style="display: flex; flex-direction: row; margin: 0 auto;">
+            <text style="font-size: 25rpx; font-weight: 500; margin-left: 50rpx; margin-top: 30rpx; ">¥</text>
+            <text style="font-size: 35rpx; font-weight: 500; margin-left: 5rpx; margin-top: 20rpx; ">{{todayIncome}}</text>
+            <!-- <text style="font-size: 25rpx; font-weight: 500; margin-left: 0rpx; margin-top: 33rpx; ">.00</text> -->
+          </view>
+        </view>
+        <view style="display: flex; flex-direction: column; text-align: center; width: 250rpx;">
+          <text style="font-size: 25rpx; font-weight: 400; margin-left: 50rpx; margin-top: 10rpx; color: grey;">今日订单</text>
+          <text style="font-size: 35rpx; font-weight: 500; margin-left: 50rpx; margin-top: 20rpx;">{{todayOrderSum}}</text>
+        </view>
+      </view>
+
+      <!-- <view style="display: flex; flex-direction: row; align-content: space-between; margin-top: 30rpx;">
+        <view style="display: flex; flex-direction: column; text-align: center; width: 250rpx;">
+          <text style="font-size: 25rpx; font-weight: 400; margin-left: 50rpx; margin-top: 10rpx; color: grey;">近7天成交</text>
+          <view style="display: flex; flex-direction: row; margin: 0 auto;">
+            <text style="font-size: 25rpx; font-weight: 500; margin-left: 50rpx; margin-top: 30rpx; ">¥</text>
+            <text style="font-size: 35rpx; font-weight: 500; margin-left: 5rpx; margin-top: 20rpx; ">{{sevenDaySales}}</text>
+          </view>
+        </view>
+        <view style="display: flex; flex-direction: column; text-align: center; width: 250rpx;">
+          <text style="font-size: 25rpx; font-weight: 400; margin-left: 50rpx; margin-top: 10rpx; color: grey;">近7天收益</text>
+          <view style="display: flex; flex-direction: row; margin: 0 auto;">
+            <text style="font-size: 25rpx; font-weight: 500; margin-left: 50rpx; margin-top: 30rpx; ">¥</text>
+            <text style="font-size: 35rpx; font-weight: 500; margin-left: 5rpx; margin-top: 20rpx; ">{{sevenDayIncome}}</text>
+          </view>
+        </view>
+        <view style="display: flex; flex-direction: column; text-align: center; width: 250rpx;">
+          <text style="font-size: 25rpx; font-weight: 400; margin-left: 50rpx; margin-top: 10rpx; color: grey;">近7天订单</text>
+          <text style="font-size: 35rpx; font-weight: 500; margin-left: 50rpx; margin-top: 20rpx;">{{sevenDayOrderSum}}</text>
+        </view>
+      </view> -->
+
+      <view style="display: flex; flex-direction: row; align-content: space-between; margin-top: 30rpx;">
+        <view style="display: flex; flex-direction: column; text-align: center; width: 250rpx;">
+          <text style="font-size: 25rpx; font-weight: 400; margin-left: 50rpx; margin-top: 10rpx; color: grey;">累计成交</text>
+          <view style="display: flex; flex-direction: row; margin: 0 auto;">
+            <text style="font-size: 25rpx; font-weight: 500; margin-left: 50rpx; margin-top: 30rpx; ">¥</text>
+            <text style="font-size: 35rpx; font-weight: 500; margin-left: 5rpx; margin-top: 20rpx; ">{{totalSales}}</text>
+            <!-- <text style="font-size: 25rpx; font-weight: 500; margin-left: 0rpx; margin-top: 33rpx; ">.00</text> -->
+          </view>
+        </view>
+        <view style="display: flex; flex-direction: column; text-align: center; width: 250rpx;">
+          <text style="font-size: 25rpx; font-weight: 400; margin-left: 50rpx; margin-top: 10rpx; color: grey;">累计收益</text>
+          <view style="display: flex; flex-direction: row; margin: 0 auto;">
+            <text style="font-size: 25rpx; font-weight: 500; margin-left: 50rpx; margin-top: 30rpx; ">¥</text>
+            <text style="font-size: 35rpx; font-weight: 500; margin-left: 5rpx; margin-top: 20rpx; ">{{totalIncome}}</text>
+            <!-- <text style="font-size: 25rpx; font-weight: 500; margin-left: 0rpx; margin-top: 33rpx; ">.00</text> -->
+          </view>
+        </view>
+        <view style="display: flex; flex-direction: column; text-align: center; width: 250rpx;">
+          <text style="font-size: 25rpx; font-weight: 400; margin-left: 50rpx; margin-top: 10rpx; color: grey;">累计订单</text>
+          <text style="font-size: 35rpx; font-weight: 500; margin-left: 50rpx; margin-top: 20rpx;">{{totalOrderSum}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{userType == 0 || (userType == 1 && userLevel != 10)}}" class="c-empty-container">
+    <view style="display: flex; flex-direction: column;">
+      <text style="font-size: 30rpx; font-weight: 500; margin-left: 50rpx; margin-bottom: 40rpx;">我的钱包和奖励</text>
+      <view style="display: flex; flex-direction: row; ">
+        <text style="font-size: 28rpx; font-weight: 400; margin-left: 65rpx; margin-top: 10rpx;">优惠券</text>
+        <image style="width: 40rpx; height: 40rpx; margin-top: 10rpx; margin-left: 150rpx;" src="/images/arrow.png"></image>
+        <view class="conpon-seperate-line" style="margin-left: 20rpx;"></view>
+        <text style="font-size: 28rpx; font-weight: 400; margin-left: 30rpx; margin-top: 10rpx;">代金券</text>
+        <image style="width: 40rpx; height: 40rpx; margin-top: 10rpx; margin-left: 200rpx;" src="/images/arrow.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{userType == 1 && userLevel == 10}}" class="c-empty-container">
+    <view style="display: flex; flex-direction: column;">
+      <text style="font-size: 30rpx; font-weight: 500; margin-left: 50rpx; margin-bottom: 40rpx;">资金信息</text>
+      <view style="display: flex; flex-direction: row; ">
+        <view style="width: 380rpx; display: flex; flex-direction: row; justify-content: space-around;">
+          <text style="font-size: 25rpx; font-weight: 400; margin-left: 40rpx; margin-top: 10rpx; color: grey;">账户余额</text>
+          <text style="font-size: 35rpx; font-weight: 500; margin-left: 0rpx; margin-top: 3rpx;">¥{{totalFundRemain}}</text>
+        </view>
+        <view class="conpon-seperate-line" style="margin-left: 20rpx;"></view>
+        <view style="width: 380rpx; display: flex; flex-direction: row; justify-content: space-around;">
+          <text style="font-size: 25rpx; font-weight: 400; margin-left: 40rpx; margin-top: 10rpx; color: grey;">退款金额</text>
+          <text style="font-size: 35rpx; font-weight: 500; margin-left: 0rpx; margin-top: 3rpx;">¥{{totalDrawingAmount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{userType == 1 && userLevel == 10}}" class="c-empty-container">
+    <view style="display: flex; flex-direction: column;">
+      <text style="font-size: 30rpx; font-weight: 500; margin-left: 50rpx; margin-bottom: 40rpx;">资金管理</text>
+      <view style="display: flex; flex-direction: row;">
+        <!-- <navigator url="/pages/order/status/order_list?checkedIndex=4"> -->
+          <view style="display: flex; flex-direction: column;" bindtap="drawingTap">
+            <image src="/images/drawing.png" style="width: 55rpx; height: 55rpx; margin-top: 5px; margin-left: 100rpx;" mode="widthFix"></image>
+            <text style="font-size: 25rpx; font-weight: 400; margin-left: 80rpx; margin-top: 10rpx;">账户提现</text>
+          </view>
+        <!-- </navigator> -->
+        <!-- <navigator url="/pages/order/status/order_list?checkedIndex=4"> -->
+          <view style="display: flex; flex-direction: column;" bindtap="drawingTap">
+            <image src="/images/drawing_records.png" style="width: 55rpx; height: 55rpx; margin-top: 5px; margin-left: 100rpx;" mode="widthFix"></image>
+            <text style="font-size: 25rpx; font-weight: 400; margin-left: 80rpx; margin-top: 10rpx;">提现记录</text>
+          </view>
+        <!-- </navigator> -->
+          <view style="display: flex; flex-direction: column; " bindtap="drawingTap">
+            <image src="/images/freeze_refund.png" style="width: 60rpx; height: 60rpx; margin-top: 5px; margin-left: 90rpx;" mode="widthFix"></image>
+            <text style="font-size: 25rpx; font-weight: 400; margin-left: 70rpx; margin-top: 5rpx;">冻结资金</text>
+          </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{userType == 0 || (userType == 1 && userLevel != 10)}}" style="text-align: center; background-color: #ECEAEA; padding-bottom: 30rpx; padding-top: 50rpx;">
+    <text style="font-size: 32rpx;font-weight:400;font-family:NSimSun;color:black;margin-left: 10rpx;">- 猜你喜欢 -</text>
+  </view>
+  <view wx:if="{{userType == 0 || (userType == 1 && userLevel != 10)}}" class="recommond-container">
+    <view class="recommand-item"  wx:key="index" wx:for-index="i" wx:for="{{goodList}}" >
+      <!-- <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}&isHistory=false" hover-class="other-navigator-hover"> -->
+        <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}&fromScenePage=1" hover-class="other-navigator-hover">
+        <view class="order_star_view">
+          <image src="{{item.mainImage}}" style="border-radius: 5rpx;" mode="widthFix"></image>
+        </view>
+
+        <view class="order-sail-des-title">
+          <text>{{item.brand}}</text>
+        </view>
+        <view class="order-sail-des">
+          <text>{{item.description}}</text>
+        </view>
+        <view style="display: flex; flex-direction: row;">
+          <view style="display: flex; flex-direction: column; margin-left: 40rpx; margin-top: 20rpx;">
+            <view class="order-sail-des-title" style="margin-bottom: 0rpx">
+              <text class="order-sail-best-small"> ¥</text>
+              <text class="order-sail-best">{{item.groupPriceDotBefore}}</text>
+              <text wx:if="{{item.groupPriceDotAfter > 0}}" class="order-sail-best-small">.{{item.groupPriceDotAfter}}</text>
+            </view>
+            <text class="order-sail-ori" style="margin-bottom: 20rpx; margin-left: 10rpx;">¥{{item.oriPrice}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

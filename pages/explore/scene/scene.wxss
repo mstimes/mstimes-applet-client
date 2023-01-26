@@ -59,3 +59,39 @@
   font-weight: 400;
   font-size: 22rpx;
 }
+
+.scene-good-desc {
+  text-align: center;
+  font-size: 20rpx;
+  font-family: STKaiti;
+  color:#a3a2a2;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.scene-good-title{
+  text-align: center;
+  font-size: 24rpx;
+  font-family: STKaiti;
+  font-weight: 400;
+  padding: 10px;
+  color: black
+}
+
+.scene-good-best-small {
+  /* margin-top:10px; */
+  margin-left:1px;
+  font-size: 25rpx;
+  font-weight: 500;
+  color:black;
+  text-align: center;
+}
+
+.scene-good-des-title{
+  text-align: center;
+  font-size: 26rpx;
+  font-family: STKaiti;
+  font-weight: 400;
+  /* padding: 10px; */
+  /* color:#ffffff */
+}

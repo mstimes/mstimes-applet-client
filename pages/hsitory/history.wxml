@@ -18,18 +18,18 @@
     </form>
   </view> -->
   <view class="classify">
-      <scroll-view class="classify-srcolbox" scroll-x scroll-with-animation='true'>
-        <div wx:key="unique" wx:for="{{classifies}}" >
-            <div class="classify-item-line">
-              <button wx:if="{{item.name != null && item.classify != selectClassify}}" class="classify-button" data-classify='{{item.classify}}'  bindtap='classifyButtonSearch' style="width:100%">
-                <text style="font-size: 22rpx; font-weight: 300">{{item.name}}</text>
-               </button>
-               <button wx:if="{{item.name != null && item.classify == selectClassify}}" class="selected-classify-button" data-classify='{{item.classify}}'  bindtap='classifyButtonSearch' style="width:100%">
-                <text style="font-size: 22rpx; font-weight: 300;">{{item.name}}</text>
-               </button>
-            </div>
-        </div>
-      </scroll-view>
+    <scroll-view class="classify-srcolbox" scroll-x scroll-with-animation='true'>
+      <div wx:key="unique" wx:for="{{classifies}}" >
+          <div class="classify-item-line">
+            <button wx:if="{{item.name != null && item.classify != selectClassify}}" class="classify-button" data-classify='{{item.classify}}'  bindtap='classifyButtonSearch' style="width:100%">
+              <text style="font-size: 22rpx; font-weight: 300">{{item.name}}</text>
+              </button>
+              <button wx:if="{{item.name != null && item.classify == selectClassify}}" class="selected-classify-button" data-classify='{{item.classify}}'  bindtap='classifyButtonSearch' style="width:100%">
+              <text style="font-size: 22rpx; font-weight: 300;">{{item.name}}</text>
+              </button>
+          </div>
+      </div>
+    </scroll-view>
   </view>
 
   <view class="order-info">

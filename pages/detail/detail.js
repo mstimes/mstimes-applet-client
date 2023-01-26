@@ -2,17 +2,23 @@
 // 获取应用实例
 const app = getApp()
 
+var filters = {
+    toFix: function (value) {
+        return value.toFixed(2)
+    }
+}
+
 Page({
   data: {
     classifyButtons: [{}],
     specificButtons: [{}],
     detailRotateImages: [],
     current: 0,  //当前所在页面的 index
-    indicatorDots: true, //是否显示面板指示点
-    autoplay: true, //是否自动切换
+    indicatorDots: false, //是否显示面板指示点
+    autoplay: false, //是否自动切换
     interval: 3000, //自动切换时间间隔
     duration: 1000, //滑动动画时长
-    circular: true, //是否采用衔接滑动
+    circular: false, //是否采用衔接滑动
     swiperCurrent: 0,
     globalTitle: '',
     globalDetail: '',
@@ -31,7 +37,11 @@ Page({
     initSelectSpecificButton: true,
     isHistory: false,
     goodType: 0,
-    tax: 0
+    tax: 0,
+    vipLevel: 1,
+    show: false,
+    isShowBucket: 0,
+    fromScenePage: 0,
   },
   //轮播图的切换事件
   swiperChange: function(e) {
@@ -52,6 +62,34 @@ Page({
       url: this.data.links[this.data.swiperCurrent]
     })
   },
+
+  loadVipLevelInfo(){
+    var myDate = new Date();
+    var month = myDate.getMonth() + 1;
+    var day = myDate.getDate() + 1;
+    var loginInfo = wx.getStorageSync('serviceLogin');
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "POST",
+      url: 'https://server.ghomelifevvip.com/vip/queryVipLevelInfo',
+      data: {
+        "userNumber": loginInfo.userNumber,
+        "startTime": '2021-01-01',
+        "endTime": myDate.getFullYear() + '-' + month + '-' + day,
+      },
+      complete: res=>{
+        if(res.data.success){
+          this.setData({
+            vipLevel: res.data.dataList[0].level,
+          })
+        }else{
+          console.error('获取总金额失败！')
+        }
+      }
+    });
+   },
 
   onReady: function (){
     this.checkLoginBeforeLoad();
@@ -78,6 +116,7 @@ Page({
   },
   // 事件处理函数
   onLoad: function(options){
+    this.loadVipLevelInfo();
     var _this = this;
 
     if(options.scene != null){
@@ -91,6 +130,7 @@ Page({
       _this.setData({
         globalId: options.id, 
         isHistory: options.isHistory,
+        fromScenePage: options.fromScenePage,
       })
     }
 
@@ -180,7 +220,7 @@ Page({
   checkLoginBeforeLoad: function () {
       var getSceneInfo = wx.getStorageSync('scene')
       var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
-      if(getSceneInfo == '' && getServiceLoginInfo.userNumber == null){
+      if(getSceneInfo == '' && (getServiceLoginInfo.userNumber == null || getServiceLoginInfo.wxOpenId == null)){
         //跳转到登录页
         wx.redirectTo({
           url: "/pages/login/login?originPage=detail&id=" +  this.data.globalId
@@ -191,13 +231,21 @@ Page({
   checkLoginForPay: function () {
     var getSceneInfo = wx.getStorageSync('scene')
     var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
-    if(getSceneInfo != '' && getServiceLoginInfo.userNumber == null){
+    if(getSceneInfo == '' && (getServiceLoginInfo.userNumber == null || getServiceLoginInfo.wxOpenId == null)){
       //跳转到登录页
       wx.redirectTo({
         url: "/pages/login/login?originPage=detail&id=" +  this.data.globalId
       })
     }
 },
+
+  showModalByBucket: function () {
+    this.setData({
+      isShowBucket: 1
+    })
+
+    this.showModal()
+  },
 
   //显示对话框
   showModal: function () {
@@ -220,6 +268,7 @@ Page({
       })
     }.bind(this), 200)
   },
+
   //隐藏对话框
   hideModal: function () {
     // 隐藏遮罩层
@@ -367,6 +416,7 @@ Page({
          + "&specificId=" + this.data.selectedSpecificId
          + "&goodType=" + this.data.goodType
          + "&tax=" + this.data.tax
+         + "&goBuyButton=1&isBucket=0"
       })
     }
   },
@@ -463,9 +513,10 @@ Page({
     })
   },
 
-  addBucket() {
+  joinBucketButtonTap() {
     console.log('goodId ' + parseInt(this.data.globalId));
     var loginInfo = wx.getStorageSync('serviceLogin');
+    console.log('this.data.num ' + this.data.num);
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -473,10 +524,11 @@ Page({
       method: "POST",
       url: "https://server.ghomelifevvip.com/bucket/addBucketInfo",
       data: {
-        "num": 1,
+        "num": this.data.num,
         "goodId": parseInt(this.data.globalId),
         "userNumber": loginInfo.userNumber,
-        "specification": ''
+        "specification": this.data.selectedSpecific,
+        "classify": this.data.selectedClassify
       },
       complete: res=>{
         if(!res.data.success){
@@ -487,13 +539,21 @@ Page({
           })
         }
       }
-    })
+    });
+
+    this.hideModal()
   },
 
   goBack : function (){
-    wx.switchTab({
-      url: '/pages/vip/vip_page'
-    })
+    if(this.data.fromScenePage == 1){
+      wx.navigateBack({
+        delta: 1
+      });
+    }else {
+      wx.switchTab({
+        url: '/pages/market/main_page/main'
+      })
+    }
   }
 })
 

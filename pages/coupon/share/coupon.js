@@ -71,9 +71,9 @@ Page({
     })
 
     return {
-      title: '会员邀请',
+      title: 'PAI派会籍邀请礼',
       path: 'pages/coupon/invite/invite_custom?shareUser=' + loginInfo.userNumber,
-      imageUrl: '/images/about_main.jpg'
+      imageUrl: '/images/share-pic.jpeg'
     }
   },
 })

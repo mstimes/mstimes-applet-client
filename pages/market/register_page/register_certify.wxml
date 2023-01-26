@@ -1,0 +1,48 @@
+
+<view class="c-top-header-white">
+   申请开通店铺
+</view>
+
+<wxs module="filters" src="../../../utils/utils.wxs"></wxs>
+
+<view class="background">
+  <view style="display: flex; flex-direction: row; height: 80rpx; padding-top: 40rpx; margin-left: 120rpx;">
+    <image style="width: 35rpx; height: 35rpx; margin-right: 10rpx;" src="/images/black_1.png"/>
+    <text style="font-size: 25rpx; font-weight: 500;">添加店铺</text>
+    <image style="width: 35rpx; height: 35rpx; margin-right: 20rpx;" src="/images/arrow.png"/>
+    <image style="width: 35rpx; height: 35rpx; margin-right: 10rpx;" src="/images/black_2.png"/>
+    <text style="font-size: 25rpx; font-weight: 500;">资质认证</text>
+    <image style="width: 35rpx; height: 35rpx; margin-right: 20rpx;" src="/images/arrow.png"/>
+    <image style="width: 35rpx; height: 35rpx; margin-right: 10rpx;" src="/images/grey_3.png"/>
+    <text style="font-size: 25rpx; font-weight: 500; color: grey;">申请结果</text>
+  </view>
+  
+  <view style="background-color: white; height: 800rpx; margin-left: 20rpx; margin-right: 20rpx; border-radius: 15rpx; display: flex; flex-direction: column;">
+    <text style="margin-top: 30rpx; margin-left: 50rpx; font-size: 30rpx; font-weight: 500;">上传营业执照</text>
+
+    <view style="display: flex; flex-direction: row; margin-top: 50rpx;">
+      <text style="margin-left: 40rpx; font-size: 26rpx;">注册号</text>
+      <text style="margin-left: 107rpx; font-size: 25rpx; color: rgb(202, 200, 200);">注册号或统一社会信用代码</text>
+    </view>
+    <view class="c-seperate-h-line" style="margin-left: 20rpx; margin-top: 20rpx;"></view>
+
+    <view style="display: flex; flex-direction: row; margin-top: 20rpx;">
+      <text style="margin-left: 40rpx; font-size: 26rpx;">执照名称</text>
+      <text style="margin-left: 80rpx; font-size: 25rpx; color: rgb(202, 200, 200);">执照名称或经营者姓名</text>
+    </view>
+    <view class="c-seperate-h-line" style="margin-left: 20rpx; margin-top: 20rpx;"></view>
+
+    <view style="display: flex; flex-direction: row; margin-top: 20rpx;">
+      <text style="margin-left: 40rpx; font-size: 26rpx;">法人姓名</text>
+      <text style="margin-left: 80rpx; font-size: 25rpx; color: rgb(202, 200, 200);">法人或经营者姓名</text>
+    </view>
+    <view class="c-seperate-h-line" style="margin-left: 20rpx; margin-top: 20rpx;"></view>
+  </view>
+
+  <navigator url="/pages/market/register_page/register_result">
+    <button class="next-butt" style="width: 600rpx; height: 80rpx; margin-top: 30rpx;"> 
+      <text style="color: white"> 信息无误，下一步 </text>
+    </button>
+  </navigator>
+</view>
+

@@ -3,7 +3,8 @@
 <view class="vip_rank_container">
   <view class="common-column-container">
     <text style="margin-top: 20rpx;font-size:30rpx;font-weight:300">当前等级</text>
-    <text style="margin-top: 10rpx;font-size:45rpx;font-weight:300">银卡会员</text>
+    <text wx:if="{{vipLevel == 1}}" style="margin-top: 10rpx;font-size:45rpx;font-weight:300">银卡会员</text>
+    <text wx:if="{{vipLevel == 2}}" style="margin-top: 10rpx;font-size:45rpx;font-weight:300">铂金会员</text>
   </view>
 </view>
 
@@ -28,10 +29,14 @@
       </view>
 
       <view class="progress-box" style="margin-left: 40rpx; margin-right: 40rpx; margin-top: 20rpx;">
-        <progress percent="{{consumePrice/1000}}" show-info activeColor= "black" font-size= "10" stroke-width="1"></progress>
+        <progress wx:if="{{consumePrice <= 1000}}" percent="{{consumePrice/1000}}" show-info activeColor= "black" font-size= "10" stroke-width="1"></progress>
+        <progress wx:if="{{consumePrice > 1000}}" percent="100" show-info activeColor= "black" font-size= "10" stroke-width="1"></progress>
       </view>
-      <view style="margin-left: 50rpx; font-size: 20rpx; margin-top: 10rpx;">{{consumePrice}}/1000</view>
-      <view style="font-size: 22rpx; font-weight: 400;margin-top: 30rpx;text-align: right; margin-right: 40rpx;">再消费{{1000 - consumePrice}}元即可升级为铂金会员</view>
+      <view wx:if="{{consumePrice <= 1000}}" style="margin-left: 50rpx; font-size: 20rpx; margin-top: 10rpx;">{{consumePrice}}/1000</view>
+      <view wx:if="{{consumePrice > 1000}}" style="margin-left: 50rpx; font-size: 20rpx; margin-top: 10rpx;">1000/1000</view>
+    
+      <view wx:if="{{consumePrice <= 1000}}" style="font-size: 22rpx; font-weight: 400;margin-top: 30rpx;text-align: right; margin-right: 40rpx;">再消费{{1000 - consumePrice}}元即可升级为铂金会员</view>
+      <view wx:if="{{consumePrice > 1000}}" style="font-size: 22rpx; font-weight: 400;margin-top: 30rpx;text-align: right; margin-right: 40rpx;">您已满足该会员级别的要求</view>
       </block>
     </view>
 
@@ -94,10 +99,14 @@
         </view>
       </view>
       <view class="progress-box" style="margin-left: 40rpx; margin-right: 40rpx; margin-top: 30rpx;">
-        <progress percent="{{consumePrice/3000}}" activeColor= "black" font-size= "10" stroke-width="1"></progress>
+        <progress wx:if="{{consumePrice < 3000}}" percent="{{consumePrice/3000}}"  activeColor= "rgb(77, 77, 77)" font-size= "10" stroke-width="1"></progress>
+        <progress wx:if="{{consumePrice >= 3000}}" percent="100" activeColor= "rgb(77, 77, 77)" font-size= "10" stroke-width="1"></progress>
       </view>
-      <view style="margin-left: 50rpx; font-size: 20rpx; color: white; margin-top: 20rpx;">{{consumePrice}}/3000</view>
-      <view style="font-size: 22rpx; font-weight: 400;margin-top: 40rpx;text-align: right; margin-right: 40rpx; color: white;">累计满消费{{3000 - consumePrice}}元即可升级为铂金会员</view>
+      <view wx:if="{{consumePrice <= 3000}}" style="margin-left: 50rpx; font-size: 20rpx; margin-top: 20rpx; color: white;">{{consumePrice}}/3000</view>
+      <view wx:if="{{consumePrice > 3000}}" style="margin-left: 50rpx; font-size: 20rpx; margin-top: 20rpx; color: white;">3000/3000</view>
+    
+      <view wx:if="{{consumePrice <= 3000}}" style="font-size: 22rpx; font-weight: 400;margin-top: 40rpx;text-align: right; margin-right: 40rpx; color: white;">再消费{{1000 - consumePrice}}元即可升级为铂金会员</view>
+      <view wx:if="{{consumePrice > 3000}}" style="font-size: 22rpx; font-weight: 400;margin-top: 40rpx;text-align: right; margin-right: 30rpx; color: white;">即将解锁下个会员等级</view>
       </block>
     </view>
 

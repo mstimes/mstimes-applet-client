@@ -8,6 +8,7 @@ Page({
     selectTopicIndex: 0,
     userNumber: 0,
     currentTab:0,
+    swiHeight: 108,
   },
 
   //分类搜索
@@ -84,10 +85,10 @@ Page({
 
   checkLogin: function () {
     var getServiceLoginInfo = wx.getStorageSync('serviceLogin')
-    if(getServiceLoginInfo.userNumber == null){
+    if(getServiceLoginInfo.userNumber == null || getServiceLoginInfo.wxOpenId == null){
       //跳转到登录页
       wx.redirectTo({
-        url: "/pages/login/login?originPage=history"
+        url: "/pages/login/login?originPage=explore"
       })
     }
   },
@@ -131,7 +132,21 @@ Page({
   },
 
    //滑动切换
-  swiperTab:function( e ){
+  swiperTab:function(e){
+    if(e.detail.current == 0 || e.detail.current == 1){
+      this.setData({
+        swiHeight: 108
+      })
+    }else if(e.detail.current == 2){
+      this.setData({
+        swiHeight: 145
+      })
+    }else if(e.detail.current == 3){
+      this.setData({
+        swiHeight: 85
+      })
+    }
+
     var that=this;
     that.setData({
       currentTab: e.detail.current,

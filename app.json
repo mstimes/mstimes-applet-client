@@ -1,5 +1,14 @@
 {
   "pages": [
+    "pages/market/business_history/data_list",
+    "pages/market/main_page/main",
+    "pages/market/my_center/my",
+
+    "pages/market/register_page/register_add",
+    "pages/market/register_page/register_result",
+    "pages/market/register_page/register_certify",
+    "pages/market/classify_page/classify",
+    "pages/order/status/order_list",
     "pages/vip/vip_page",
     "pages/explore/explore",
     "pages/coupon/invite/invite_custom",
@@ -40,12 +49,12 @@
     "color":"black",
     "list": [
     {
-      "pagePath": "pages/vip/vip_page",
+      "pagePath": "pages/market/main_page/main",
       "iconPath": "images/home3.png",
       "selectedIconPath": "images/home4.png"
     },
     {
-      "pagePath": "pages/explore/explore",
+      "pagePath": "pages/market/classify_page/classify",
       "iconPath": "images/garden2.png",
       "selectedIconPath": "images/garden.png"
     },
@@ -55,7 +64,7 @@
       "selectedIconPath": "images/bag4.png"
     },
     {
-      "pagePath": "pages/mycenter/my",
+      "pagePath": "pages/market/my_center/my",
       "iconPath": "images/my3.png",
       "selectedIconPath": "images/my4.png"
     }]
@@ -66,9 +75,18 @@
     "kdPlugin": {
       "version": "1.1.2",
       "provider": "wx6885acbedba59c14"
+    },
+    "logisticsPlugin": {
+      "version": "2.2.26",
+      "provider": "wx9ad912bf20548d92"
     }
   },
   "requiredPrivateInfos" : [
-    "chooseAddress"
-  ]
+    "chooseAddress","getLocation", "chooseLocation"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+ }
 }

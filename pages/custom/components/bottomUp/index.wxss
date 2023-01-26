@@ -1,0 +1,100 @@
+.flex {
+  display: flex;
+  align-items: center;
+}
+ 
+.box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+ 
+.empty-box {
+  flex: 1;
+  background-color: transparent;
+}
+ 
+/* 内容视图 */
+ 
+.content {
+  width: 100vw;
+  background: rgba(255, 255, 255, 1);
+  opacity: 1;
+  border-radius: 20px 20px 0px 0px;
+  z-index: 1001;
+}
+ 
+/* 头部 */
+ 
+.header {
+  position: relative;
+  height: 80rpx;
+  width: 100vw;
+}
+ 
+.header > view {
+  position: absolute;
+  top: 26rpx;
+  left: calc(50vw - 30rpx);
+  width: 60rpx;
+  height: 10rpx;
+  background: rgba(161, 166, 175, 1);
+  opacity: 0.6;
+  border-radius: 6rpx;
+}
+ 
+/* 快递 */
+ 
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100vw - 80rpx);
+  padding: 0 40rpx;
+  height: 100rpx;
+  background: rgba(255, 255, 255, 1);
+  opacity: 1;
+}
+ 
+.item-no-selected {
+  width: 36rpx;
+  height: 36rpx;
+  background: rgba(255, 255, 255, 1);
+  border: 2rpx solid rgba(112, 112, 112, 1);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+ 
+.item-selected {
+  width: 40rpx;
+  height: 40rpx;
+}
+ 
+/* 按钮 */
+ 
+.button {
+  width: 100vw;
+  padding: 80rpx 40rpx 20rpx 40rpx;
+}
+ 
+.button >view {
+  width: calc(100% - 80rpx);
+  height: 98rpx;
+  border-radius: 50rpx;
+  line-height: 98rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
+  background: rgba(237, 58, 74, 1);
+  opacity: 1;
+}

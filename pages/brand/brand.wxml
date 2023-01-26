@@ -56,26 +56,26 @@
 </view>
 
 <view class="brand-goods">
-    <view class="brand-goods-item"  wx:key="index" wx:for-index="i" wx:for="{{brandList[swiperIndex].brandGoodsList}}" >
-        <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" hover-class="other-navigator-hover">
-          <view class="brand-goods_view">
-            <image src="{{item.goodMainImage}}" style="margin-top:5px;width:100%;border-radius:5px" mode="widthFix"></image>
+  <view class="brand-goods-item"  wx:key="index" wx:for-index="i" wx:for="{{brandList[swiperIndex].brandGoodsList}}" >
+      <navigator class="home-sail-but" url="/pages/detail/detail?id={{item.goodId}}" hover-class="other-navigator-hover">
+        <view class="brand-goods_view">
+          <image src="{{item.goodMainImage}}" style="margin-top:5px;width:100%;border-radius:5px" mode="widthFix"></image>
+        </view>
+        <view class="flex-row" style="display: block;">
+          <view class="brand-goods-sail-des-title">
+            <text>{{item.titleDesc}}</text>
           </view>
-          <view class="flex-row" style="display: block;">
-            <view class="brand-goods-sail-des-title">
-              <text>{{item.titleDesc}}</text>
-            </view>
-            <view class="brand-goods-sail-des">
-              <text>{{item.goodDetail}}</text>
-            </view>
+          <view class="brand-goods-sail-des">
+            <text>{{item.goodDetail}}</text>
+          </view>
 
-            <view class="brand-goods-sail-des-title" style="margin-bottom: 60rpx">
-              <text class="brand-goods-sail-best-small"> ¥</text>
-              <text class="brand-goods-sail-best">{{item.goodPriceDotBefore}}</text>
-              <text wx:if="{{item.goodPriceDotAfter > 0}}" class="brand-goods-sail-best-small">.{{item.goodPriceDotAfter}}</text>
-              <!-- <text class="order-sail-ori">¥{{item.oriPrice}}</text> -->
-            </view>
-         </view>
-      </navigator>
-    </view>
+          <view class="brand-goods-sail-des-title" style="margin-bottom: 60rpx">
+            <text class="brand-goods-sail-best-small"> ¥</text>
+            <text class="brand-goods-sail-best">{{item.goodPriceDotBefore}}</text>
+            <text wx:if="{{item.goodPriceDotAfter > 0}}" class="brand-goods-sail-best-small">.{{item.goodPriceDotAfter}}</text>
+            <!-- <text class="order-sail-ori">¥{{item.oriPrice}}</text> -->
+          </view>
+        </view>
+    </navigator>
   </view>
+</view>

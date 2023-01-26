@@ -149,21 +149,28 @@ Page({
   selectedCheckTap: function(e) {
     var discountCoupon = 0;
     var couponCategory = '';
+    var couponType = 0;
+    var couponCode = '';
     console.log('couponList size ' + this.data.couponList.length);
+    console.log('index ... ' + e.currentTarget.dataset.index);
 
     this.data.couponList.forEach(function (v, i) {
       if (i == e.currentTarget.dataset.index) {
         console.log('v.discountCoupon ' + v.discountCoupon + ', i ' + i);
         couponCategory = v.couponCategory;
         discountCoupon = v.discountCoupon;
+        couponType = v.couponType;
+        couponCode = v.couponCode;
         v.isChecked = true;
       }else {
         v.isChecked = false;
       }
     })
 
-    console.log('confirmSelectCoupon discountCoupon ' + discountCoupon);
+    console.log('confirmSelectCoupon discountCoupon ' + discountCoupon + ', couponCode ' + couponCode);
+    wx.setStorageSync('selectedCouponCode', couponCode)
     wx.setStorageSync('selectedDiscountCoupon', discountCoupon)
+    wx.setStorageSync('couponType', couponType)
     wx.setStorageSync('selectedCouponCategory', couponCategory)
     wx.setStorageSync('selectedCouponList', this.data.couponList)
 
@@ -176,5 +183,9 @@ Page({
     wx.navigateBack({
       delta: 1
     })
+  },
+
+  selectedCouponTap: function(e) {
+    console.log('selectedCouponTap ... ');
   }
 })

@@ -1,0 +1,208 @@
+<view class="c-top-header-white">
+  {{marketName}}
+</view>
+<view class="classify">
+  <scroll-view class="scroll-view_H" scroll-x="true" scroll-into-view="{{topicButtonId}}" scroll-with-animation="true">
+    <!-- <div class="classify-item-line" wx:key="unique" wx:for="{{topicTypes}}" >
+        <button wx:if="{{currentTab != index}}" class="classify-button" data-classify='{{index}}'  bindtap='topicButtonSearch' style="width:120%">
+          <view id="topic{{index}}" style="display: flex; flex-direction: column;">
+            <image style="width: 60rpx; height: 60rpx; margin-left: 18rpx;" src="{{item.mainImage}}"></image>
+            <text style="font-size: 20rpx; font-weight: 400; color: black; margin-top: 10rpx;">  {{item.topicName}}  </text>
+          </view>
+        </button>
+        <button wx:if="{{currentTab == index}}" class="selected-classify-button" data-classify='{{index}}'  bindtap='topicButtonSearch' style="width:120%">
+          <view id="topic{{index}}" style="display: flex; flex-direction: column; ">
+            <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{item.mainImage}}"></image>
+            <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: white; margin-top: 10rpx; background-color: black; border-radius: 5rpx;">{{item.topicName}}</text>
+          </view>
+        </button>
+    </div> -->
+
+    <div class="classify-item-line">
+      <view id="topic0" wx:if="{{currentTab != 0}}" data-classify='0' style="display: flex; flex-direction: column;" bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[0].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: black; margin-top: 10rpx;">  {{topicTypes[0].topicName}}  </text>
+      </view>
+      <view id="topic0" wx:if="{{currentTab == 0}}" style="display: flex; flex-direction: column;" data-classify='0' bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[0].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: white; margin-top: 10rpx; background-color: black; border-radius: 5rpx;">{{topicTypes[0].topicName}}</text>
+      </view>
+    </div>
+
+    <div class="classify-item-line">
+      <view id="topic1" wx:if="{{currentTab != 1}}" data-classify='1' style="display: flex; flex-direction: column;" bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[1].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; font-weight: 400; text-align: center; color: black; margin-top: 10rpx;">{{topicTypes[1].topicName}}</text>
+      </view>
+      <view id="topic1" wx:if="{{currentTab == 1}}" style="display: flex; flex-direction: column;" data-classify='1' bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[1].mainImage}}"></image>
+        <text style="font-size: 20rpx; font-weight: 400; width: 100rpx; text-align: center; color: white; margin-top: 10rpx; background-color: black; border-radius: 5rpx;">{{topicTypes[1].topicName}}</text>
+      </view>
+    </div>
+
+    <div class="classify-item-line">
+      <view id="topic2" wx:if="{{currentTab != 2}}" data-classify='2' style="display: flex; flex-direction: column;" bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[2].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: black; margin-top: 10rpx;">  {{topicTypes[2].topicName}}  </text>
+      </view>
+      <view id="topic2" wx:if="{{currentTab == 2}}" class="selected-classify-button" style="display: flex; flex-direction: column;" data-classify='2' bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[2].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: white; margin-top: 10rpx; background-color: black; border-radius: 5rpx;">{{topicTypes[2].topicName}}</text>
+      </view>
+    </div>
+
+    <div class="classify-item-line">
+      <view id="topic3" wx:if="{{currentTab != 3}}" data-classify='3' style="display: flex; flex-direction: column;" bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[3].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: black; margin-top: 10rpx;">  {{topicTypes[3].topicName}}  </text>
+      </view>
+      <view id="topic3" wx:if="{{currentTab == 3}}" class="selected-classify-button" style="display: flex; flex-direction: column;" data-classify='3' bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[3].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: white; margin-top: 10rpx; background-color: black; border-radius: 5rpx;">{{topicTypes[3].topicName}}</text>
+      </view>
+    </div>
+
+    <div class="classify-item-line">
+      <view id="topic4" wx:if="{{currentTab != 4}}" data-classify='4' style="display: flex; flex-direction: column;" bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[4].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: black; margin-top: 10rpx;">  {{topicTypes[4].topicName}}  </text>
+      </view>
+      <view id="topic4" wx:if="{{currentTab == 4}}" class="selected-classify-button" style="display: flex; flex-direction: column;" data-classify='4' bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[4].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: white; margin-top: 10rpx; background-color: black; border-radius: 5rpx;">{{topicTypes[4].topicName}}</text>
+      </view>
+    </div>
+
+    <div class="classify-item-line">
+      <view id="topic5" wx:if="{{currentTab != 5}}" data-classify='5' style="display: flex; flex-direction: column;" bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[5].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: black; margin-top: 10rpx;">  {{topicTypes[5].topicName}}  </text>
+      </view>
+      <view id="topic5" wx:if="{{currentTab == 5}}" class="selected-classify-button" style="display: flex; flex-direction: column;" data-classify='5' bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[5].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: white; margin-top: 10rpx; background-color: black; border-radius: 5rpx;">{{topicTypes[5].topicName}}</text>
+      </view>
+    </div>
+
+    <div class="classify-item-line">
+      <view id="topic6" wx:if="{{currentTab != 6}}" data-classify='6' style="display: flex; flex-direction: column;" bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[6].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: black; margin-top: 10rpx;">  {{topicTypes[6].topicName}}  </text>
+      </view>
+      <view id="topic6" wx:if="{{currentTab == 6}}" class="selected-classify-button" style="display: flex; flex-direction: column;" data-classify='6' bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[6].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: white; margin-top: 10rpx; background-color: black; border-radius: 5rpx;">{{topicTypes[6].topicName}}</text>
+      </view>
+    </div>
+
+    <div class="classify-item-line">
+      <view id="topic7" wx:if="{{currentTab != 7}}" data-classify='7' style="display: flex; flex-direction: column;" bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[7].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: black; margin-top: 10rpx;">  {{topicTypes[7].topicName}}  </text>
+      </view>
+      <view id="topic7" wx:if="{{currentTab == 7}}" class="selected-classify-button" style="display: flex; flex-direction: column;" data-classify='7' bindtap='topicButtonSearch'>
+        <image style="width: 60rpx; height: 60rpx; margin-left: 20rpx;" src="{{topicTypes[7].mainImage}}"></image>
+        <text style="font-size: 20rpx; width: 100rpx; text-align: center; font-weight: 400; color: white; margin-top: 10rpx; background-color: black; border-radius: 5rpx;">{{topicTypes[7].topicName}}</text>
+      </view>
+    </div>
+  </scroll-view>
+</view>
+
+<view class="background">
+  <view style="display: flex; flex-direction: row;">
+    <scroll-view scroll-y="true" style="height: 1300rpx;">
+      <view class="subclassify-item">
+        <block wx:for="{{subClassifys}}" wx:key="index">
+          <view wx:if="{{item.sceneName != null && currentSubClassify != index}}" class="subclassify-button" data-subclassify='{{index}}' bindtap='subClassifyButtonSearch'>
+            <text style="font-size: 20rpx; font-weight: 400; color: black; margin-top: 10rpx; margin-bottom: 10rpx; width: 50rpx;">{{item.sceneName}}</text>
+          </view>
+          <view wx:if="{{item.sceneName != null && currentSubClassify == index}}" class="selected-subclassify-button" data-subclassify='{{index}}' bindtap='subClassifyButtonSearch'>
+            <view style="display: flex; flex-direction: row;">
+              <view style="width: 6rpx; height: 60rpx; background-color: black;"/>
+              <view style="width: 145rpx; text-align: center;">
+                <text style="font-size: 20rpx; font-weight: 400; color: black; margin-top: 10rpx; margin-bottom: 10rpx; width: 50rpx;">{{item.sceneName}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+    <scroll-view scroll-y="true" style="height: 1200rpx;" bindscrolltolower="lower">
+      <view style="display: flex; flex-direction: column;">
+        <block wx:for="{{goodList}}" wx:key="index">
+          <navigator url="/pages/detail/detail?id={{item.goodId}}&fromScenePage=1">
+            <view style="display: flex; flex-direction: row; margin-bottom: 20rpx;">
+              <image style="width: 200rpx; height: 200rpx; margin-top: 20rpx; margin-left: 10rpx; margin-right: 10rpx;" src="{{item.mainImage}}"></image>
+              <view style="margin-top: 40rpx; display: flex; flex-direction: column; width: 350rpx;">
+                <view style="font-size: 22rpx; margin-top: 10rpx;">{{item.title}}</view>
+                <view style="font-size: 18rpx; color: grey; margin-top: 10rpx; margin-left: 10rpx;">{{item.description}}</view>
+                <view style="display: flex; flex-direction: row; justify-content: space-between; margin-left: 20rpx; margin-top: 30rpx;">
+                  <view style="color: rgb(180, 3, 3); font-size: 30rpx; font-weight: 500;">¥{{item.groupPrice}}</view>
+                  <image style="width: 50rpx; height: 50rpx; margin-right: 20rpx;" src="/images/add-bucket.png" data-index='{{index}}' data-goodid='{{item.goodId}}' bindtap="showModalByBucket"></image>
+                </view>
+              </view>
+            </view>
+          </navigator>
+          <view class="c-seperate-h-line" style="margin-left: 10rpx;"/>
+        </block>
+        <view style="color: white; height: 100rpx;">1</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+  <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+    <view class="inner_box">
+    <text class="bottom-title-container">分类</text>
+    <view class='button_container'>
+      <block wx:for="{{classifyButtons}}" wx:key="classifyButtons">
+        <view class="button_padding" >
+          <button class='{{selectedClassifyId == index ? "checked_button" : "normal_button"}}' style="height:unset;width:unset" data-index="{{index}}" bindtap='radioClassifyButtonTap'>
+            <text class="button_words">{{item}}</text>
+          </button>
+          <!-- <button wx:if="{{!initSelectClassifyButton}}" class='{{item.checked?"checked_button":"normal_button"}}' style="height:unset;width:unset" data-id='{{item.id}}' bindtap='radioClassifyButtonTap'>
+           <text class="button_words">{{item}}</text>
+          </button> -->
+        </view>
+      </block>
+    </view>
+
+    <text class="bottom-title-container">规格</text>
+    <view class='button_container'>
+      <block wx:for="{{specificButtons}}" wx:key="specificButtons">
+        <view class="button_padding" >
+          <button class='{{selectedSpecificId == index ? "checked_button" : "normal_button"}}'  style="width:unset;height:unset" bindtap='radioSpecificButtonTap'>
+            <text style="font-size: 25rpx; font-weight: 400">{{item}}</text>
+          </button>
+          <!-- <button wx:if="{{!initSelectSpecificButton}}" class='{{item.checked?"checked_button":"normal_button"}}' style="width:unset;height:unset" data-id='{{item.id}}' bindtap='radioSpecificButtonTap'>
+            <text style="font-size: 25rpx; font-weight: 400">{{item}}</text>
+          </button> -->
+        </view>
+      </block>
+    </view>
+
+    <view class="num_container">
+      <text style="margin-left:15px; margin-top:5px;  width:50%; font-size:25rpx; font-weight:400">购买数量</text>
+      <view class="step_padding">
+        <view class="stepper">
+          <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+          <input type="number" bindchange="bindManual" value="{{num}}" />
+          <text class="normal" bindtap="bindPlus">+</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{isShowBucket == 0}}" class="confirm-buy-container" bindtap='doBuyButtonTap'>
+    <button class="confirm-buy-butt" style="width: 600rpx; height: 80rpx"> 
+      <text style="color: white"> 确认下单 </text>
+    </button>
+  </view>
+
+  <view wx:if="{{isShowBucket == 1}}" class="confirm-buy-container" bindtap='addBucketTap'>
+    <button class="confirm-buy-butt" style="width: 600rpx; height: 80rpx"> 
+      <text style="color: white"> 加入购物车 </text>
+    </button>
+  </view>
+</view>

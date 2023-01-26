@@ -1,0 +1,65 @@
+<view class="c-top-header-white">
+   申请开通店铺
+</view>
+
+<wxs module="filters" src="../../../utils/utils.wxs"></wxs>
+
+<view class="background">
+  <view style="display: flex; flex-direction: row; height: 80rpx; padding-top: 40rpx; margin-left: 200rpx;">
+    <image style="width: 35rpx; height: 35rpx; margin-right: 10rpx;" src="/images/black_1.png"/>
+    <text style="font-size: 25rpx; font-weight: 500;">添加店铺</text>
+    <image style="width: 35rpx; height: 35rpx; margin-right: 30rpx; margin-left: 10rpx;" src="/images/arrow.png"/>
+    <image style="width: 35rpx; height: 35rpx; margin-right: 10rpx;" src="/images/grey_2.png"/>
+    <text style="font-size: 25rpx; font-weight: 500; color: grey;">审核结果</text>
+    <!-- <image style="width: 35rpx; height: 35rpx; margin-right: 20rpx;" src="/images/arrow.png"/>
+    <image style="width: 35rpx; height: 35rpx; margin-right: 10rpx;" src="/images/grey_3.png"/>
+    <text style="font-size: 25rpx; font-weight: 500; color: grey;">申请结果</text> -->
+  </view>
+  
+  <view style="background-color: white; height: 170rpx; margin-left: 20rpx; margin-right: 20rpx; border-radius: 15rpx; display: flex; flex-direction: column;">
+    <text style="margin-top: 30rpx; margin-left: 50rpx; font-size: 30rpx; font-weight: 500;">店铺名称（必填）</text>
+    <input placeholder='请输入和商城名一致的店铺名称' type="text" bindinput='bindMarketNameInput' maxlength="10" style="font-size: 30rpx; margin-top: 30rpx; margin-left: 50rpx;"></input>
+  </view>
+
+  <view style="background-color: white; margin-left: 20rpx; margin-right: 20rpx; margin-top: 20rpx; margin-bottom: 20rpx; border-radius: 15rpx; display: flex; flex-direction: column;">
+    <text style="margin-top: 30rpx; margin-left: 50rpx; font-size: 30rpx; font-weight: 500;">店铺位置（必填）</text>
+    <text style="margin-top: 20rpx; margin-left: 50rpx; font-size: 24rpx; font-weight: 400; color: rgb(200, 200, 200);">位置有误会影响收货信息，请仔细确认</text>
+    <map style="width: 630rpx; height:300rpx; margin-left: 45rpx; border-radius: 10%; margin-top: 20rpx; margin-bottom: 30rpx; " longitude="{{longitude}}" latitude="{{latitude}}" scale="17"
+  markers="{{markers}}" bindmarkertap="navRoad" data-marker="{{markers[0]}}"
+  show-location />
+    <view style="background: linear-gradient(0deg, #8b8b8b 0%, rgba(255, 255, 255, 0) 100%); height: 310rpx; width: 630rpx; position: absolute; margin-left: 45rpx; margin-top: 140rpx;" bindtap="navRoad"></view>
+    <view style="font-size: 23rpx; font-weight: 600; color: white; padding: 15rpx 10rpx 15rpx 10rpx; border: 1px solid white; border-radius: 10rpx; position: absolute; margin-top: 320rpx; margin-left: 260rpx;" bindtap="navRoad">点击选择商户位置</view>
+    <text wx:if="{{locationName != ''}}" style="margin-left: 50rpx; font-size: 30rpx; margin-top: 10rpx; font-weight: 600;">地址名称</text>
+    <input wx:if="{{locationName != ''}}" value="{{locationName}}" style="margin-left: 50rpx; font-size: 30rpx; color: black; margin-top: 10rpx; "/>
+    <view wx:if="{{locationName != ''}}" class="c-seperate-h-line"></view>
+    <text wx:if="{{locationAddress != ''}}" style="margin-left: 50rpx; font-size: 30rpx; margin-top: 10rpx; font-weight: 600;">详细位置</text>
+    <input wx:if="{{locationAddress != ''}}" value="{{locationAddress}}" style="margin-left: 50rpx; font-size: 30rpx; color: black; margin-top: 10rpx;"/>
+    <view wx:if="{{locationAddress != ''}}" class="c-seperate-h-line" style="margin-bottom: 20rpx;"></view>
+  </view>
+
+  <view style="background-color: white; height: 380rpx; margin-top: 20rpx; margin-left: 20rpx; margin-right: 20rpx; border-radius: 15rpx; display: flex; flex-direction: column;">
+    <text style="margin-top: 30rpx; margin-left: 50rpx; font-size: 30rpx; font-weight: 500;">店铺联系信息（必填）</text>
+    <view style="display: flex; flex-direction: row;">
+      <text style="margin-top: 30rpx; margin-left: 50rpx; font-size: 28rpx; font-weight: 400;">手机号</text>
+      <input placeholder="联系人手机号" type="number" maxlength="11" bindinput='bindContactPhoneInput' style="margin-left: 88rpx; width: 400rpx; font-size: 26rpx; margin-top: 28rpx;"/>
+    </view>
+    <view class="c-seperate-h-line"></view>
+    <view style="display: flex; flex-direction: row; margin-top: 10rpx;">
+      <text style="margin-top: 5rpx; margin-left: 50rpx; font-size: 28rpx; font-weight: 400;">店主姓名</text>
+      <input placeholder="联系人姓名" bindinput='bindContactNameInput' style="margin-left: 60rpx; width: 400rpx; font-size: 26rpx; margin-top: 5rpx;"/>
+    </view>
+    <view class="c-seperate-h-line"></view>
+    <view style="display: flex; flex-direction: row; margin-top: 10rpx;">
+      <text style="margin-top: 5rpx; margin-left: 50rpx; font-size: 28rpx; font-weight: 400;">微信号</text>
+      <input placeholder="联系人微信号" type="text" bindinput='bindContactWxInput' style="margin-left: 88rpx; width: 400rpx; font-size: 26rpx; margin-top: 5rpx;"/>
+      <!-- <button style="width: 300rpx; height: 60rpx; font-size: 26rpx; padding-bottom: 10rpx;" bindtap="getWxPermission">获取微信授权</button> -->
+    </view>
+    <view class="c-seperate-h-line"></view>
+  </view>
+
+  <button class="next-butt" style="width: 600rpx; height: 80rpx; margin-top: 20rpx;" bindtap="nextTap"> 
+    <text style="color: white"> 信息无误，下一步 </text>
+  </button>
+
+</view>
+
